@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 function Projects(): JSX.Element {
-  const reposFilter: string[] = [
-    "aboutdogs",
-    "Cep",
-    "portfolio",
-    "mydrugs",
-    "pokedex",
-  ];
-
   const [repo, setRepo] = useState([]);
 
   useEffect((): void => {
     (async (): Promise<void> => {
       const api: Response = await fetch(
-        "https://api.github.com/users/Caixetadev/repos"
+        "https://apiportfoliocaixeta.herokuapp.com/"
       );
       const data: [] = await api.json();
-      const filter = data.filter((item: { name: string }): boolean =>
-        reposFilter.includes(item.name)
-      );
 
-      setRepo(filter);
+      setRepo(data);
     })();
   }, []);
 
