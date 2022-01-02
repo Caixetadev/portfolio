@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Headers = styled.header`
-  background: rgba(11, 11, 11, 0.9);
+  background-color: #0e141b;
   height: 7.5rem;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@ const Headers = styled.header`
   z-index: 2;
   transition: 0.3s;
   &.border {
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.36);
+    box-shadow: rgba(3, 3, 3, 0.2) 0px 10px 10px;
   }
   & h1 a {
     font-size: 2.4rem;
