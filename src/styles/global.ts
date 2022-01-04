@@ -1,12 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-  :root {
-    --main-bg: #0b0b0b;
-    --border-solid: #191919;
-    --blue-ocean: #a9d6e5;
-    --hover-bg: #161616;
-  }
   * {
     margin: 0;
     padding: 0;
@@ -14,8 +8,8 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
   body {
-    color: #fff;
-    background-color: #0e141b;
+    color: ${(props) => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.background};
   }
   ul {
     list-style: none;
@@ -40,10 +34,11 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.div`
-  max-width: 150rem;
+  max-width: 110rem;
   padding: 0 3rem;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
