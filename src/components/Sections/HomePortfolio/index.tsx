@@ -11,6 +11,7 @@ export default function Home(): JSX.Element {
           <span>Hi, my name is</span>
           <h1>CAIXETA</h1>
           <h2>FRONT END DEVELOPER</h2>
+          <a href="#">Portfolio</a>
         </div>
       </div>
       <Container></Container>

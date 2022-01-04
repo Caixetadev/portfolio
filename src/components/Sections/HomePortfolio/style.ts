@@ -40,5 +40,21 @@ export const SectionHome = styled.section`
     color: gray;
     margin-left: 2rem;
     font-size: 5rem;
+    margin-bottom: 8rem;
+  }
+
+  & .cont a {
+    margin-left: 2rem;
+    background-color: #0e141b;
+    padding: 2rem 5rem;
+    color: #fff;
+    font-size: 1.8rem;
+    /* border-radius: 0.8rem; */
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+
+  & .cont a:hover {
+    filter: brightness(1.2);
   }
 `;
