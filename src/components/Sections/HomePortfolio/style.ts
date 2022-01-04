@@ -49,7 +49,7 @@ export const SectionHome = styled.section`
     padding: 2rem 5rem;
     color: #fff;
     font-size: 1.8rem;
-    /* border-radius: 0.8rem; */
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: filter 0.2s;
   }
