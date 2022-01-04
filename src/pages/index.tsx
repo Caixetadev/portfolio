@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import HomePortfolio from "../components/Sections/HomePortfolio";
 import About from "../components/Sections/About";
+import Skills from "../components/Sections/Skills";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
       <Navbar />
       <HomePortfolio />
       <About />
+      <Skills />
     </ThemeProvider>
   );
 };
