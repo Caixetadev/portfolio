@@ -52,7 +52,7 @@ const Header = styled.header`
     font-size: 1.6rem;
   }
   & nav a:hover {
-    color: ${(props) => props.theme.colors.blue_ocean};
+    color: grey;
   }
   @media (max-width: 560px) {
     .menuButton {
