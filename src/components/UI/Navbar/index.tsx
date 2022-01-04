@@ -1,25 +1,11 @@
 import { useEffect, useState } from "react";
-import Header from "./style";
-import { FaBars } from "react-icons/fa";
+import Header, { MenuIcon } from "./style";
 import Link from "next/link";
 import { Container } from "../../../styles/global";
-import { ItemsWrapper } from "./style";
 
 export default function Navbar() {
   const [border, setBorder] = useState(false);
-
-  const [open, setOpen] = useState(false);
-  const [classActive, setClassActive] = useState(``);
-
-  const toggleNav = () => {
-    if (open === false) {
-      setClassActive(`${styles.active}`), setOpen(true), console.log(open);
-    }
-
-    if (open === true) {
-      setClassActive(``), setOpen(false), console.log(open);
-    }
-  };
+  const [nav, setShowNav] = useState(false);
 
   useEffect(() => {
     const scroll = () => {
@@ -35,17 +21,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", scroll);
   }, []);
 
-  console.log(border);
-
-  const menu = () => {};
+  useEffect(() => {
+    nav
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "visible");
+  }, [nav]);
 
   return (
     <Header className={border ? "border" : ""}>
-      <button
-        onClick={toggleNav}
-        className={`${styles.hamburguer} ${classActive}`}
-      />
-      <div className={`${styles.links} ${classActive}`}></div>
       <Container>
         <div className="logo">
           <h1>
@@ -56,22 +39,26 @@ export default function Navbar() {
             </Link>
           </h1>
         </div>
-        {/* <div className="iconBar" onClick={menu}>
-          <FaBars />
-        </div> */}
         <nav>
-          <ul>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-            <Link href="/projects">
-              <a>Projects</a>
-            </Link>
-            <Link href="/blog">
-              <a>Blog</a>
-            </Link>
+          <ul className={nav ? "active" : ""}>
+            <div className="cont">
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+              <Link href="/projects">
+                <a>Projects</a>
+              </Link>
+              <Link href="/blog">
+                <a>Blog</a>
+              </Link>
+            </div>
           </ul>
         </nav>
+        <MenuIcon className="menuButton" onClick={() => setShowNav(!nav)}>
+          <div />
+          <div />
+          <div />
+        </MenuIcon>
       </Container>
     </Header>
   );

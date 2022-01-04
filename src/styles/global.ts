@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }
   body {
     color: ${(props) => props.theme.colors.text};
-    background: ${(props) => props.theme.colors.background}
+    background: ${(props) => props.theme.colors.background};
   }
   ul {
     list-style: none;
