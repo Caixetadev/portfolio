@@ -29,13 +29,15 @@ export default function Navbar() {
 
   return (
     <Header className={border ? "border" : ""}>
+      <div className="bg">
+        <span className="left"></span>
+        <span className="rigth"></span>
+      </div>
       <Container>
         <div className="logo">
           <h1>
             <Link href="/">
-              <a>
-                Caixeta<span>dev</span>
-              </a>
+              <a>Caixetadev</a>
             </Link>
           </h1>
         </div>

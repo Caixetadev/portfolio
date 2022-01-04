@@ -28,7 +28,7 @@ export default createGlobalStyle`
     background: #161616;
   }
   ::-webkit-scrollbar-thumb {
-    background: #a9d6e5;
+    background: #0e141b;
     border-radius: .8rem;
   }
 `;

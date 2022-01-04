@@ -3,12 +3,8 @@ import type { NextPage } from "next";
 import Navbar from "../components/UI/Navbar";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
-
-import styled from "styled-components";
-
-const H1 = styled.h1`
-  margin-top: 5000px;
-`;
+import HomePortfolio from "../components/Sections/HomePortfolio";
+import About from "../components/Sections/About";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +13,8 @@ const Home: NextPage = () => {
         <title>Caixeta front end</title>
       </Head>
       <Navbar />
-      <H1>oi</H1>
+      <HomePortfolio />
+      <About />
     </ThemeProvider>
   );
 };

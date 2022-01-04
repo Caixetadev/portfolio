@@ -9,9 +9,31 @@ const Header = styled.header`
   position: sticky;
   top: 0;
   left: 0;
-  backdrop-filter: blur(0.5rem);
   z-index: 2;
   transition: 0.3s;
+
+  .bg {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .bg .left {
+    background-color: #0e141b;
+    height: 7.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2vw;
+  }
+
+  & .bg .rigth {
+    background-color: #0e141b;
+    height: 7.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 23vw;
+  }
 
   &.border {
     box-shadow: rgba(3, 3, 3, 0.2) 0px 10px 10px;
@@ -20,9 +42,7 @@ const Header = styled.header`
     font-size: 2.4rem;
     padding: 1rem;
     cursor: pointer;
-  }
-  & span {
-    color: ${(props) => props.theme.colors.blue_ocean};
+    position: relative;
   }
   & ul li + li {
     margin-left: 1rem;
