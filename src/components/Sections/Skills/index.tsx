@@ -9,7 +9,7 @@ import {
   FaNodeJs,
   FaGithub,
 } from "react-icons/fa";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const arrSkills = [
   {
@@ -64,13 +64,16 @@ interface Props {
 
 export default function Skills() {
   useEffect(() => {
-    const info = document.querySelector(".info p");
-    const img = document.querySelectorAll(".tech");
+    const info = document.querySelector<HTMLElement>(".info p");
+    const img = document.querySelectorAll<HTMLElement>(".tech");
+
     img.forEach((item) => {
-      const index = item.getAttribute("data-id");
-      const { desc, color } = arrSkills[index];
+      const index: string | null = item.getAttribute("data-id");
+      const numberIndex: number = parseInt(index!);
+      const { desc, color } = arrSkills[numberIndex];
       item.addEventListener("mouseover", () => {
         const svg = item.children;
+
         svg[0].style.fill = color;
         info!.innerHTML = desc;
       });
