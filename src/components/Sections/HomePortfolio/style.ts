@@ -7,7 +7,7 @@ export const SectionHome = styled.section`
   }
 
   & .bg .left {
-    background-color: #0e141b;
+    background-color: ${(props) => props.theme.colors.bakground_secundary};
     height: 100vh;
     width: 2vw;
     position: absolute;
@@ -16,7 +16,7 @@ export const SectionHome = styled.section`
   }
 
   & .bg .rigth {
-    background-color: #0e141b;
+    background-color: ${(props) => props.theme.colors.bakground_secundary};
     height: 100vh;
     width: 23vw;
   }
@@ -45,7 +45,7 @@ export const SectionHome = styled.section`
 
   & .cont a {
     margin-left: 2rem;
-    background-color: #0e141b;
+    background-color: ${(props) => props.theme.colors.bakground_secundary};
     padding: 2rem 5rem;
     color: #fff;
     font-size: 1.8rem;

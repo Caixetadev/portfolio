@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SectionAbout = styled.section`
   margin-top: 10rem;
-  background: #0e141b;
+  background: ${(props) => props.theme.colors.bakground_secundary};
   height: 40rem;
   padding-top: 11rem;
   clip-path: polygon(0 15%, 100% 0, 100% 85%, 0% 100%);
