@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
 </p>
 
-<img src="https://github.com/iuricode/readme-template/raw/main/README-repository/exemplo-image.png" alt="exemplo imagem">
+<img src="https://github.com/Caixetadev/portfolio2.0/blob/main/public/assets/home.png?raw=true" alt="exemplo imagem">
 
 > Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
 
