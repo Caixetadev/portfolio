@@ -11,6 +11,7 @@ const Home: NextPage = () => {
     <ThemeProvider theme={theme}>
       <Head>
         <title>Caixeta front end</title>
+        <meta name="description" content="Portfolio Caixeta" />
       </Head>
       <Navbar />
       <HomePortfolio />
