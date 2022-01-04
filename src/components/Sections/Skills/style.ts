@@ -29,13 +29,12 @@ export const SectionSkills = styled.section`
   }
 
   & .cont .techs .tech {
-    color: rgb(146, 146, 146);
     display: flex;
     align-items: center;
     justify-content: center;
     height: 10rem;
     width: 100%;
-    background: #0e141b;
+    background: ${(props) => props.theme.colors.bakground_secundary};
     border-radius: 0.8rem;
   }
 
@@ -80,7 +79,7 @@ export const SectionSkills = styled.section`
   }
 
   & .cont .techs .tech svg {
-    color: #fff;
+    color: gray;
     font-size: 4rem;
   }
 `;

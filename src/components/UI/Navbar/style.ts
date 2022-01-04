@@ -18,7 +18,7 @@ const Header = styled.header`
   }
 
   & .bg .left {
-    background-color: #0e141b;
+    background-color: ${(props) => props.theme.colors.bakground_secundary};
     height: 7.5rem;
     position: absolute;
     top: 0;
@@ -27,7 +27,7 @@ const Header = styled.header`
   }
 
   & .bg .rigth {
-    background-color: #0e141b;
+    background-color: ${(props) => props.theme.colors.bakground_secundary};
     height: 7.5rem;
     position: absolute;
     top: 0;
