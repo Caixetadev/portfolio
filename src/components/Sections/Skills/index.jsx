@@ -56,36 +56,29 @@ const arrSkills = [
   },
 ];
 
-interface Props {
-  desc?: string;
-  image: JSX.Element;
-  i: number;
-}
-
 export default function Skills() {
   useEffect(() => {
-    const info = document.querySelector<HTMLElement>(".info p");
-    const img = document.querySelectorAll<HTMLElement>(".tech");
+    const info = document.querySelector(".info p");
+    const img = document.querySelectorAll(".tech");
 
     img.forEach((item) => {
-      const index: string | null = item.getAttribute("data-id");
-      const numberIndex: number = parseInt(index!);
-      const { desc, color } = arrSkills[numberIndex];
+      const index = item.getAttribute("data-id");
+      const { desc, color } = arrSkills[index];
       item.addEventListener("mouseover", () => {
         const svg = item.children;
 
         svg[0].style.fill = color;
-        info!.innerHTML = desc;
+        info.innerHTML = desc;
       });
       item.addEventListener("mouseout", () => {
         const svg = item.children;
         svg[0].style.fill = "";
-        info!.innerHTML = "Passe o mouse por cima dos icones";
+        info.innerHTML = "Passe o mouse por cima dos icones";
       });
     });
   });
 
-  function Seila({ desc, image, i }: Props): JSX.Element {
+  function Seila({ desc, image, i }) {
     return (
       <div className="tech" data-id={i}>
         {image}
