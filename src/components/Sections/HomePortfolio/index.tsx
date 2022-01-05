@@ -15,8 +15,6 @@ export default function Home(): JSX.Element {
           text.innerHTML += letter;
         }, 100 * index);
       });
-
-      console.log(arrText);
     }
     writeText(h2El.current!);
   }, []);

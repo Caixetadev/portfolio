@@ -6,6 +6,7 @@ import theme from "../styles/theme";
 import HomePortfolio from "../components/Sections/HomePortfolio";
 import About from "../components/Sections/About";
 import Skills from "../components/Sections/Skills";
+import ButtonTop from "../components/UI/ButtonTop";
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
       <HomePortfolio />
       <About />
       <Skills />
+      <ButtonTop />
     </ThemeProvider>
   );
 };
