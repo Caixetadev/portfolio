@@ -36,7 +36,7 @@ export default function Navbar() {
       <Container>
         <div className="logo">
           <h1>
-            <Link href="/">
+            <Link href="#">
               <a>Caixetadev</a>
             </Link>
           </h1>
@@ -44,14 +44,14 @@ export default function Navbar() {
         <nav>
           <ul className={nav ? "active" : ""}>
             <div className="cont">
-              <Link href="/">
+              <Link href="#">
                 <a>Home</a>
               </Link>
-              <Link href="/projects">
-                <a>Projects</a>
+              <Link href="#about">
+                <a>About</a>
               </Link>
-              <Link href="/blog">
-                <a>Blog</a>
+              <Link href="#skill">
+                <a>skill</a>
               </Link>
             </div>
           </ul>

@@ -4,7 +4,7 @@ import { SectionAbout } from "./style";
 
 export default function About() {
   return (
-    <SectionAbout>
+    <SectionAbout id="about">
       <Container>
         <div className="conteudo">
           <h2>About</h2>

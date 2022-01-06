@@ -87,7 +87,7 @@ export default function Skills() {
   }
 
   return (
-    <SectionSkills>
+    <SectionSkills id="skill">
       <Container>
         <div className="cont">
           <div className="info">
