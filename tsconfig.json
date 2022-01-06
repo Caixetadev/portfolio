@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/Sections/Skills/index.jsx"
+    "src/components/Sections/Skills/index.jsx",
+    "src/pages/dashboard.jsx"
   ],
   "exclude": ["node_modules"]
 }
