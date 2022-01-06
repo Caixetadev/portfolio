@@ -1,6 +1,7 @@
 import { Container } from "../../../styles/global";
 import swal from "sweetalert";
 import { useEffect, useState } from "react";
+import SectionProjects from "./style";
 
 export default function Projects() {
   const [projects, setProjects] = useState<string[]>([]);
@@ -22,7 +23,9 @@ export default function Projects() {
 
   return (
     <Container>
-      <h1>projects</h1>
+      <SectionProjects id="projects">
+        <h2>Projects</h2>
+      </SectionProjects>
     </Container>
   );
 }

@@ -8,6 +8,7 @@ import About from "../components/Sections/About";
 import Skills from "../components/Sections/Skills";
 import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
+import Footer from "../components/UI/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
       <Skills />
       <Projects />
       <ButtonTop />
+      <Footer />
     </ThemeProvider>
   );
 };
