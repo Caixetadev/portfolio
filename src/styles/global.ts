@@ -19,6 +19,7 @@ export default createGlobalStyle`
     color: #fff;
   }
   html {
+    scroll-behavior: smooth;
     font-size: 62.5%;
   }
   ::-webkit-scrollbar {
@@ -28,7 +29,7 @@ export default createGlobalStyle`
     background: #161616;
   }
   ::-webkit-scrollbar-thumb {
-    background: #0e141b;
+    background: ${(props) => props.theme.colors.bakground_secundary};
     border-radius: .8rem;
   }
 `;
