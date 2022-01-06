@@ -7,6 +7,7 @@ import HomePortfolio from "../components/Sections/HomePortfolio";
 import About from "../components/Sections/About";
 import Skills from "../components/Sections/Skills";
 import ButtonTop from "../components/UI/ButtonTop";
+import Projects from "../components/Sections/Projects";
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
       <HomePortfolio />
       <About />
       <Skills />
+      <Projects />
       <ButtonTop />
     </ThemeProvider>
   );

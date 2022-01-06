@@ -59,7 +59,7 @@ export const SectionSkills = styled.section`
   }
 
   & .cont .techs .tech:nth-child(5) {
-    transform: translate(0px, 40%) scale(0.7) translateY(-5rem);
+    transform: translate(0px, 40%) scale(0.9) translateY(-5rem);
   }
 
   & .cont .techs .tech:nth-child(6) {
@@ -71,7 +71,7 @@ export const SectionSkills = styled.section`
   }
 
   & .cont .techs .tech:nth-child(8) {
-    transform: translate(30%, 20%) scale(0.7) translateY(1rem);
+    transform: translate(30%, 20%) scale(0.8) translateY(1rem);
   }
 
   & .cont .techs .tech:nth-child(9) {
