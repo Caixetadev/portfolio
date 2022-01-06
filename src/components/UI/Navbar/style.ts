@@ -15,6 +15,11 @@ const Header = styled.header`
   .bg {
     display: flex;
     justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+
+  .bg.remove {
+    opacity: 0;
   }
 
   & .bg .left {

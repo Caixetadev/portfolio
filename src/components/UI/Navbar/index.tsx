@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header, { MenuIcon } from "./style";
 import Link from "next/link";
 import { Container } from "../../../styles/global";
@@ -6,6 +6,7 @@ import { Container } from "../../../styles/global";
 export default function Navbar() {
   const [border, setBorder] = useState(false);
   const [nav, setShowNav] = useState(false);
+  const navBarEl = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const scroll = () => {
@@ -13,6 +14,12 @@ export default function Navbar() {
         setBorder(true);
       } else {
         setBorder(false);
+      }
+
+      if (window.scrollY > Math.round(window.innerHeight / (100 / 100))) {
+        navBarEl.current!.classList.add("remove");
+      } else {
+        navBarEl.current!.classList.remove("remove");
       }
     };
 
@@ -29,7 +36,7 @@ export default function Navbar() {
 
   return (
     <Header className={border ? "border" : ""}>
-      <div className="bg">
+      <div ref={navBarEl} className="bg">
         <span className="left"></span>
         <span className="rigth"></span>
       </div>

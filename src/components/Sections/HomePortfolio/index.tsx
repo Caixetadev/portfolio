@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
             <span>Hi, my name is</span>
             <h1>CAIXETA</h1>
             <h2 ref={h2El}>FRONT END DEVELOPER</h2>
-            <a href="#">Portfolio</a>
+            <a href="#projects">Portfolio</a>
           </div>
         </Container>
       </div>
