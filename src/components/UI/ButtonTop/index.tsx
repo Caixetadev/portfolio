@@ -8,9 +8,9 @@ export default function ButtonTop() {
   useEffect(() => {
     window.onscroll = () => {
       if (window.scrollY >= 200) {
-        buttonEl.current!.style.display = "flex";
+        buttonEl.current!.style.cssText = "opacity: 1";
       } else {
-        buttonEl.current!.style.display = "none";
+        buttonEl.current!.style.cssText = "opacity: 0";
       }
     };
   }, []);

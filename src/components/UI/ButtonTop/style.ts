@@ -9,7 +9,8 @@ const BtnTop = styled.button`
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  display: none;
+  display: flex;
+  transition: all 0.4s ease;
   justify-content: center;
   align-items: center;
   outline: none;
