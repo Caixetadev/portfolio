@@ -9,8 +9,18 @@ import Skills from "../components/Sections/Skills";
 import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
+import { ReactNode, ReactPropTypes } from "react";
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+  const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
+  const data: string[] = await url.json();
+
+  return {
+    props: { projects: data },
+  };
+}
+
+const Home: NextPage = ({ projects }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -21,7 +31,7 @@ const Home: NextPage = () => {
       <HomePortfolio />
       <About />
       <Skills />
-      <Projects />
+      <Projects projects={projects} />
       <ButtonTop />
       <Footer />
     </ThemeProvider>
