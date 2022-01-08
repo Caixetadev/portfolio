@@ -2,8 +2,16 @@ import { Container } from "../../../styles/global";
 import swal from "sweetalert";
 import SectionProjects from "./style";
 
-export default function Projects({ projects }) {
-  console.log(projects);
+interface GetProjects {
+  projects: {
+    name: string;
+    image: string;
+    date: string;
+    description: string;
+  };
+}
+
+export default function Projects({ projects }: GetProjects) {
   function onPick() {
     swal("Thanks for your rating!", `You rated us $/3`, "success");
   }
