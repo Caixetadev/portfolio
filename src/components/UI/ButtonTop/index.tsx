@@ -6,13 +6,13 @@ export default function ButtonTop() {
   const buttonEl = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    window.onscroll = () => {
-      if (window.scrollY >= 200) {
-        buttonEl.current!.style.cssText = "opacity: 1";
+    document.addEventListener(`scroll`, () => {
+      if (window.scrollY < 200) {
+        buttonEl.current!.style.opacity = "0";
       } else {
-        buttonEl.current!.style.cssText = "opacity: 0";
+        buttonEl.current!.style.opacity = "1";
       }
-    };
+    });
   }, []);
 
   function scrollTop() {
