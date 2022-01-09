@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const SectionAbout = styled.section`
-  margin-top: 10rem;
   background: ${(props) => props.theme.colors.bakground_secundary};
   height: 40rem;
   padding-top: 11rem;

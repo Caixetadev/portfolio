@@ -7,6 +7,8 @@ const BtnTop = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 50%;
+  background-color: #8257e5;
+  color: #fff;
   cursor: pointer;
   border: none;
   display: flex;

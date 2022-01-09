@@ -23,14 +23,14 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #161616;
+    background: ${(props) => props.theme.colors.background};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.colors.bakground_secundary};
-    border-radius: .8rem;
+    background: #8257e5;
+    border-radius: .3rem;
   }
 `;
 
