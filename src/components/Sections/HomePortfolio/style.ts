@@ -4,53 +4,35 @@ export const SectionHome = styled.section`
   height: 100vh;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-
-  & .bg .left {
-    background-color: ${(props) => props.theme.colors.bakground_secundary};
-    height: 100%;
-    width: 2vw;
-    position: absolute;
-    top: 70px;
-    right: 0;
-  }
-
-  & .bg .rigth {
-    background-color: ${(props) => props.theme.colors.bakground_secundary};
-    height: 100%;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 23vw;
-  }
 
   & .cont {
-    margin: 0 auto 15rem auto;
+    margin-left: 1rem;
   }
 
   & .cont h1 {
-    font-size: 15rem;
+    font-size: 7rem;
     letter-spacing: 0.6rem;
+    margin-top: 1rem;
   }
 
   & .cont span {
-    margin-left: 2rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
     font-size: 1.8rem;
   }
 
   & .cont h2 {
     color: gray;
-    margin-left: 2rem;
     font-size: 5rem;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
   }
 
   & .cont h2::after {
     content: "|";
-    margin-left: 0.5rem;
+    margin-left: 1rem;
+    color: #8257e5;
     opacity: 1;
     animation: blink 0.7s infinite;
   }
@@ -67,8 +49,7 @@ export const SectionHome = styled.section`
   }
 
   & .cont a {
-    margin-left: 2rem;
-    background-color: ${(props) => props.theme.colors.bakground_secundary};
+    background-color: #8257e5;
     padding: 2rem 5rem;
     color: #fff;
     font-size: 1.8rem;
