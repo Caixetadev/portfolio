@@ -7,6 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
+
   body {
     color: ${(props) => props.theme.colors.text};
     background: ${(props) => props.theme.colors.background};
@@ -23,7 +24,7 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
   }
   ::-webkit-scrollbar-track {
     background: ${(props) => props.theme.colors.background};

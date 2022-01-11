@@ -8,18 +8,30 @@ const Footer = styled.footer`
     display: flex;
   }
 
+  & .icons ul li a {
+    margin-bottom: 4rem;
+    border-radius: 0.8rem;
+    background-color: #202024;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8257e5;
+    transition: all 0.2s ease;
+  }
+
   & .icons ul li + li {
     margin-left: 3rem;
   }
 
   & .icons svg {
-    margin-bottom: 4rem;
     font-size: 3.3rem;
     cursor: pointer;
   }
 
-  & .icons svg:hover {
-    filter: brightness(0.7);
+  & .icons ul li a:hover {
+    background-color: #8257e5;
+    color: #fff;
   }
 
   & p {

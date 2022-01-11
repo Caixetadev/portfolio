@@ -12,8 +12,12 @@ export const SectionHome = styled.section`
     margin-left: 1rem;
   }
 
+  & img {
+    border-radius: 1rem;
+  }
+
   & .cont h1 {
-    font-size: 7rem;
+    font-size: 6rem;
     letter-spacing: 0.6rem;
     margin-top: 1rem;
   }
@@ -25,16 +29,16 @@ export const SectionHome = styled.section`
 
   & .cont h2 {
     color: gray;
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 6rem;
   }
 
   & .cont h2::after {
     content: "|";
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     color: #8257e5;
     opacity: 1;
-    animation: blink 0.7s infinite;
+    animation: blink 1s infinite;
   }
 
   @keyframes blink {
@@ -50,7 +54,7 @@ export const SectionHome = styled.section`
 
   & .cont a {
     background-color: #8257e5;
-    padding: 2rem 5rem;
+    padding: 1.5rem 4rem;
     color: #fff;
     font-size: 1.8rem;
     border-radius: 0.5rem;
