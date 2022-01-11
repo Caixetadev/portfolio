@@ -11,7 +11,19 @@ export const SectionSkills = styled.section`
   }
 
   & .cont h2 {
-    font-size: 5rem;
+    position: relative;
+    font-size: 4rem;
+  }
+
+  & .cont h2::before {
+    content: "";
+    height: 1.7rem;
+    display: block;
+    width: 8rem;
+    background-color: #8257e5;
+    position: absolute;
+    bottom: 2px;
+    z-index: -1;
   }
 
   & .cont p {

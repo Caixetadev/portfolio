@@ -45,9 +45,8 @@ const Header = styled.header`
     }
 
     nav ul {
+      visibility: hidden;
       position: absolute;
-      width: 100%;
-      height: calc(100vh - 70px);
       top: 70px;
       right: 0;
       background: ${(props) => props.theme.colors.background};
@@ -56,6 +55,8 @@ const Header = styled.header`
     }
 
     .cont {
+      width: 100vw;
+      height: 100vh;
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -64,8 +65,8 @@ const Header = styled.header`
     }
 
     nav ul.active {
+      visibility: initial;
       transform: translateY(0);
-      overflow-y: hidden;
     }
   }
 `;
