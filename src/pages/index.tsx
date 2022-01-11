@@ -1,5 +1,5 @@
 import Head from "next/head";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import theme from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -11,26 +11,31 @@ import Skills from "../components/Sections/Skills";
 import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
+import axios from "axios";
 
-interface GetProjects {
-  projects: {
-    name: string;
-    image: string;
-    date: string;
-    description: string;
-  };
+export interface IProjects {
+  name: string;
+  image: string;
+  description: string;
+  language: [
+    {
+      name: string;
+      image: string;
+    }
+  ];
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
-  const data = await url.json();
+
+  const data: IProjects = await url.json();
 
   return {
     props: { projects: data },
   };
-}
+};
 
-const Home: NextPage<GetProjects> = ({ projects }) => {
+const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
