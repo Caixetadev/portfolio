@@ -2,15 +2,33 @@ import { Container } from "../../../styles/global";
 import swal from "sweetalert";
 import SectionProjects from "./style";
 import Image from "next/image";
-import { IProjects } from "../../../pages";
 import HomeImage from "../../../../public/assets/home.jpg";
 import { Card } from "./style";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaJs,
+  FaSass,
+  FaNode,
+  FaReact,
+} from "react-icons/fa";
+
+import { SiTypescript, SiStyledcomponents } from "react-icons/si";
 
 export default function Projects({ projects }) {
   function onPick() {
     swal("Thanks for your rating!", `You rated us $/3`, "success");
   }
+
+  const colors = {
+    Javascript: { color: "yellow", icon: <FaJs /> },
+    Sass: { color: "pink", icon: <FaSass /> },
+    Node: { color: "green", icon: <FaNode /> },
+    React: { color: "blue", icon: <FaReact /> },
+    Express: { color: "white", icon: "" },
+    Typescript: { color: "ts", icon: <SiTypescript /> },
+    Styled_Components: { color: "styled", icon: <SiStyledcomponents /> },
+  };
 
   return (
     <Container>
@@ -35,15 +53,25 @@ export default function Projects({ projects }) {
                   </li>
                 </ul>
               </div>
-              <ul>
-                {project.language.map((item, index) => (
-                  <li key={index}>
-                    {item.name}{" "}
-                    <Image src={item.image} width="30" height="30" alt="oi" />
+              <div className="langs">
+                <ul>
+                  <li className={colors[project.language]?.color}>
+                    {colors[project.language]?.icon}
+                    <span>{project.language}</span>
                   </li>
-                ))}
-              </ul>
-              <p>{project.description}</p>
+                  <li className={colors[project.language2]?.color}>
+                    {colors[project.language2]?.icon}
+                    <span>{project.language2}</span>
+                  </li>
+                </ul>
+                <hr />
+              </div>
+              <div className="desc">
+                <p>
+                  {project.description} Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit. Excepturi, eum.
+                </p>
+              </div>
             </Card>
           ))}
         </div>

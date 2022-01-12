@@ -20,7 +20,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/Sections/Skills/index.jsx",
-    "src/pages/dashboard.jsx",
     "src/components/Sections/Projects/index.jsx"
   ],
   "exclude": ["node_modules"]

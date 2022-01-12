@@ -16,7 +16,7 @@ export const SectionAbout = styled.section`
     height: 1.7rem;
     display: block;
     width: 8rem;
-    background-color: #8257e5;
+    background-color: ${(props) => props.theme.colors.background_three};
     position: absolute;
     bottom: 2px;
     z-index: -1;

@@ -36,7 +36,7 @@ export const SectionHome = styled.section`
   & .cont h2::after {
     content: "|";
     margin-left: 0.5rem;
-    color: #8257e5;
+    color: ${(props) => props.theme.colors.background_three};
     opacity: 1;
     animation: blink 1s infinite;
   }
@@ -53,7 +53,7 @@ export const SectionHome = styled.section`
   }
 
   & .cont a {
-    background-color: #8257e5;
+    background-color: ${(props) => props.theme.colors.background_three};
     padding: 1.5rem 4rem;
     color: #fff;
     font-size: 1.8rem;
