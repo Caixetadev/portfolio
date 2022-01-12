@@ -13,7 +13,7 @@ import {
   FaReact,
 } from "react-icons/fa";
 
-import { SiTypescript, SiStyledcomponents } from "react-icons/si";
+import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
 
 export default function Projects({ projects }) {
   function onPick() {
@@ -25,7 +25,7 @@ export default function Projects({ projects }) {
     Sass: { color: "pink", icon: <FaSass /> },
     Node: { color: "green", icon: <FaNode /> },
     React: { color: "blue", icon: <FaReact /> },
-    Express: { color: "white", icon: "" },
+    Express: { color: "white", icon: <SiExpress /> },
     Typescript: { color: "ts", icon: <SiTypescript /> },
     Styled_Components: { color: "styled", icon: <SiStyledcomponents /> },
   };
