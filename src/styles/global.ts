@@ -30,7 +30,7 @@ export default createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
   }
   ::-webkit-scrollbar-thumb {
-    background: #8257e5;
+    background: ${(props) => props.theme.colors.background_thre};
     border-radius: .3rem;
   }
 `;

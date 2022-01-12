@@ -33,7 +33,7 @@ const Header = styled.header`
   }
 
   & nav a:hover {
-    color: #8257e5;
+    color: ${(props) => props.theme.colors.background_three};
   }
 
   @media (max-width: 560px) {

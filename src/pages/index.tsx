@@ -17,12 +17,10 @@ export interface IProjects {
   name: string;
   image: string;
   description: string;
-  language: [
-    {
-      name: string;
-      image: string;
-    }
-  ];
+  language: string;
+  language2: string;
+  language3?: string;
+  icons: { icon: string; icon2: string };
 }
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -16,7 +16,7 @@ const Footer = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #8257e5;
+    color: ${(props) => props.theme.colors.background_three};
     transition: all 0.2s ease;
   }
 
@@ -30,7 +30,7 @@ const Footer = styled.footer`
   }
 
   & .icons ul li a:hover {
-    background-color: #8257e5;
+    background-color: ${(props) => props.theme.colors.background_three};
     color: #fff;
   }
 
