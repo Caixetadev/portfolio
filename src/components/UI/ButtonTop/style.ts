@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BtnTop = styled.button`
+const BtnTop = styled.a`
   position: fixed;
   bottom: 30px;
   right: 30px;

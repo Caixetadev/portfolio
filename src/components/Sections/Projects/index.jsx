@@ -13,6 +13,8 @@ import {
   FaReact,
 } from "react-icons/fa";
 
+import { Langs } from "./style";
+
 import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
 
 export default function Projects({ projects }) {
@@ -20,14 +22,14 @@ export default function Projects({ projects }) {
     swal("Thanks for your rating!", `You rated us $/3`, "success");
   }
 
-  const colors = {
-    Javascript: { color: "yellow", icon: <FaJs /> },
-    Sass: { color: "pink", icon: <FaSass /> },
-    Node: { color: "green", icon: <FaNode /> },
-    React: { color: "blue", icon: <FaReact /> },
-    Express: { color: "white", icon: <SiExpress /> },
-    Typescript: { color: "ts", icon: <SiTypescript /> },
-    Styled_Components: { color: "styled", icon: <SiStyledcomponents /> },
+  const techs = {
+    Javascript: { lang: "js", icon: <FaJs /> },
+    Sass: { lang: "sass", icon: <FaSass /> },
+    Node: { lang: "node", icon: <FaNode /> },
+    React: { lang: "react", icon: <FaReact /> },
+    Express: { lang: "express", icon: <SiExpress /> },
+    Typescript: { lang: "ts", icon: <SiTypescript /> },
+    Styled_Components: { lang: "styled", icon: <SiStyledcomponents /> },
   };
 
   return (
@@ -42,30 +44,30 @@ export default function Projects({ projects }) {
                 <h3>{project.name}</h3>
                 <ul>
                   <li>
-                    <a href="#" className="github">
+                    <a href="https://github.com/caixetadev" className="github">
                       <FaGithub />
                     </a>
                   </li>
                   <li>
-                    <a href="" className="link">
+                    <a href="https://github.com/caixetadev" className="link">
                       <FaExternalLinkAlt />
                     </a>
                   </li>
                 </ul>
               </div>
-              <div className="langs">
+              <Langs>
                 <ul>
-                  <li className={colors[project.language]?.color}>
-                    {colors[project.language]?.icon}
+                  <li className={techs[project.language].lang}>
+                    {techs[project.language].icon}
                     <span>{project.language}</span>
                   </li>
-                  <li className={colors[project.language2]?.color}>
-                    {colors[project.language2]?.icon}
+                  <li className={techs[project.language2].lang}>
+                    {techs[project.language2].icon}
                     <span>{project.language2}</span>
                   </li>
                 </ul>
                 <hr />
-              </div>
+              </Langs>
               <div className="desc">
                 <p>
                   {project.description} Lorem ipsum dolor sit, amet consectetur
