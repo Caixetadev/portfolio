@@ -1,15 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Container } from "../../../styles/global";
 import { SectionSkills } from "./style";
-import {
-  FaReact,
-  FaJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaNodeJs,
-  FaGithub,
-} from "react-icons/fa";
+import { FaReact, FaJs, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
 import { useEffect } from "react";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
 
 const arrSkills = [
   {
@@ -33,26 +27,19 @@ const arrSkills = [
     color: "#0277BD",
   },
   {
-    desc: "NodeJS, tenho 2 semana de exp",
-    image: <FaNodeJs />,
-    color: "#21a366",
-  },
-  {
     desc: "Github, tenho 7 meses de exp",
     image: <FaGithub />,
+    color: "#fff",
   },
   {
-    desc: "Github, tenho 7 meses de exp",
-    image: <FaGithub />,
+    desc: "Typescript, tenho 2 meses de exp",
+    image: <SiTypescript />,
+    color: "#2F74C0",
   },
   {
-    desc: "Github, tenho 7 meses de exp",
-    image: <FaGithub />,
-    color: "red",
-  },
-  {
-    desc: "Github, tenho 7 meses de exp",
-    image: <FaGithub />,
+    desc: "Next, tenho 1 meses de exp",
+    image: <SiNextdotjs />,
+    color: "#ffffff",
   },
 ];
 

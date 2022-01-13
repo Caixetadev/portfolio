@@ -22,6 +22,10 @@ const Header = styled.header`
     cursor: pointer;
   }
 
+  & .cont {
+    display: flex;
+  }
+
   & ul li + li {
     margin-left: 1rem;
   }
@@ -39,9 +43,6 @@ const Header = styled.header`
   @media (max-width: 560px) {
     .menuButton {
       display: flex;
-    }
-
-    nav ul {
     }
 
     nav ul {

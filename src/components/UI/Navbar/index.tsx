@@ -40,15 +40,21 @@ export default function Navbar() {
         <nav>
           <ul className={nav ? "active" : ""}>
             <div className="cont">
-              <Link href="#">
-                <a>Home</a>
-              </Link>
-              <Link href="#about">
-                <a>About</a>
-              </Link>
-              <Link href="#skill">
-                <a>skill</a>
-              </Link>
+              <li>
+                <Link href="#">
+                  <a>Home</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="#about">
+                  <a>About</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="#skill">
+                  <a>skill</a>
+                </Link>
+              </li>
             </div>
           </ul>
         </nav>

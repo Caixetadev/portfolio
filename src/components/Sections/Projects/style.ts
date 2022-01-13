@@ -69,67 +69,6 @@ export const Card = styled.div`
     margin-left: 2rem;
   }
 
-  & .langs ul li.yellow {
-    background-color: #efd81d;
-    color: #303030;
-  }
-
-  & .langs ul li.pink {
-    background-color: pink;
-    color: #303030;
-  }
-
-  & .langs ul li.blue {
-    background-color: #61dafb;
-    color: #303030;
-  }
-
-  & .langs ul li.green {
-    background-color: #649d59;
-    color: #303030;
-  }
-
-  & .langs ul li.white {
-    background-color: #fff;
-    color: #303030;
-  }
-
-  & .langs ul li.ts {
-    background-color: #2f74c0;
-    color: #303030;
-  }
-
-  & .langs ul li.styled {
-    background-color: #db7093;
-    color: #303030;
-  }
-
-  & .langs {
-    padding: 0 1rem;
-  }
-
-  & hr {
-    margin-top: 1rem;
-    opacity: 0.2;
-  }
-
-  & .langs ul {
-    display: flex;
-  }
-
-  & .langs ul li + li {
-    margin-left: 1rem;
-  }
-
-  & .langs ul li {
-    display: flex;
-    align-items: center;
-    font-size: 1.3rem;
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
-
   & .desc {
     padding: 1rem;
     font-size: 1.4rem;
@@ -139,11 +78,11 @@ export const Card = styled.div`
     overflow-wrap: break-word;
   }
 
-  & .langs ul li span {
+  & ul li span {
     font-weight: bold;
   }
 
-  & .langs ul li svg {
+  & ul li svg {
     width: 1.4rem;
     height: 1.4rem;
     margin-right: 0.5rem;
@@ -157,6 +96,69 @@ export const Card = styled.div`
 
   & img:hover {
     transform: scale(1.1);
+  }
+`;
+
+export const Langs = styled.div`
+  & ul li.js {
+    background-color: #efd81d;
+    color: #303030;
+  }
+
+  & ul li.sass {
+    background-color: pink;
+    color: #303030;
+  }
+
+  & ul li.react {
+    background-color: #61dafb;
+    color: #303030;
+  }
+
+  & ul li.node {
+    background-color: #62aa53;
+    color: #303030;
+  }
+
+  & ul li.express {
+    background-color: #fff;
+    color: #303030;
+  }
+
+  & ul li.ts {
+    background-color: #48a0ff;
+    color: #303030;
+  }
+
+  & ul li.styled {
+    background-color: #f781a8;
+    color: #303030;
+  }
+
+  & {
+    padding: 0 1rem;
+  }
+
+  & hr {
+    margin-top: 1rem;
+    opacity: 0.2;
+  }
+
+  & ul {
+    display: flex;
+  }
+
+  & ul li + li {
+    margin-left: 1rem;
+  }
+
+  & ul li {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
   }
 `;
 
