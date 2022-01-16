@@ -54,7 +54,7 @@ export const SectionHome = styled.section`
 
   & .cont a {
     background-color: ${(props) => props.theme.colors.background_three};
-    padding: 1.5rem 4rem;
+    padding: 1.2rem 4rem;
     color: #fff;
     font-size: 1.8rem;
     border-radius: 0.5rem;

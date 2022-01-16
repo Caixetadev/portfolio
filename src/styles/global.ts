@@ -36,7 +36,7 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.div`
-  max-width: 110rem;
+  max-width: 120rem;
   padding: 0 3rem;
   margin: 0 auto;
   display: flex;

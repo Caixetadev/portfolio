@@ -17,6 +17,8 @@ const Header = styled.header`
   }
 
   & .logo h1 a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
     font-size: 2.4rem;
     padding: 1rem;
     cursor: pointer;
@@ -30,14 +32,39 @@ const Header = styled.header`
     margin-left: 1rem;
   }
 
-  & a {
+  & ul li a {
+    letter-spacing: .1rem;
+    font-family: 'Poppins', sans-serif;
     padding: 1rem;
     font-size: 1.6rem;
     transition: all 0.2s ease;
+    position: relative;
   }
 
-  & nav a:hover {
+  & ul li a::after {
+    content: '';
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: 1px;
+    background-color: ${props => props.theme.colors.background_three};
+    transition: 0.5s;
+    position: absolute;
+  }
+
+  & ul li:last-child {
+    background-color: ${props => props.theme.colors.background_three};
+    border-radius: .8rem;
+  }
+  
+  & nav a:hover::after, nav a:hover {
     color: ${(props) => props.theme.colors.background_three};
+    width: 100%;
+  }
+
+  & ul li:last-child a:hover::after, ul li:last-child a:hover {
+    color: #fff;
+    width: 0;
   }
 
   @media (max-width: 560px) {
