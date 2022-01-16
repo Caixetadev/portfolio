@@ -19,7 +19,7 @@ const SectionProjects = styled.section`
 
   & .cont {
     display: flex;
-    gap: 4rem;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 5rem;
   }
