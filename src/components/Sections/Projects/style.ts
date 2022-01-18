@@ -16,13 +16,6 @@ const SectionProjects = styled.section`
     bottom: 2px;
     z-index: -1;
   }
-
-  & .cont {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 5rem;
-  }
 `;
 
 export const Card = styled.div`
@@ -34,48 +27,6 @@ export const Card = styled.div`
 
   & h3 {
     font-size: 2.5rem;
-  }
-
-  & .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  & .header ul {
-    display: flex;
-  }
-
-  & .header ul li svg {
-    transition: all 0.2s ease;
-  }
-
-  & .header ul li .github svg {
-    width: 2.3rem;
-    height: 2.3rem;
-  }
-
-  & .header ul li:hover svg {
-    color: ${(props) => props.theme.colors.background_three};
-  }
-
-  & .header ul li .link svg {
-    width: 2rem;
-    height: 2rem;
-  }
-
-  & .header ul li + li {
-    margin-left: 2rem;
-  }
-
-  & .desc {
-    padding: 1rem;
-    font-size: 1.4rem;
-  }
-
-  & .desc p {
-    overflow-wrap: break-word;
   }
 
   & ul li span {
@@ -161,5 +112,55 @@ export const Langs = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Content = styled.div `
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+`;
+
+export const Header = styled.div `
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  ul {
+    display: flex;
+  }
+
+  ul li svg {
+    transition: all 0.2s ease;
+  }
+
+   ul li .github svg {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  ul li:hover svg {
+    color: ${(props) => props.theme.colors.background_three};
+  }
+
+  ul li .link svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  ul li + li {
+    margin-left: 2rem;
+  }
+`
+
+export const Description = styled.div `
+  padding: 1rem;
+  font-size: 1.4rem;
+
+  p {
+    overflow-wrap: break-word;
+  }
+
+`
 
 export default SectionProjects;

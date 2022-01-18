@@ -11,7 +11,6 @@ import Skills from "../components/Sections/Skills";
 import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
-import axios from "axios";
 
 export interface IProjects {
   name: string;

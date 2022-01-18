@@ -1,6 +1,5 @@
 import { Container } from "../../../styles/global";
-import swal from "sweetalert";
-import SectionProjects from "./style";
+import SectionProjects, { Content, Description, Header } from "./style";
 import Image from "next/image";
 import HomeImage from "../../../../public/assets/home.jpg";
 import { Card } from "./style";
@@ -16,13 +15,16 @@ import {
 import { Langs } from "./style";
 
 import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
+import { IProjects } from "../../../pages";
 
-export default function Projects({ projects }) {
-  function onPick() {
-    swal("Thanks for your rating!", `You rated us $/3`, "success");
-  }
+interface ITechs {
+  icon: JSX.Element;
+  lang: string
+}
 
-  const techs = {
+export default function Projects({ projects }: { projects: IProjects[] }) {
+
+  const techs: { [techs: string]: ITechs} = {
     Javascript: { lang: "js", icon: <FaJs /> },
     Sass: { lang: "sass", icon: <FaSass /> },
     Node: { lang: "node", icon: <FaNode /> },
@@ -36,11 +38,11 @@ export default function Projects({ projects }) {
     <Container>
       <SectionProjects id="projects">
         <h2>Projects</h2>
-        <div className="cont">
+        <Content>
           {projects.map((project, index) => (
             <Card key={index}>
               <Image src={HomeImage} alt="oi" width="500" height="244" />
-              <div className="header">
+              <Header>
                 <h3>{project.name}</h3>
                 <ul>
                   <li>
@@ -54,7 +56,7 @@ export default function Projects({ projects }) {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </Header>
               <Langs>
                 <ul>
                   <li className={techs[project.language].lang}>
@@ -68,15 +70,15 @@ export default function Projects({ projects }) {
                 </ul>
                 <hr />
               </Langs>
-              <div className="desc">
+              <Description>
                 <p>
                   {project.description} Lorem ipsum dolor sit, amet consectetur
                   adipisicing elit. Excepturi, eum.
                 </p>
-              </div>
+              </Description>
             </Card>
           ))}
-        </div>
+        </Content>
       </SectionProjects>
     </Container>
   );
