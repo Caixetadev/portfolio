@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import Header, { MenuIcon } from "./style";
+import { useEffect, useState } from "react";
+import Header, { Content, Logo, MenuIcon } from "./style";
 import Link from "next/link";
 import { Container } from "../../../styles/global";
+import { Nav } from "./style";
 
 export default function Navbar() {
   const [border, setBorder] = useState(false);
@@ -30,16 +31,16 @@ export default function Navbar() {
   return (
     <Header className={border ? "border" : ""}>
       <Container>
-        <div className="logo">
+        <Logo>
           <h1>
             <Link href="#">
               <a>Caixetadev</a>
             </Link>
           </h1>
-        </div>
-        <nav>
+        </Logo>
+        <Nav>
           <ul className={nav ? "active" : ""}>
-            <div className="cont">
+            <Content>
               <li>
                 <Link href="#">
                   <a>Home</a>
@@ -65,10 +66,10 @@ export default function Navbar() {
                   <a>Contact</a>
                 </Link>
               </li>
-            </div>
+            </Content>
           </ul>
-        </nav>
-        <MenuIcon className="menuButton" onClick={() => setShowNav(!nav)}>
+        </Nav>
+        <MenuIcon onClick={() => setShowNav(!nav)}>
           <div />
           <div />
           <div />

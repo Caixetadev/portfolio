@@ -19,12 +19,11 @@ import { IProjects } from "../../../pages";
 
 interface ITechs {
   icon: JSX.Element;
-  lang: string
+  lang: string;
 }
 
 export default function Projects({ projects }: { projects: IProjects[] }) {
-
-  const techs: { [techs: string]: ITechs} = {
+  const techs: { [techs: string]: ITechs } = {
     Javascript: { lang: "js", icon: <FaJs /> },
     Sass: { lang: "sass", icon: <FaSass /> },
     Node: { lang: "node", icon: <FaNode /> },
