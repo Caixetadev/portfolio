@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import { Container } from "./style";
+import { Container, Icons } from "./style";
 
 import Footer from "./style";
 
@@ -8,7 +8,7 @@ export default function FooterComponent() {
   return (
     <Footer>
       <Container>
-        <div className="icons">
+        <Icons>
           <ul>
             <li>
               <a
@@ -38,7 +38,7 @@ export default function FooterComponent() {
               </a>
             </li>
           </ul>
-        </div>
+        </Icons>
         <p>&copy; Rafael Caixeta</p>
       </Container>
     </Footer>
