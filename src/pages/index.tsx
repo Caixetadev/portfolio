@@ -12,15 +12,7 @@ import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
 
-export interface IProjects {
-  name: string;
-  image: string;
-  description: string;
-  language: string;
-  language2: string;
-  language3?: string;
-  icons: { icon: string; icon2: string };
-}
+import { IProjects } from "../types";
 
 export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");

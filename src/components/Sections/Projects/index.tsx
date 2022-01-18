@@ -1,8 +1,5 @@
-import { Container } from "../../../styles/global";
-import SectionProjects, { Content, Description, Header } from "./style";
 import Image from "next/image";
-import HomeImage from "../../../../public/assets/home.jpg";
-import { Card } from "./style";
+
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -12,15 +9,13 @@ import {
   FaReact,
 } from "react-icons/fa";
 
-import { Langs } from "./style";
-
 import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
-import { IProjects } from "../../../pages";
 
-interface ITechs {
-  icon: JSX.Element;
-  lang: string;
-}
+import { Container } from "../../../styles/global";
+import SectionProjects, { Content, Description, Header, Langs, Card } from "./style";
+import HomeImage from "../../../../public/assets/home.jpg";
+
+import { IProjects, ITechs } from "../../../types";
 
 export default function Projects({ projects }: { projects: IProjects[] }) {
   const techs: { [techs: string]: ITechs } = {
