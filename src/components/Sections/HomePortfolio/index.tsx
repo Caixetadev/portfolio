@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { Container } from "../../../styles/global";
-import { SectionHome } from "./style";
-import HomeImage from "../../../../public/assets/home.jpg";
+import { Content, SectionHome } from "./style";
+import HomeImage from "../../../../public/assets/Coding-bro.svg";
 
 export default function Home(): JSX.Element {
   const h2El = useRef(null);
@@ -24,13 +24,13 @@ export default function Home(): JSX.Element {
   return (
     <SectionHome>
       <Container>
-        <div className="cont">
+        <Content>
           <span>Hi, my name is</span>
           <h1>CAIXETA</h1>
           <h2 ref={h2El}>FRONT END DEVELOPER</h2>
           <a href="#projects">Portfolio</a>
-        </div>
-        <Image src={HomeImage} alt="oi" width="350" height="450" />
+        </Content>
+        <Image src={HomeImage} alt="oi" width="400" height="500" />
       </Container>
     </SectionHome>
   );
