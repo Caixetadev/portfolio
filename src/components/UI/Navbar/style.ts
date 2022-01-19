@@ -104,7 +104,7 @@ export const Content = styled.div`
 
 export const Nav = styled.nav`
   a:hover::after,
-  nav a:hover {
+  a:hover {
     color: ${(props) => props.theme.colors.background_three};
     width: 100%;
   }

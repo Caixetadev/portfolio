@@ -23,7 +23,7 @@ export default function ButtonTop() {
   }
 
   return (
-    <BtnTop ref={buttonEl} onClick={scrollTop}>
+    <BtnTop href="#" ref={buttonEl} onClick={scrollTop}>
       <FaAngleUp />
     </BtnTop>
   );

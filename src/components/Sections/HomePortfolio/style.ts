@@ -7,33 +7,33 @@ export const SectionHome = styled.section`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+`;
 
-  & .cont {
-    margin-left: 1rem;
-  }
+export const Content = styled.div`
+  margin-left: 1rem;
 
   & img {
     border-radius: 1rem;
   }
 
-  & .cont h1 {
+  h1 {
     font-size: 6rem;
     letter-spacing: 0.6rem;
     margin-top: 1rem;
   }
 
-  & .cont span {
+  span {
     letter-spacing: 0.1rem;
     font-size: 1.8rem;
   }
 
-  & .cont h2 {
+  h2 {
     color: gray;
     font-size: 4rem;
     margin-bottom: 6rem;
   }
 
-  & .cont h2::after {
+  h2::after {
     content: "|";
     margin-left: 0.5rem;
     color: ${(props) => props.theme.colors.background_three};
@@ -52,7 +52,7 @@ export const SectionHome = styled.section`
     }
   }
 
-  & .cont a {
+  a {
     background-color: ${(props) => props.theme.colors.background_three};
     padding: 1.2rem 4rem;
     color: #fff;
@@ -63,7 +63,7 @@ export const SectionHome = styled.section`
     transition: filter 0.2s;
   }
 
-  & .cont a:hover {
+  a:hover {
     filter: brightness(1.2);
   }
 `;
