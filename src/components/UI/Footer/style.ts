@@ -48,6 +48,7 @@ export const Icons = styled.div`
   ul li a:hover {
     background-color: ${(props) => props.theme.colors.background_three};
     color: #fff;
+    transform: rotate(360deg);
   }
 `;
 

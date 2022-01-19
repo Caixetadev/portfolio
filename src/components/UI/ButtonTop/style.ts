@@ -17,6 +17,10 @@ const BtnTop = styled.a`
   justify-content: center;
   align-items: center;
   outline: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default BtnTop;

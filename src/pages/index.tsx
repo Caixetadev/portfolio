@@ -13,6 +13,7 @@ import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
 
 import { IProjects } from "../types";
+import Contact from "../components/Sections/Contact";
 
 export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
@@ -28,7 +29,7 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>Caixeta front end</title>
+        <title>Rafael Caixeta | Front-end Developer</title>
         <meta name="description" content="Portfolio Caixeta" />
       </Head>
       <Navbar />
@@ -36,6 +37,7 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
       <About />
       <Skills />
       <Projects projects={projects} />
+      <Contact />
       <ButtonTop />
       <Footer />
     </ThemeProvider>
