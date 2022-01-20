@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ITechs {
   icon: JSX.Element;
   lang: string;
@@ -11,4 +13,8 @@ export interface IProjects {
   language2: string;
   language3?: string;
   icons: { icon: string; icon2: string };
+}
+
+export interface ISectionTitleProps {
+  title: string;
 }

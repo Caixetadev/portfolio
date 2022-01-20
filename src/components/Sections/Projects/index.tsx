@@ -22,6 +22,7 @@ import SectionProjects, {
 import HomeImage from "../../../../public/assets/home.jpg";
 
 import { IProjects, ITechs } from "../../../types";
+import SectionTitle from "../../SectionTitle/inde";
 
 export default function Projects({ projects }: { projects: IProjects[] }) {
   const techs: { [techs: string]: ITechs } = {
@@ -37,7 +38,7 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
   return (
     <Container>
       <SectionProjects id="projects">
-        <h2 data-aos="fade-right">Projects</h2>
+        <SectionTitle title="Projects" />
         <Content>
           {projects.map((project, index) => (
             <Card data-aos="fade-up" key={index}>
