@@ -67,7 +67,7 @@ export default function Skills() {
 
   function Seila({ desc, image, i }) {
     return (
-      <div className="tech" data-id={i}>
+      <div className="tech" data-aos="fade-up" data-id={i}>
         {image}
       </div>
     );
@@ -78,8 +78,8 @@ export default function Skills() {
       <Container>
         <div className="cont">
           <div className="info">
-            <h2>Minhas skill</h2>
-            <p>Passe o mouse por cima dos icones</p>
+            <h2 data-aos="fade-right">Minhas skill</h2>
+            <p data-aos="fade-up">Passe o mouse por cima dos icones</p>
           </div>
           <div className="techs">
             {arrSkills.map((items, i) => (

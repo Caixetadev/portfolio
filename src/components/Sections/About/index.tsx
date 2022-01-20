@@ -7,8 +7,8 @@ export default function About() {
     <SectionAbout id="about">
       <Container>
         <div className="conteudo">
-          <h2>About</h2>
-          <p>
+          <h2 data-aos="fade-right">About</h2>
+          <p data-aos="fade-up">
             Hi, I'm Rafael Caixeta, I live in Brazil and I'm 18 years old. I
             found out that I am passionate about web development on the 24th of
             July 2021. I'm at the very beginning of a journey, I'm currently

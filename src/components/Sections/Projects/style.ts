@@ -113,14 +113,14 @@ export const Langs = styled.div`
   }
 `;
 
-export const Content = styled.div `
+export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 5rem;
 `;
 
-export const Header = styled.div `
+export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,7 +134,7 @@ export const Header = styled.div `
     transition: all 0.2s ease;
   }
 
-   ul li .github svg {
+  ul li .github svg {
     width: 2.3rem;
     height: 2.3rem;
   }
@@ -151,16 +151,15 @@ export const Header = styled.div `
   ul li + li {
     margin-left: 2rem;
   }
-`
+`;
 
-export const Description = styled.div `
+export const Description = styled.div`
   padding: 1rem;
   font-size: 1.4rem;
 
   p {
     overflow-wrap: break-word;
   }
-
-`
+`;
 
 export default SectionProjects;

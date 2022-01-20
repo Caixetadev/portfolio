@@ -12,7 +12,13 @@ import {
 import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
 
 import { Container } from "../../../styles/global";
-import SectionProjects, { Content, Description, Header, Langs, Card } from "./style";
+import SectionProjects, {
+  Content,
+  Description,
+  Header,
+  Langs,
+  Card,
+} from "./style";
 import HomeImage from "../../../../public/assets/home.jpg";
 
 import { IProjects, ITechs } from "../../../types";
@@ -31,10 +37,10 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
   return (
     <Container>
       <SectionProjects id="projects">
-        <h2>Projects</h2>
+        <h2 data-aos="fade-right">Projects</h2>
         <Content>
           {projects.map((project, index) => (
-            <Card key={index}>
+            <Card data-aos="fade-up" key={index}>
               <Image src={HomeImage} alt="oi" width="500" height="244" />
               <Header>
                 <h3>{project.name}</h3>

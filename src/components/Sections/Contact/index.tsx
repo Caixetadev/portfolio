@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <SectionContact id="contact">
       <Container>
-        <h2>Contact</h2>
+        <h2 data-aos="fade-right">Contact</h2>
       </Container>
     </SectionContact>
   );

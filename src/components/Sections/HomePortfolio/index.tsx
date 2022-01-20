@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   return (
-    <SectionHome>
+    <SectionHome data-aos="fade-right">
       <Container>
         <Content>
           <span>Hi, my name is</span>
@@ -30,7 +30,13 @@ export default function Home(): JSX.Element {
           <h2 ref={h2El}>FRONT END DEVELOPER</h2>
           <a href="#projects">Portfolio</a>
         </Content>
-        <Image src={HomeImage} alt="oi" width="400" height="500" />
+        <Image
+          // data-aos="zoom-in"
+          src={HomeImage}
+          alt="oi"
+          width="400"
+          height="500"
+        />
       </Container>
     </SectionHome>
   );

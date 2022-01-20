@@ -1,5 +1,7 @@
 import Head from "next/head";
 import type { GetStaticProps, NextPage } from "next";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import theme from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -14,6 +16,7 @@ import Footer from "../components/UI/Footer";
 
 import { IProjects } from "../types";
 import Contact from "../components/Sections/Contact";
+import { useEffect } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
@@ -26,6 +29,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
