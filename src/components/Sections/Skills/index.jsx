@@ -4,6 +4,7 @@ import { SectionSkills } from "./style";
 import { FaReact, FaJs, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
 import { useEffect } from "react";
 import { SiTypescript, SiNextdotjs } from "react-icons/si";
+import SectionTitle from "../../SectionTitle/inde";
 
 const arrSkills = [
   {
@@ -78,7 +79,7 @@ export default function Skills() {
       <Container>
         <div className="cont">
           <div className="info">
-            <h2 data-aos="fade-right">Minhas skill</h2>
+            <SectionTitle title="My Skill" />
             <p data-aos="fade-up">Passe o mouse por cima dos icones</p>
           </div>
           <div className="techs">

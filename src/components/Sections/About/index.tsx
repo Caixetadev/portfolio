@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../../styles/global";
+import SectionTitle from "../../SectionTitle/inde";
 import { SectionAbout } from "./style";
 
 export default function About() {
@@ -7,7 +8,7 @@ export default function About() {
     <SectionAbout id="about">
       <Container>
         <div className="conteudo">
-          <h2 data-aos="fade-right">About</h2>
+          <SectionTitle title="About" />
           <p data-aos="fade-up">
             Hi, I'm Rafael Caixeta, I live in Brazil and I'm 18 years old. I
             found out that I am passionate about web development on the 24th of
