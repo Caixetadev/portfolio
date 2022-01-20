@@ -6,90 +6,49 @@ const Header = styled.header`
   height: 7.5rem;
   display: flex;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
   transition: 0.3s;
 
-  .bg {
-    display: flex;
-    justify-content: space-between;
-    transition: all 0.4s ease;
-  }
-
-  .bg.remove {
-    opacity: 0;
-  }
-
-  & .bg .left {
-    background-color: ${(props) => props.theme.colors.bakground_secundary};
-    height: 7.5rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2vw;
-  }
-
-  & .bg .rigth {
-    background-color: ${(props) => props.theme.colors.bakground_secundary};
-    height: 7.5rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 23vw;
-  }
-
   &.border {
     box-shadow: rgba(3, 3, 3, 0.2) 0px 10px 10px;
   }
-  & .logo h1 a {
-    font-size: 2.4rem;
-    padding: 1rem;
-    cursor: pointer;
-    position: relative;
-  }
+
   & ul li + li {
     margin-left: 1rem;
   }
-  & a {
+
+  & ul li a {
+    letter-spacing: 0.1rem;
+    font-family: "Poppins", sans-serif;
     padding: 1rem;
     font-size: 1.6rem;
+    transition: all 0.2s ease;
+    position: relative;
   }
-  & nav a:hover {
-    color: grey;
+
+  & ul li a::after {
+    content: "";
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: 1px;
+    background-color: ${(props) => props.theme.colors.background_three};
+    transition: 0.5s;
+    position: absolute;
   }
-  @media (max-width: 560px) {
-    .menuButton {
-      display: flex;
-    }
 
-    nav ul {
-    }
+  & ul li:last-child {
+    background-color: ${(props) => props.theme.colors.background_three};
+    border-radius: 0.8rem;
+  }
 
-    nav ul {
-      position: absolute;
-      width: 100%;
-      height: calc(100vh - 70px);
-      top: 70px;
-      right: 0;
-      background: ${(props) => props.theme.colors.background};
-      transform: translateY(100%);
-      transition: transform 400ms;
-    }
-
-    .cont {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 15rem;
-    }
-
-    nav ul.active {
-      transform: translateY(0);
-      overflow-y: hidden;
-    }
+  & ul li:last-child a:hover::after,
+  ul li:last-child a:hover {
+    color: #fff;
+    width: 0;
   }
 `;
 
@@ -112,6 +71,59 @@ export const MenuIcon = styled.button`
     border-radius: 5px;
     transform-origin: 1px;
     position: relative;
+  }
+
+  @media (max-width: 560px) {
+    display: flex;
+  }
+`;
+
+export const Logo = styled.div`
+  h1 a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 2.4rem;
+    padding: 1rem;
+    cursor: pointer;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+
+  @media (max-width: 560px) {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15rem;
+  }
+`;
+
+export const Nav = styled.nav`
+  a:hover::after,
+  a:hover {
+    color: ${(props) => props.theme.colors.background_three};
+    width: 100%;
+  }
+
+  @media (max-width: 560px) {
+    ul {
+      visibility: hidden;
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: ${(props) => props.theme.colors.background};
+      transform: translateY(100%);
+      transition: transform 400ms;
+    }
+
+    ul.active {
+      visibility: initial;
+      transform: translateY(0);
+    }
   }
 `;
 

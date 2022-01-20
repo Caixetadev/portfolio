@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionSkills = styled.section`
-  margin-top: 10rem;
+  margin: 10rem 0;
   height: 40rem;
 
   & .cont {
@@ -11,7 +11,19 @@ export const SectionSkills = styled.section`
   }
 
   & .cont h2 {
-    font-size: 5rem;
+    position: relative;
+    font-size: 4rem;
+  }
+
+  & .cont h2::before {
+    content: "";
+    height: 1.7rem;
+    display: block;
+    width: 8rem;
+    background-color: ${(props) => props.theme.colors.background_three};
+    position: absolute;
+    bottom: 2px;
+    z-index: -1;
   }
 
   & .cont p {
@@ -23,9 +35,8 @@ export const SectionSkills = styled.section`
   & .cont .techs {
     display: grid;
     grid-template-columns: repeat(3, 10rem);
-    gap: 1rem;
-    place-content: center;
-    place-items: center;
+    margin-top: 5rem;
+    transform: translateX(-80px);
   }
 
   & .cont .techs .tech {
@@ -47,35 +58,27 @@ export const SectionSkills = styled.section`
   }
 
   & .cont .techs .tech:nth-child(2) {
-    transform: translate(0px, -5rem) scale(1.2);
+    transform: translate(0px, -5rem);
   }
 
   & .cont .techs .tech:nth-child(3) {
-    transform: translate(40%, 40%) scale(0.8) translateY(1rem);
+    transform: translate(40%, 40%);
   }
 
   & .cont .techs .tech:nth-child(4) {
-    transform: translate(0px, 5rem) translateX(-7rem);
+    transform: translate(-40%, 70%);
   }
 
   & .cont .techs .tech:nth-child(5) {
-    transform: translate(0px, 40%) scale(0.9) translateY(-5rem);
+    transform: translate(0px, 10%);
   }
 
   & .cont .techs .tech:nth-child(6) {
-    transform: translate(20%, 40%) translateY(1rem);
+    transform: translate(40%, 70%);
   }
 
   & .cont .techs .tech:nth-child(7) {
-    transform: translate(10%, 40%) scale(0.9) translateY(1rem);
-  }
-
-  & .cont .techs .tech:nth-child(8) {
-    transform: translate(30%, 20%) scale(0.8) translateY(1rem);
-  }
-
-  & .cont .techs .tech:nth-child(9) {
-    transform: translate(40%, 40%) scale(0.8) translateY(1rem);
+    transform: translate(100%, 70%);
   }
 
   & .cont .techs .tech svg {

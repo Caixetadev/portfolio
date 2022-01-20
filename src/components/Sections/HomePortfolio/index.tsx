@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { Container } from "../../../styles/global";
-import { SectionHome } from "./style";
+import { Content, SectionHome } from "./style";
+import HomeImage from "../../../../public/assets/Coding-bro.svg";
 
 export default function Home(): JSX.Element {
   const h2El = useRef(null);
@@ -20,19 +22,22 @@ export default function Home(): JSX.Element {
   }, []);
 
   return (
-    <SectionHome>
-      <div className="bg">
-        <div className="rigth"></div>
-        <div className="left"></div>
-        <Container>
-          <div className="cont">
-            <span>Hi, my name is</span>
-            <h1>CAIXETA</h1>
-            <h2 ref={h2El}>FRONT END DEVELOPER</h2>
-            <a href="#projects">Portfolio</a>
-          </div>
-        </Container>
-      </div>
+    <SectionHome data-aos="fade-right">
+      <Container>
+        <Content>
+          <span>Hi, my name is</span>
+          <h1>CAIXETA</h1>
+          <h2 ref={h2El}>FRONT END DEVELOPER</h2>
+          <a href="#projects">Portfolio</a>
+        </Content>
+        <Image
+          // data-aos="zoom-in"
+          src={HomeImage}
+          alt="oi"
+          width="400"
+          height="500"
+        />
+      </Container>
     </SectionHome>
   );
 }

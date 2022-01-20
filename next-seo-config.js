@@ -4,11 +4,11 @@ const description = "Programador Front End iniciante."
 const SEO = {
   title,
   description,
-  canonical: "https://portfolio2-0-brown.vercel.app/",
+  canonical: "https://caixeta.vercel.app/",
   openGraph: {
     type: "website",
     locale: "pt-BR",
-    url: "https://portfolio2-0-brown.vercel.app/",
+    url: "https://caixeta.vercel.app/",
     title,
     description,
     images: [

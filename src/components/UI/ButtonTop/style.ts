@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-const BtnTop = styled.button`
+const BtnTop = styled.a`
   position: fixed;
   bottom: 30px;
   right: 30px;
   height: 32px;
   width: 32px;
   border-radius: 50%;
+  background-color: ${(props) => props.theme.colors.background_three};
+  color: #fff;
   cursor: pointer;
   border: none;
   display: flex;
@@ -15,6 +17,10 @@ const BtnTop = styled.button`
   justify-content: center;
   align-items: center;
   outline: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default BtnTop;

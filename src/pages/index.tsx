@@ -1,5 +1,7 @@
 import Head from "next/head";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import theme from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -12,29 +14,29 @@ import ButtonTop from "../components/UI/ButtonTop";
 import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
 
-interface GetProjects {
-  projects: {
-    name: string;
-    image: string;
-    date: string;
-    description: string;
-  };
-}
+import { IProjects } from "../types";
+import Contact from "../components/Sections/Contact";
+import { useEffect } from "react";
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
-  const data = await url.json();
+
+  const data: IProjects = await url.json();
 
   return {
     props: { projects: data },
   };
-}
+};
 
-const Home: NextPage<GetProjects> = ({ projects }) => {
+const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>Caixeta front end</title>
+        <title>Rafael Caixeta | Front-end Developer</title>
         <meta name="description" content="Portfolio Caixeta" />
       </Head>
       <Navbar />
@@ -42,6 +44,7 @@ const Home: NextPage<GetProjects> = ({ projects }) => {
       <About />
       <Skills />
       <Projects projects={projects} />
+      <Contact />
       <ButtonTop />
       <Footer />
     </ThemeProvider>
