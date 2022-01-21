@@ -36,8 +36,33 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Rafael Caixeta | Front-end Developer</title>
-        <meta name="description" content="Portfolio Caixeta" />
+        <meta name="title" content="Rafael Caixeta | Front-end Developer" />
+        <meta name="description" content="Front-end Developer" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Rafael Caixeta" />
+        <meta
+          name="keywords"
+          content="rafael caixeta, web designer, caixeta dev, 
+          desenvolvedor, programador, front-end, developer, typescript,
+          reactjs, nextjs, caixetadev, caixeta portfolio, rafael caixeta portfolio,
+          developer front-end, javascript"
+        />
+        <meta property="og:url" content="https://caixeta.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Rafael Caixeta | Front-end Developer"
+        />
+        <meta property="og:description" content="Front-end Developer" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="revisit-after" content="1 day" />
+        <meta property="og:image" content="https://i.ibb.co/BGCNXKr/home.png" />
+        <meta
+          property="og:site_name"
+          content="Rafael Caixeta | Front-end Developer"
+        />
       </Head>
       <Navbar />
       <HomePortfolio />
