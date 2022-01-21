@@ -10,22 +10,6 @@ export const SectionSkills = styled.section`
     width: 100%;
   }
 
-  & .cont h2 {
-    position: relative;
-    font-size: 4rem;
-  }
-
-  & .cont h2::before {
-    content: "";
-    height: 1.7rem;
-    display: block;
-    width: 8rem;
-    background-color: ${(props) => props.theme.colors.background_three};
-    position: absolute;
-    bottom: 2px;
-    z-index: -1;
-  }
-
   & .cont p {
     font-size: 1.6rem;
     margin-top: 1rem;

@@ -6,22 +6,6 @@ export const SectionAbout = styled.section`
   padding-top: 11rem;
   clip-path: polygon(0 15%, 100% 0, 100% 85%, 0% 100%);
 
-  & .conteudo h2 {
-    font-size: 4rem;
-    position: relative;
-  }
-
-  & .conteudo h2::before {
-    content: "";
-    height: 1.7rem;
-    display: block;
-    width: 8rem;
-    background-color: ${(props) => props.theme.colors.background_three};
-    position: absolute;
-    bottom: 2px;
-    z-index: -1;
-  }
-
   & .conteudo p {
     line-height: 4rem;
     margin-top: 1rem;

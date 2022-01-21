@@ -79,7 +79,7 @@ export default function Skills() {
       <Container>
         <div className="cont">
           <div className="info">
-            <SectionTitle title="My Skill" />
+            <SectionTitle title="Skill" />
             <p data-aos="fade-up">Passe o mouse por cima dos icones</p>
           </div>
           <div className="techs">
