@@ -63,6 +63,7 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
           property="og:site_name"
           content="Rafael Caixeta | Front-end Developer"
         />
+        <meta name="google-site-verification" content="HxtN4KKzJBUUH15aqX9noITMXUkG1EeMkggR1kpEb6s" />
       </Head>
       <Navbar />
       <HomePortfolio />
