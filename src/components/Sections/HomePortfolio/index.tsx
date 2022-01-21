@@ -30,13 +30,7 @@ export default function Home(): JSX.Element {
           <h2 ref={h2El}>FRONT END DEVELOPER</h2>
           <a href="#projects">Portfolio</a>
         </Content>
-        <Image
-          // data-aos="zoom-in"
-          src={HomeImage}
-          alt="oi"
-          width="400"
-          height="500"
-        />
+        <Image src={HomeImage} alt="oi" width="400" height="500" />
       </Container>
     </SectionHome>
   );

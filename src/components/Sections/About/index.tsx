@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../../styles/global";
 import SectionTitle from "../../SectionTitle/inde";
-import { SectionAbout } from "./style";
+import { Content, SectionAbout } from "./style";
 
 export default function About() {
   return (
     <SectionAbout id="about">
       <Container>
-        <div className="conteudo">
+        <Content>
           <SectionTitle title="About" />
           <p data-aos="fade-up">
             Hi, I'm Rafael Caixeta, I live in Brazil and I'm 18 years old. I
@@ -17,7 +17,7 @@ export default function About() {
             Language. At the moment I'm just studying but soon I intend to start
             working in the Front End area.
           </p>
-        </div>
+        </Content>
       </Container>
     </SectionAbout>
   );
