@@ -1,5 +1,5 @@
 const title = "Caixeta dev - Front End Developer."
-const description = "Programador Front End iniciante."
+const description = "Programador Front End."
 
 const SEO = {
   title,
@@ -13,7 +13,7 @@ const SEO = {
     description,
     images: [
       {
-        url: "https://github.com/Caixetadev/portfolio2.0/blob/main/public/assets/home.png?raw=true",
+        url: "https://i.ibb.co/BGCNXKr/home.png",
         alt: title,
         width: 1200,
         height: 720

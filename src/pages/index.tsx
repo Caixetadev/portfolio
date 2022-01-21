@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   useEffect(() => {
-    Aos.init({ duration: 1500 });
+    Aos.init({ duration: 1000 });
   }, []);
 
   return (
