@@ -4,7 +4,7 @@ import { SectionSkills } from "./style";
 import { FaReact, FaJs, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
 import { useEffect } from "react";
 import { SiTypescript, SiNextdotjs } from "react-icons/si";
-import SectionTitle from "../../SectionTitle/inde";
+import SectionTitle from "../../SectionTitle";
 
 const arrSkills = [
   {

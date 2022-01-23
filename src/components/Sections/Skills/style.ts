@@ -69,4 +69,17 @@ export const SectionSkills = styled.section`
     color: gray;
     font-size: 4rem;
   }
+
+  @media (max-width: 560px) {
+    .cont {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cont .techs {
+      transform: translateX(0px);
+      grid-template-columns: repeat(3, auto);
+      padding: 4rem;
+    }
+  }
 `;
