@@ -20,6 +20,7 @@ export const Content = styled.div`
     font-size: 6rem;
     letter-spacing: 0.6rem;
     margin-top: 1rem;
+    text-transform: uppercase;
   }
 
   span {
@@ -28,6 +29,7 @@ export const Content = styled.div`
   }
 
   h2 {
+    text-transform: uppercase;
     color: gray;
     font-size: 4rem;
     margin-bottom: 6rem;

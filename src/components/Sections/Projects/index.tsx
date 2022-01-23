@@ -42,7 +42,12 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
         <Content>
           {projects.map((project, index) => (
             <Card data-aos="fade-up" key={index}>
-              <Image src={HomeImage} alt="oi" width="500" height="244" />
+              <Image
+                src={HomeImage}
+                alt="Imagem do projeto exemplo"
+                width="500"
+                height="244"
+              />
               <Header>
                 <h3>{project.name}</h3>
                 <ul>

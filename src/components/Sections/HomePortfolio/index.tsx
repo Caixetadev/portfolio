@@ -26,11 +26,16 @@ export default function Home(): JSX.Element {
       <Container>
         <Content>
           <span>Hi, my name is</span>
-          <h1>CAIXETA</h1>
-          <h2 ref={h2El}>FRONT END DEVELOPER</h2>
+          <h1>Caixeta</h1>
+          <h2 ref={h2El}>Front end developer</h2>
           <a href="#projects">Portfolio</a>
         </Content>
-        <Image src={HomeImage} alt="oi" width="400" height="500" />
+        <Image
+          src={HomeImage}
+          alt="Ilustração de um programador"
+          width="400"
+          height="500"
+        />
       </Container>
     </SectionHome>
   );
