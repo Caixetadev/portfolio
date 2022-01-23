@@ -5,6 +5,10 @@ export const SectionAbout = styled.section`
   height: 40rem;
   padding-top: 11rem;
   clip-path: polygon(0 15%, 100% 0, 100% 85%, 0% 100%);
+
+  @media (max-width: 560px) {
+    height: 55rem;
+  }
 `;
 
 export const Content = styled.div`

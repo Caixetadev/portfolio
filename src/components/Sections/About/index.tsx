@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../../styles/global";
-import SectionTitle from "../../SectionTitle/inde";
+import SectionTitle from "../../SectionTitle";
 import { Content, SectionAbout } from "./style";
 
 export default function About() {

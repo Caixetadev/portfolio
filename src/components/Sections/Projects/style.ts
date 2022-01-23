@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 const SectionProjects = styled.section`
   background-color: transparent;
+  @media (max-width: 560px) {
+    margin-top: 10rem;
+  }
 `;
 
 export const Card = styled.div`
@@ -33,6 +36,12 @@ export const Card = styled.div`
 
   & img:hover {
     transform: scale(1.1);
+  }
+
+  @media (max-width: 560px) {
+    width: 100%;
+    height: 30rem;
+    margin: 0 auto 3rem auto;
   }
 `;
 

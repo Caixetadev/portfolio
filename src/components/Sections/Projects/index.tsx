@@ -22,7 +22,7 @@ import SectionProjects, {
 import HomeImage from "../../../../public/assets/home.jpg";
 
 import { IProjects, ITechs } from "../../../types";
-import SectionTitle from "../../SectionTitle/inde";
+import SectionTitle from "../../SectionTitle";
 
 export default function Projects({ projects }: { projects: IProjects[] }) {
   const techs: { [techs: string]: ITechs } = {
