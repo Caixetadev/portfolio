@@ -9,7 +9,7 @@ export default function Header() {
         name="title"
         content="Rafael Caixeta | Front-end Developer | Portfolio"
       />
-      <meta name="description" content="Front-end Developer" />
+      <meta name="description" content="Olá me chamo Rafael Caixeta e este é meu portfólio, tenho 18 anos e" />
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Rafael Caixeta" />
       <meta

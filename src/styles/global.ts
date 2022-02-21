@@ -22,6 +22,7 @@ export default createGlobalStyle`
   html {
     scroll-behavior: smooth;
     font-size: 62.5%;
+    scroll-padding-top: 100px;
   }
   ::-webkit-scrollbar {
     width: 3px;

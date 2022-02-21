@@ -15,9 +15,7 @@ import Projects from "../components/Sections/Projects";
 import Footer from "../components/UI/Footer";
 
 import { IProjects } from "../types";
-import Contact from "../components/Sections/Contact";
 import { useEffect } from "react";
-import Header from "../components/Head";
 
 export const getStaticProps: GetStaticProps = async () => {
   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
@@ -41,7 +39,6 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
       <About />
       <Skills />
       <Projects projects={projects} />
-      <Contact />
       <ButtonTop />
       <Footer />
     </ThemeProvider>

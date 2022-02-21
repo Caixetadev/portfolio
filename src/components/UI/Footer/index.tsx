@@ -6,7 +6,7 @@ import Footer from "./style";
 
 export default function FooterComponent() {
   return (
-    <Footer>
+    <Footer id="contact">
       <Container>
         <Icons>
           <ul>
