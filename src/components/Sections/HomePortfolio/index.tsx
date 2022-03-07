@@ -28,7 +28,13 @@ export default function Home(): JSX.Element {
           <span>Hi, my name is</span>
           <h1>Caixeta</h1>
           <h2 ref={h2El}>Front end developer</h2>
-          <a href="#projects">Portfolio</a>
+          <a
+            href="https://drive.google.com/file/d/1SKbnP4td4K8-gG5JwVjGl6hBn493l4is/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Curriculum
+          </a>
         </Content>
         <Image
           src={HomeImage}

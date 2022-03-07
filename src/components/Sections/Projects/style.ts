@@ -110,7 +110,8 @@ export const Langs = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 8rem;
   flex-wrap: wrap;
   margin-top: 5rem;
 `;
