@@ -8,37 +8,37 @@ import SectionTitle from "../../SectionTitle";
 
 const arrSkills = [
   {
-    desc: "ReactJS, tenho 1 mês de exp",
+    desc: "ReactJS",
     image: <FaReact />,
     color: "#61dafb",
   },
   {
-    desc: "JavaScript, tenho 7 meses de exp",
+    desc: "JavaScript",
     image: <FaJs />,
     color: "#ffd600",
   },
   {
-    desc: "HTML5, tenho 7 meses de exp",
+    desc: "HTML5",
     image: <FaHtml5 />,
     color: "#E65100",
   },
   {
-    desc: "CSS3, tenho 7 meses de exp",
+    desc: "CSS3",
     image: <FaCss3Alt />,
     color: "#0277BD",
   },
   {
-    desc: "Github, tenho 7 meses de exp",
+    desc: "Github",
     image: <FaGithub />,
     color: "#fff",
   },
   {
-    desc: "Typescript, tenho 2 meses de exp",
+    desc: "Typescript",
     image: <SiTypescript />,
     color: "#2F74C0",
   },
   {
-    desc: "Next, tenho 1 meses de exp",
+    desc: "Next",
     image: <SiNextdotjs />,
     color: "#ffffff",
   },
@@ -61,7 +61,7 @@ export default function Skills() {
       item.addEventListener("mouseout", () => {
         const svg = item.children;
         svg[0].style.fill = "";
-        info.innerHTML = "Passe o mouse por cima dos icones";
+        info.innerHTML = "Hover over the icons";
       });
     });
   });
@@ -80,7 +80,7 @@ export default function Skills() {
         <div className="cont">
           <div className="info">
             <SectionTitle title="Skill" />
-            <p data-aos="fade-up">Passe o mouse por cima dos icones</p>
+            <p data-aos="fade-up">Hover over the icons</p>
           </div>
           <div className="techs">
             {arrSkills.map((items, i) => (

@@ -10,12 +10,13 @@ export default function About() {
         <Content>
           <SectionTitle title="About" />
           <p data-aos="fade-up">
-            Hi, I'm Rafael Caixeta, I live in Brazil and I'm 18 years old. I
-            found out that I am passionate about web development on the 24th of
-            July 2021. I'm at the very beginning of a journey, I'm currently
-            studying JavaScript, Cascading Style Sheets and HyperText Markup
-            Language. At the moment I'm just studying but soon I intend to start
-            working in the Front End area.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+            tenetur ipsam, enim perspiciatis repellendus nemo? Inventore unde
+            adipisci alias itaque dolores harum. Iusto eaque esse recusandae
+            excepturi nulla nobis dolores provident laborum obcaecati, explicabo
+            accusantium exercitationem nihil, quasi, earum perferendis ab.
+            Provident consectetur praesentium accusamus natus corporis, labore
+            doloremque sed.
           </p>
         </Content>
       </Container>
