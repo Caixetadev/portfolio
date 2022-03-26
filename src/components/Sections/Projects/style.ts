@@ -39,9 +39,13 @@ export const Card = styled.div`
   }
 
   @media (max-width: 560px) {
-    width: 100%;
+    width: 30rem;
     height: 30rem;
     margin: 0 auto 3rem auto;
+  }
+
+  @media (max-width: 300px) {
+    width: 20rem;
   }
 `;
 

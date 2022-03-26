@@ -16,4 +16,10 @@ export const Container = styled.div`
     bottom: 2px;
     z-index: -1;
   }
+
+  @media (max-width: 992px) {
+    h2 {
+      font-size: 3rem;
+    }
+  }
 `;

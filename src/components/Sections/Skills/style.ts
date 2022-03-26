@@ -71,15 +71,30 @@ export const SectionSkills = styled.section`
   }
 
   @media (max-width: 560px) {
+    margin: 0;
+
     .cont {
       flex-direction: column;
       justify-content: center;
     }
 
+    .info {
+      margin: 10rem 0;
+    }
+
     .cont .techs {
+      margin: 0 auto;
       transform: translateX(0px);
-      grid-template-columns: repeat(3, auto);
-      padding: 4rem;
+      grid-template-columns: repeat(3, 5rem);
+    }
+    
+    .cont .techs .tech {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    svg {
+      font-size: 2rem !important;
     }
   }
 `;

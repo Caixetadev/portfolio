@@ -73,7 +73,7 @@ export const MenuIcon = styled.button`
     position: relative;
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 768px) {
     display: flex;
   }
 `;
@@ -91,14 +91,14 @@ export const Logo = styled.div`
 export const Content = styled.div`
   display: flex;
 
-  @media (max-width: 560px) {
+  @media (max-width: 768px) {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 15rem;
+    margin-top: -5rem;
   }
 `;
 
@@ -109,7 +109,7 @@ export const Nav = styled.nav`
     width: 100%;
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 768px) {
     ul {
       visibility: hidden;
       position: absolute;
@@ -118,6 +118,14 @@ export const Nav = styled.nav`
       background: ${(props) => props.theme.colors.background};
       transform: translateY(100%);
       transition: transform 400ms;
+    }
+
+    li {
+      margin-bottom: 2rem;
+    }
+
+    ul li:last-child {
+      background-color: transparent !important;
     }
 
     ul.active {

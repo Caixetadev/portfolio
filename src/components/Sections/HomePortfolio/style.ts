@@ -4,9 +4,20 @@ export const SectionHome = styled.section`
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    span img, span:last-child {
+      visibility: hidden;
+    }
+
+    h2 {
+      white-space: nowrap;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -68,4 +79,48 @@ export const Content = styled.div`
   a:hover {
     filter: brightness(1.2);
   }
+
+  @media (max-width: 567px) {
+    span {
+      font-size: 1.6rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    a {
+      padding: .7rem 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 313px) {
+    h2 {
+      white-space: normal;
+    }
+
+    a {
+      font-size: 1.4rem;
+    }
+  } 
 `;

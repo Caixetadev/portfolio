@@ -41,27 +41,27 @@ export default function Navbar() {
         <Nav>
           <ul className={nav ? "active" : ""}>
             <Content>
-              <li>
+              <li onClick={() => setShowNav(!nav)}>
                 <Link href="#">
                   <a>Home</a>
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowNav(!nav)}>
                 <Link href="#about">
                   <a>About</a>
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowNav(!nav)}>
                 <Link href="#skill">
                   <a>Skill</a>
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowNav(!nav)}>
                 <Link href="#projects">
                   <a>Projects</a>
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowNav(!nav)}>
                 <Link href="#contact">
                   <a>Contact</a>
                 </Link>
