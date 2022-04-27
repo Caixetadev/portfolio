@@ -156,6 +156,7 @@ export const Header = styled.div`
 export const Description = styled.div`
   padding: 1rem;
   font-size: 1.4rem;
+  line-height: 1.5;
 
   p {
     overflow-wrap: break-word;

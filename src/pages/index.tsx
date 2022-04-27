@@ -23,9 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data: IProjects = await url.json();
 
   return {
-    props: {
-      props: { projects: data },
-    },
+    props: { projects: data },
     revalidate: 60 * 60 * 8,
   };
 };

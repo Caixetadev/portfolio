@@ -40,10 +40,10 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
       <SectionProjects id="projects">
         <SectionTitle title="Projects" />
         <Content>
-          {projects.map((project, index) => (
+          {projects?.map((project, index) => (
             <Card data-aos="fade-up" key={index}>
               <Image
-                src={HomeImage}
+                src={project.image ? project.image : HomeImage}
                 alt="Imagem do projeto exemplo"
                 width="500"
                 height="244"
@@ -52,12 +52,22 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
                 <h3>{project.name}</h3>
                 <ul>
                   <li>
-                    <a href="https://github.com/caixetadev" className="github">
+                    <a
+                      href={project.linkRepo}
+                      className="github"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaGithub />
                     </a>
                   </li>
                   <li>
-                    <a href="https://github.com/caixetadev" className="link">
+                    <a
+                      href={project.linkPreview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link"
+                    >
                       <FaExternalLinkAlt />
                     </a>
                   </li>
@@ -77,10 +87,7 @@ export default function Projects({ projects }: { projects: IProjects[] }) {
                 <hr />
               </Langs>
               <Description>
-                <p>
-                  {project.description} Lorem ipsum dolor sit, amet consectetur
-                  adipisicing elit. Excepturi, eum.
-                </p>
+                <p>{project.description}</p>
               </Description>
             </Card>
           ))}

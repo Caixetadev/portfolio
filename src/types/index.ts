@@ -12,7 +12,8 @@ export interface IProjects {
   language: string;
   language2: string;
   language3?: string;
-  icons: { icon: string; icon2: string };
+  linkRepo: string;
+  linkPreview: string;
 }
 
 export interface ISectionTitleProps {
