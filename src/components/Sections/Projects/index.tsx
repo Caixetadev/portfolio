@@ -1,54 +1,32 @@
 import Image from "next/image";
-
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaJs,
-  FaSass,
-  FaNode,
-  FaReact,
-} from "react-icons/fa";
-
-import { SiTypescript, SiStyledcomponents, SiExpress } from "react-icons/si";
-
-import { Container } from "../../../styles/global";
-import SectionProjects, {
-  Content,
-  Description,
-  Header,
-  Langs,
-  Card,
-} from "./style";
 import HomeImage from "../../../../public/assets/home.jpg";
 
-import { IProjects, ITechs } from "../../../types";
+import { IProjects } from "../../../types";
+
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+
+import { Container } from "../../../styles/global";
 import { SectionTitle } from "../../SectionTitle";
 
-export function Projects({ projects }: { projects: IProjects[] }) {
-  const techs: { [techs: string]: ITechs } = {
-    Javascript: { lang: "js", icon: <FaJs /> },
-    Sass: { lang: "sass", icon: <FaSass /> },
-    Node: { lang: "node", icon: <FaNode /> },
-    React: { lang: "react", icon: <FaReact /> },
-    Express: { lang: "express", icon: <SiExpress /> },
-    Typescript: { lang: "ts", icon: <SiTypescript /> },
-    Styled_Components: { lang: "styled", icon: <SiStyledcomponents /> },
-  };
+import { techs } from "./techs";
 
+import * as S from "./style";
+
+export function Projects({ projects }: { projects: IProjects[] }) {
   return (
     <Container>
-      <SectionProjects id="projects">
+      <S.SectionProjects id="projects">
         <SectionTitle title="Projects" />
-        <Content>
+        <S.Content>
           {projects?.map((project, index) => (
-            <Card data-aos="fade-up" key={index}>
+            <S.Card data-aos="fade-up" key={index}>
               <Image
                 src={project.image ? project.image : HomeImage}
                 alt="Imagem do projeto exemplo"
                 width="500"
                 height="244"
               />
-              <Header>
+              <S.Header>
                 <h3>{project.name}</h3>
                 <ul>
                   <li>
@@ -72,8 +50,8 @@ export function Projects({ projects }: { projects: IProjects[] }) {
                     </a>
                   </li>
                 </ul>
-              </Header>
-              <Langs>
+              </S.Header>
+              <S.Langs>
                 <ul>
                   <li className={techs[project.language].lang}>
                     {techs[project.language].icon}
@@ -85,14 +63,14 @@ export function Projects({ projects }: { projects: IProjects[] }) {
                   </li>
                 </ul>
                 <hr />
-              </Langs>
-              <Description>
+              </S.Langs>
+              <S.Description>
                 <p>{project.description}</p>
-              </Description>
-            </Card>
+              </S.Description>
+            </S.Card>
           ))}
-        </Content>
-      </SectionProjects>
+        </S.Content>
+      </S.SectionProjects>
     </Container>
   );
 }

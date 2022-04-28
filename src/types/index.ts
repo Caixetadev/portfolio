@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { IconType } from "react-icons";
 
 export interface ITechs {
-  icon: JSX.Element;
+  icon: IconType;
   lang: string;
 }
 

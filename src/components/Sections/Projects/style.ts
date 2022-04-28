@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SectionProjects = styled.section`
+export const SectionProjects = styled.section`
   background-color: transparent;
   @media (max-width: 560px) {
     margin-top: 10rem;
@@ -162,5 +162,3 @@ export const Description = styled.div`
     overflow-wrap: break-word;
   }
 `;
-
-export default SectionProjects;
