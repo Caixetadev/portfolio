@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { FaAngleUp } from "react-icons/fa";
 import BtnTop from "./style";
 
-export default function ButtonTop() {
+export function ButtonTop() {
   const buttonEl = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {

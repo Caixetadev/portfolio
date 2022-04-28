@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Footer = styled.footer`
+export const Footer = styled.footer`
   margin-top: 10rem;
   background-color: ${(props) => props.theme.colors.bakground_secundary};
 
@@ -51,5 +51,3 @@ export const Icons = styled.div`
     transform: rotate(360deg);
   }
 `;
-
-export default Footer;

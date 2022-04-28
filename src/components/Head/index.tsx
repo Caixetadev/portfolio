@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function Header() {
+export function Header() {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,10 @@ export default function Header() {
         name="title"
         content="Rafael Caixeta | Front-end Developer | Portfolio"
       />
-      <meta name="description" content="Olá me chamo Rafael Caixeta e este é meu portfólio, tenho 18 anos e" />
+      <meta
+        name="description"
+        content="Olá me chamo Rafael Caixeta e este é meu portfólio, tenho 18 anos e"
+      />
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Rafael Caixeta" />
       <meta

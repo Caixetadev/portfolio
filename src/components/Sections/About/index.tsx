@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../../styles/global";
-import SectionTitle from "../../SectionTitle";
+import { SectionTitle } from "../../../components";
 import { Content, SectionAbout } from "./style";
 
-export default function About() {
+export function About() {
   return (
     <SectionAbout id="about">
       <Container>

@@ -4,7 +4,7 @@ import { SectionSkills } from "./style";
 import { FaReact, FaJs, FaHtml5, FaCss3Alt, FaGithub } from "react-icons/fa";
 import { useEffect } from "react";
 import { SiTypescript, SiNextdotjs } from "react-icons/si";
-import SectionTitle from "../../SectionTitle";
+import { SectionTitle } from "../../SectionTitle";
 
 const arrSkills = [
   {
@@ -44,7 +44,7 @@ const arrSkills = [
   },
 ];
 
-export default function Skills() {
+export function Skills() {
   useEffect(() => {
     const info = document.querySelector(".info p");
     const img = document.querySelectorAll(".tech");

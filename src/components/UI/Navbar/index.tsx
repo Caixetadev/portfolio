@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "../../../styles/global";
 import { Nav } from "./style";
 
-export default function Navbar() {
+export function Navbar() {
   const [border, setBorder] = useState(false);
   const [nav, setShowNav] = useState(false);
 

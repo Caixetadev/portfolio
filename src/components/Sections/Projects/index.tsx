@@ -22,9 +22,9 @@ import SectionProjects, {
 import HomeImage from "../../../../public/assets/home.jpg";
 
 import { IProjects, ITechs } from "../../../types";
-import SectionTitle from "../../SectionTitle";
+import { SectionTitle } from "../../SectionTitle";
 
-export default function Projects({ projects }: { projects: IProjects[] }) {
+export function Projects({ projects }: { projects: IProjects[] }) {
   const techs: { [techs: string]: ITechs } = {
     Javascript: { lang: "js", icon: <FaJs /> },
     Sass: { lang: "sass", icon: <FaSass /> },

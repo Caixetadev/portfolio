@@ -4,7 +4,7 @@ import { Container } from "../../../styles/global";
 import { Content, SectionHome } from "./style";
 import HomeImage from "../../../../public/assets/Coding-bro.svg";
 
-export default function Home(): JSX.Element {
+export function HomePortfolio(): JSX.Element {
   const h2El = useRef(null);
 
   useEffect(() => {

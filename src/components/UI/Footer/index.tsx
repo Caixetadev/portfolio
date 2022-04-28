@@ -1,14 +1,12 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import { Container, Icons } from "./style";
+import * as S from "./style";
 
-import Footer from "./style";
-
-export default function FooterComponent() {
+export function Footer() {
   return (
-    <Footer id="contact">
-      <Container>
-        <Icons>
+    <S.Footer id="contact">
+      <S.Container>
+        <S.Icons>
           <ul>
             <li>
               <a
@@ -38,9 +36,9 @@ export default function FooterComponent() {
               </a>
             </li>
           </ul>
-        </Icons>
+        </S.Icons>
         <p>&copy; Rafael Caixeta</p>
-      </Container>
-    </Footer>
+      </S.Container>
+    </S.Footer>
   );
 }
