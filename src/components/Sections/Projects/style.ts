@@ -68,6 +68,7 @@ export const Lang = styled.li<Props>`
 
 export const Name = styled.span`
   font-weight: bold;
+  margin-left: 0.5rem;
 `;
 
 export const Line = styled.hr`
