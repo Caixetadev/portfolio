@@ -1,10 +1,22 @@
 import styled from "styled-components";
 
+type Props = {
+  color: string;
+};
+
 export const SectionProjects = styled.section`
   background-color: transparent;
   @media (max-width: 560px) {
     margin-top: 10rem;
   }
+`;
+
+export const Title = styled.h3`
+  font-size: 2.5rem;
+`;
+
+export const List = styled.ul`
+  display: flex;
 `;
 
 export const Card = styled.div`
@@ -14,28 +26,14 @@ export const Card = styled.div`
   margin-bottom: 5rem;
   border-radius: 1rem;
 
-  & h3 {
-    font-size: 2.5rem;
-  }
-
-  & ul li span {
-    font-weight: bold;
-  }
-
-  & ul li svg {
-    width: 1.4rem;
-    height: 1.4rem;
-    margin-right: 0.5rem;
-  }
-
-  & img {
+  img {
     border-radius: 1rem 1rem 0 0;
     object-fit: cover;
     transition: all 0.2s ease;
-  }
 
-  & img:hover {
-    transform: scale(1.1);
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   @media (max-width: 560px) {
@@ -49,67 +47,32 @@ export const Card = styled.div`
   }
 `;
 
-export const Langs = styled.div`
-  & ul li.js {
-    background-color: #efd81d;
-    color: #303030;
-  }
+export const Infos = styled.div`
+  padding: 0 1rem;
+`;
 
-  & ul li.sass {
-    background-color: pink;
-    color: #303030;
-  }
+export const Lang = styled.li<Props>`
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  background-color: ${({ color }) => color};
+  color: #303030;
 
-  & ul li.react {
-    background-color: #61dafb;
-    color: #303030;
-  }
-
-  & ul li.node {
-    background-color: #62aa53;
-    color: #303030;
-  }
-
-  & ul li.express {
-    background-color: #fff;
-    color: #303030;
-  }
-
-  & ul li.ts {
-    background-color: #48a0ff;
-    color: #303030;
-  }
-
-  & ul li.styled {
-    background-color: #f781a8;
-    color: #303030;
-  }
-
-  & {
-    padding: 0 1rem;
-  }
-
-  & hr {
-    margin-top: 1rem;
-    opacity: 0.2;
-  }
-
-  & ul {
-    display: flex;
-  }
-
-  & ul li + li {
+  & + li {
     margin-left: 1rem;
   }
+`;
 
-  & ul li {
-    display: flex;
-    align-items: center;
-    font-size: 1.3rem;
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
+export const Name = styled.span`
+  font-weight: bold;
+`;
+
+export const Line = styled.hr`
+  margin-top: 1rem;
+  opacity: 0.2;
 `;
 
 export const Content = styled.div`
@@ -125,40 +88,40 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+`;
 
-  ul {
-    display: flex;
+export const Item = styled.li`
+  display: flex;
+  align-items: center;
+
+  & + li {
+    margin-left: 2rem;
   }
 
-  ul li svg {
+  &:hover svg {
+    color: ${({ theme }) => theme.colors.background_three};
+  }
+
+  svg {
+    width: 2.3rem;
+    height: 2.3rem;
     transition: all 0.2s ease;
   }
 
-  ul li .github svg {
-    width: 2.3rem;
-    height: 2.3rem;
-  }
-
-  ul li:hover svg {
-    color: ${(props) => props.theme.colors.background_three};
-  }
-
-  ul li .link svg {
+  &:last-child svg {
     width: 2rem;
     height: 2rem;
   }
-
-  ul li + li {
-    margin-left: 2rem;
-  }
 `;
+
+export const Link = styled.a``;
 
 export const Description = styled.div`
   padding: 1rem;
-  font-size: 1.4rem;
-  line-height: 1.5;
 
   p {
+    font-size: 1.4rem;
+    line-height: 1.5;
     overflow-wrap: break-word;
   }
 `;

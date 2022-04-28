@@ -27,43 +27,41 @@ export function Projects({ projects }: { projects: IProjects[] }) {
                 height="244"
               />
               <S.Header>
-                <h3>{project.name}</h3>
-                <ul>
-                  <li>
-                    <a
+                <S.Title>{project.name}</S.Title>
+                <S.List>
+                  <S.Item>
+                    <S.Link
                       href={project.linkRepo}
-                      className="github"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FaGithub />
-                    </a>
-                  </li>
-                  <li>
-                    <a
+                    </S.Link>
+                  </S.Item>
+                  <S.Item>
+                    <S.Link
                       href={project.linkPreview}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link"
                     >
                       <FaExternalLinkAlt />
-                    </a>
-                  </li>
-                </ul>
+                    </S.Link>
+                  </S.Item>
+                </S.List>
               </S.Header>
-              <S.Langs>
-                <ul>
-                  <li className={techs[project.language].lang}>
+              <S.Infos>
+                <S.List>
+                  <S.Lang color={techs[project.language].color}>
                     {techs[project.language].icon}
-                    <span>{project.language}</span>
-                  </li>
-                  <li className={techs[project.language2].lang}>
+                    <S.Name>{project.language}</S.Name>
+                  </S.Lang>
+                  <S.Lang color={techs[project.language2].color}>
                     {techs[project.language2].icon}
-                    <span>{project.language2}</span>
-                  </li>
-                </ul>
-                <hr />
-              </S.Langs>
+                    <S.Name>{project.language2}</S.Name>
+                  </S.Lang>
+                </S.List>
+                <S.Line />
+              </S.Infos>
               <S.Description>
                 <p>{project.description}</p>
               </S.Description>

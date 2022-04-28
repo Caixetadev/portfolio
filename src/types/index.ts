@@ -1,8 +1,6 @@
-import { IconType } from "react-icons";
-
 export interface ITechs {
-  icon: IconType;
-  lang: string;
+  icon: JSX.Element;
+  color: string;
 }
 
 export interface IProjects {
