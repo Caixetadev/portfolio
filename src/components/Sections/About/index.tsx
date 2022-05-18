@@ -1,25 +1,41 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../../styles/global";
 import { SectionTitle } from "../../../components";
-import { Content, SectionAbout } from "./style";
+
+import * as S from "./style";
 
 export function About() {
   return (
-    <SectionAbout id="about">
+    <S.SectionAbout id="about">
       <Container>
-        <Content>
+        <div>
           <SectionTitle title="About" />
-          <p data-aos="fade-up">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-            tenetur ipsam, enim perspiciatis repellendus nemo? Inventore unde
-            adipisci alias itaque dolores harum. Iusto eaque esse recusandae
-            excepturi nulla nobis dolores provident laborum obcaecati, explicabo
-            accusantium exercitationem nihil, quasi, earum perferendis ab.
-            Provident consectetur praesentium accusamus natus corporis, labore
-            doloremque sed.
-          </p>
-        </Content>
+          <S.Paragraph data-aos="fade-up">
+            Hi, my name is Rafael Caixeta, I'm a self-taught and freelance web
+            developer, I'm currently delving into Frontend development, focusing
+            on building responsive interfaces, writing clean and efficient code.
+            Passionate about technology, books, games and music. My favorite
+            techs are: React, JavaScript, Typescript and Next.js. You can
+            contact me through{"  "}
+            <S.Link
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/caixetadev/"
+            >
+              LinkedIn
+            </S.Link>
+            , see what I'm developing on{" "}
+            <S.Link
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/Caixetadev"
+            >
+              GitHub
+            </S.Link>{" "}
+            and say hi on Discord (caixeta#7777).
+          </S.Paragraph>
+        </div>
       </Container>
-    </SectionAbout>
+    </S.SectionAbout>
   );
 }
