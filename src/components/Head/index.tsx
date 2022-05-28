@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import Banner from "/public/assets/banner.jpg";
+
 export function Header() {
   return (
     <Head>
@@ -20,7 +22,7 @@ export function Header() {
         content="rafael caixeta, web designer, caixeta dev, 
           desenvolvedor, programador, front-end, developer, typescript,
           reactjs, nextjs, caixetadev, caixeta portfolio, rafael caixeta portfolio,
-          developer front-end, javascript"
+          developer front-end, javascript, caixeta, desenvolver sites"
       />
       <meta property="og:url" content="https://caixeta.vercel.app" />
       <meta property="og:type" content="website" />
@@ -29,18 +31,29 @@ export function Header() {
         content="Rafael Caixeta | Front-end Developer | Portfolio"
       />
       <link rel="canonical" href="https://caixeta.vercel.app" />
-      <meta property="og:description" content="Front-end Developer" />
+      <meta
+        property="og:description"
+        content="Especialista em desenvolvimento Front-End"
+      />
       <meta property="og:locale" content="pt_BR" />
       <meta name="revisit-after" content="1 day" />
-      <meta property="og:image" content="https://i.ibb.co/BGCNXKr/home.png" />
-      <meta
-        property="og:site_name"
-        content="Rafael Caixeta | Front-end Developer"
-      />
+      <meta property="og:image" content={Banner.src} />
       <meta
         name="google-site-verification"
         content="HxtN4KKzJBUUH15aqX9noITMXUkG1EeMkggR1kpEb6s"
       />
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://caixeta.vercel.app" />
+      <meta
+        property="twitter:title"
+        content="Rafael Caixeta | Front-end Developer | Portfolio"
+      />
+      <meta
+        property="twitter:description"
+        content="Especialista em desenvolvimento Front-End"
+      />
+      <meta property="twitter:image" content={Banner.src} />
     </Head>
   );
 }
