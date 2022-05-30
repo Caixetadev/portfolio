@@ -3,7 +3,7 @@ import { FaAngleUp } from "react-icons/fa";
 import BtnTop from "./style";
 
 export function ButtonTop() {
-  const buttonEl = useRef<HTMLAnchorElement>(null);
+  const buttonEl = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.addEventListener(`scroll`, () => {
@@ -23,7 +23,7 @@ export function ButtonTop() {
   }
 
   return (
-    <BtnTop href="#" ref={buttonEl} onClick={scrollTop}>
+    <BtnTop ref={buttonEl} onClick={scrollTop}>
       <FaAngleUp />
     </BtnTop>
   );
