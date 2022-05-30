@@ -1,3 +1,5 @@
+import common from "../../public/locales/en-US/common.json";
+
 export interface ITechs {
   icon: JSX.Element;
   color: string;
@@ -14,6 +16,7 @@ export interface IProjects {
   linkPreview: string;
 }
 
-export interface ISectionTitleProps {
-  title: string;
+export interface Resources {
+  common: typeof common;
+  // as many as files you have
 }
