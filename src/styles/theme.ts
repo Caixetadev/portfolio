@@ -1,11 +1,14 @@
 const theme = {
   colors: {
-    background: "#121212",
-    bakground_secundary: "#191919",
-    background_three: "#8257e5",
+    background: "#161616",
+    background_secundary: "#111",
+    background_terceary: "#272525",
+    background_transparent: "rgba(22, 22, 22, 0.75)",
+    background_gradient: "linear-gradient(180deg, #3793FF 0%, #0017E4 100%)",
     text: "#fff",
-    primary: "red",
-    blue_ocean: "#a9d6e5",
+    text_blue: "#3793FF",
+    text_gray: "#919496",
+    text_gray_ligth: "#CAC8C8",
   },
 };
 
