@@ -19,8 +19,10 @@ export function Hero() {
           </S.Name>
           <S.Description>{t("hero.description")}</S.Description>
           <S.Icons>
-            {icons.map(({ image, alt }) => (
-              <S.Icon key={image} src={image} alt={alt} />
+            {icons.map(({ image, alt, path }) => (
+              <S.Link href={path} key={path} target="_blank">
+                <S.Icon src={image} alt={alt} />
+              </S.Link>
             ))}
           </S.Icons>
           <Button>{t("hero.chat")}</Button>

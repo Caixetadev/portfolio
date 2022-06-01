@@ -38,12 +38,18 @@ export const Icons = styled.div`
   margin: 3rem 0;
 `;
 
-export const Icon = styled.img`
+export const Icon = styled.img``;
+
+export const Link = styled.a`
   ${({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: ${theme.colors.background_terceary};
     border-radius: 0.4rem;
     padding: 1rem;
-    & + img {
+
+    & + a {
       margin-left: 2.3rem;
     }
   `}
