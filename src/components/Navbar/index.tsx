@@ -3,25 +3,18 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 
 import { Container } from "../../styles/global";
-import Globo from "/public/assets/globo.svg";
 import Logo from "/public/assets/logo.svg";
 
 import { Link } from "react-scroll";
 
 import * as S from "./style";
-import { useRouter } from "next/router";
+import { GloboDropdown } from "../GloboDropdown";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [nav, setShowNav] = useState(false);
 
   const { t } = useTranslation("common");
-
-  const router = useRouter();
-
-  const onChangeLanguage = (lang: string) => () => {
-    router.push(router.asPath, undefined, { locale: lang });
-  };
 
   useEffect(() => {
     const scroll = () => {
@@ -86,9 +79,7 @@ export function Navbar() {
                 <S.Link>Curriculum</S.Link>
               </S.Items>
               <S.Items>
-                <S.Link onClick={onChangeLanguage("pt-BR")}>
-                  <S.Icon src={Globo.src} alt="Globo" />
-                </S.Link>
+                <GloboDropdown />
               </S.Items>
               <S.Items>
                 <Link
