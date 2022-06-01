@@ -56,9 +56,7 @@ export const Logo = styled.img`
   cursor: pointer;
 `;
 
-export const Link = styled.a`
-  font-size: 1.4rem;
-`;
+export const Link = styled.a``;
 
 export const Icon = styled.img`
   width: 1.9rem;

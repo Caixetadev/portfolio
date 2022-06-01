@@ -40,7 +40,7 @@ export const Icons = styled.div`
 
 export const Icon = styled.img`
   ${({ theme }) => css`
-    background-color: #272525;
+    background-color: ${theme.colors.background_terceary};
     border-radius: 0.4rem;
     padding: 1rem;
     & + img {

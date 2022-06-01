@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Footer = styled.footer`
   ${({ theme }) => css`
     margin-top: 10rem;
-    background-color: ${theme.colors.background_secundary};
+    background-color: ${theme.colors.background};
   `}
 `;
 
