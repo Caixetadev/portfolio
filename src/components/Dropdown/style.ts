@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div<ContentProps>`
   ${({ isOpen }) => css`
+    transition: all 0.3s ease;
     opacity: ${isOpen ? "1" : "0"};
     position: absolute;
     margin-top: 2rem;
