@@ -48,7 +48,7 @@ export function Navbar() {
       <Container>
         <S.Wrapper>
           <Link to="home" spy={false} smooth="easeInOutQuart" duration={1000}>
-            <S.Logo src={Logo.src} />
+            <S.Logo src={Logo.src} alt="Logo Caixeta" />
           </Link>
           <S.Nav>
             <S.NavItens>
@@ -87,7 +87,7 @@ export function Navbar() {
               </S.Items>
               <S.Items>
                 <S.Link onClick={onChangeLanguage("pt-BR")}>
-                  <S.Icon src={Globo.src} />
+                  <S.Icon src={Globo.src} alt="Globo" />
                 </S.Link>
               </S.Items>
               <S.Items>

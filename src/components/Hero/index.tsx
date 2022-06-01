@@ -19,8 +19,8 @@ export function Hero() {
             creative solutions for the internet.
           </S.Description>
           <S.Icons>
-            {icons.map(({ image }) => (
-              <S.Icon key={image} src={image} />
+            {icons.map(({ image, alt }) => (
+              <S.Icon key={image} src={image} alt={alt} />
             ))}
           </S.Icons>
           <Button>talk me!</Button>

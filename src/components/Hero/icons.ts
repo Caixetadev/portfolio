@@ -5,11 +5,14 @@ import Instagram from "/public/assets/instagram.svg";
 export const icons = [
   {
     image: Linkedin.src,
+    alt: "Icone do Linkedin",
   },
   {
     image: Github.src,
+    alt: "Icone do Github",
   },
   {
     image: Instagram.src,
+    alt: "Icone do Instagram",
   },
 ];
