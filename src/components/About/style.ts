@@ -5,7 +5,7 @@ import About from "/public/assets/about.svg";
 export const SectionAbout = styled.section`
   height: 40rem;
   max-width: 120rem;
-  margin: 15rem auto 0 auto;
+  margin: 15rem auto 5rem auto;
   background-image: url(${About.src});
   background-repeat: no-repeat;
 

@@ -5,7 +5,7 @@ export const Card = styled.div`
     display: flex;
     width: 80rem;
     height: 27rem;
-    background-color: ${theme.colors.background_secundary};
+    background-color: #111;
     margin-top: 13rem;
     margin-bottom: 3rem;
     border-radius: 2rem;

@@ -60,7 +60,7 @@ export function Navbar() {
                   smooth="easeInQuint"
                   duration={700}
                 >
-                  About
+                  {t("header.about")}
                 </Link>
               </S.Items>
               <S.Items>

@@ -4,10 +4,9 @@ import { Button } from "../Button";
 import * as S from "./style";
 
 export function Card({ projects }: { projects: Array<IProjects> }) {
-  console.log(projects);
   return (
     <>
-      {/* {projects.map(({ name, image, description, linkPreview }) => (
+      {projects.map(({ name, image, description, linkPreview }) => (
         <S.Card data-aos="fade-right" key={name}>
           <S.Info>
             <S.Title>{name}</S.Title>
@@ -16,7 +15,7 @@ export function Card({ projects }: { projects: Array<IProjects> }) {
           </S.Info>
           <S.Image src={image} />
         </S.Card>
-      ))} */}
+      ))}
     </>
   );
 }

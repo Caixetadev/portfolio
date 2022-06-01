@@ -1,3 +1,5 @@
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import { useEffect } from "react";
 
 import type { GetStaticProps, NextPage } from "next";
@@ -26,33 +28,25 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
       <Navbar />
       <Hero />
       <About />
-      <Projects projects={[]} />
+      <Projects projects={projects} />
       <ButtonTop />
       <Footer />
     </>
   );
 };
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
 
-//   const data: IProjects = await url.json();
+  const data: IProjects = await url.json();
 
-//   return {
-//     props: { projects: data },
-//     revalidate: 60 * 60 * 8,
-//   };
-// };
-
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-export async function getStaticProps({ locale }: any) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "header"])),
-      // Will be passed to the page component as props
+      projects: data,
+      ...(await serverSideTranslations(locale as any, ["common", "header"])),
     },
+    revalidate: 60 * 60 * 8,
   };
-}
+};
 
 export default Home;
