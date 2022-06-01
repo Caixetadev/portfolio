@@ -3,27 +3,27 @@ import { Container } from "../../styles/global";
 import * as S from "./style";
 import { icons } from "./icons";
 import { Button } from "../Button";
+import { useTranslation } from "next-i18next";
 
 export function Hero() {
+  const { t } = useTranslation("common");
+
   return (
     <S.SectionHome id="home">
       <Container>
         <S.Wrapper>
           <S.Name>
-            <span>{"I' am,"}</span>
+            <span>{t("hero.iam")}</span>
             <br />
             Rafael Caixeta
           </S.Name>
-          <S.Description>
-            Front-end developer, specialized in creating modern websites and
-            creative solutions for the internet.
-          </S.Description>
+          <S.Description>{t("hero.description")}</S.Description>
           <S.Icons>
             {icons.map(({ image, alt }) => (
               <S.Icon key={image} src={image} alt={alt} />
             ))}
           </S.Icons>
-          <Button>talk me!</Button>
+          <Button>{t("hero.chat")}</Button>
         </S.Wrapper>
         <S.Box>
           <S.Arrow />

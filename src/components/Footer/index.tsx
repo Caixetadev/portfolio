@@ -1,14 +1,17 @@
+import { useTranslation } from "next-i18next";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Container } from "../../styles/global";
 
 import * as S from "./style";
 
 export function Footer() {
+  const { t } = useTranslation("common");
+
   return (
     <S.Footer id="contact">
       <Container>
         <S.Wrapper>
-          <S.Work>ready to work with me?</S.Work>
+          <S.Work>{t("footer.ready")}</S.Work>
           <S.City>Uberlândia, MG, Brazil</S.City>
           <S.Email>caixetadev@gmail.com</S.Email>
           <S.Phone>(+55) 62 996 870 432</S.Phone>
@@ -31,7 +34,7 @@ export function Footer() {
           </S.SocialLinks>
         </S.Wrapper>
         <S.Copy>
-          &copy; 2022 All Right Reserved by <span>Rafael Caixeta</span>
+          &copy; {t("footer.right")} <span>Rafael Caixeta</span>
         </S.Copy>
       </Container>
     </S.Footer>

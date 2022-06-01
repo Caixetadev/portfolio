@@ -1,8 +1,26 @@
 {
   "header": {
     "about": "About",
+    "projects": "Projects",
     "linkedin": "Linkedin",
     "curriculum": "Curriculum",
     "contact": "Contact"
+  },
+  "hero": {
+    "description": "Front-end developer, specialized in creating modern websites and creative solutions for the internet.",
+    "iam": "I am,",
+    "chat": "let’s chat"
+  },
+  "about": {
+    "title": "About",
+    "description": "Hi, my name is Rafael Caixeta, a self-taught and freelance web developer. I'm currently working into Frontend development, focusing on building responsive interfaces, writting clean and efficient codes. My favorite programming languages are React, JavaScript, Typescript and Next.js. I’m passionate about technology, books, games and music. You can contact me through LinkedIn or by email and you can take a look on what I'm developing on GitHub. If you want to chat, send me a message on Discord (caixeta#7777)."
+  },
+  "projects": {
+    "title": "Projects",
+    "button": "view project"
+  },
+  "footer": {
+    "ready": "ready to work with me?",
+    "right": "2022 All Right Reserved by"
   }
 }

@@ -64,7 +64,7 @@ export function Navbar() {
                   smooth="easeInQuint"
                   duration={700}
                 >
-                  Projects
+                  {t("header.projects")}
                 </Link>
               </S.Items>
               <S.Items>
@@ -72,11 +72,11 @@ export function Navbar() {
                   href="https://linkedin.com/in/caixetadev"
                   target="_blank"
                 >
-                  Linkedin
+                  {t("header.linkedin")}
                 </S.Link>
               </S.Items>
               <S.Items>
-                <S.Link>Curriculum</S.Link>
+                <S.Link>{t("header.curriculum")}</S.Link>
               </S.Items>
               <S.Items>
                 <GloboDropdown />
@@ -88,7 +88,7 @@ export function Navbar() {
                   smooth="easeInOutQuart"
                   duration={1000}
                 >
-                  Contact
+                  {t("header.contact")}
                 </Link>
               </S.Items>
             </S.NavItens>
