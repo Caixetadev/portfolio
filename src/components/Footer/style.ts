@@ -29,9 +29,10 @@ export const City = styled.p`
   `}
 `;
 
-export const Email = styled.h1`
+export const Email = styled.a`
   ${({ theme }) => css`
     font-size: 4.8rem;
+    font-weight: 700;
     color: ${theme.colors.text_blue};
   `}
 `;
