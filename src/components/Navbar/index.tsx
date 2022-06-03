@@ -93,6 +93,12 @@ export function Navbar() {
               </S.Items>
             </S.NavItens>
           </S.Nav>
+          <S.MenuHamburguer
+            onClick={() => setShowNav((prev) => !prev)}
+            className={nav ? "active" : ""}
+          >
+            <S.Bar />
+          </S.MenuHamburguer>
         </S.Wrapper>
       </Container>
     </S.Header>

@@ -28,7 +28,54 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const MenuHamburguer = styled.button`
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+  gap: 0.5rem;
+
+  @media (max-width: 1000px) {
+    display: flex;
+  }
+`;
+
+export const Bar = styled.span`
+  border-top: 2px solid #fff;
+  width: 20px;
+
+  ${MenuHamburguer}.active &::before {
+    transform: rotate(135deg);
+  }
+
+  ${MenuHamburguer}.active &::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
+
+  ${MenuHamburguer}.active & {
+    border-top-color: transparent;
+  }
+
+  &::after,
+  &::before {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+  }
+`;
 
 export const NavItens = styled.ul`
   display: flex;
