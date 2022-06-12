@@ -34,7 +34,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const MenuHamburguer = styled.button`
+export const MenuHamburger = styled.button`
   display: none;
   border: none;
   background: none;
@@ -51,16 +51,16 @@ export const Bar = styled.span`
   border-top: 2px solid #fff;
   width: 20px;
 
-  ${MenuHamburguer}.active &::before {
+  ${MenuHamburger}.active &::before {
     transform: rotate(135deg);
   }
 
-  ${MenuHamburguer}.active &::after {
+  ${MenuHamburger}.active &::after {
     transform: rotate(-135deg);
     top: -7px;
   }
 
-  ${MenuHamburguer}.active & {
+  ${MenuHamburger}.active & {
     border-top-color: transparent;
   }
 
@@ -77,7 +77,46 @@ export const Bar = styled.span`
   }
 `;
 
-export const NavItens = styled.ul`
+export const MobileWrapper = styled.nav`
+  ${({ theme }) => css`
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: -1;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translate3d(0px, -600px, 0px);
+    transition: all 0.3s linear;
+    background-color: ${theme.colors.background};
+
+    &.active {
+      opacity: 1;
+      transform: translate3d(0px, 0px, 0px);
+    }
+
+    @media (max-width: 1000px) {
+      display: flex;
+    }
+  `}
+`;
+
+export const NavItemsMobile = styled.ul`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const ItemsMobile = styled.li`
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 3rem 0; ;
+`;
+
+export const NavItems = styled.ul`
   display: flex;
 `;
 
