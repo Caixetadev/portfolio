@@ -8,7 +8,7 @@ import Logo from "/public/assets/logo.svg";
 import { Link } from "react-scroll";
 
 import * as S from "./style";
-import { GlobeDropdown as GlobeDropdown } from "../GlobeDropdown";
+import { GlobeDropdown } from "../GlobeDropdown";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

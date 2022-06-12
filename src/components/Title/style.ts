@@ -18,7 +18,7 @@ export const Title = styled.h2`
       height: 2rem;
       display: block;
       width: 10rem;
-      background: ${theme.colors.text_blue_ligth};
+      background: ${theme.colors.text_blue_light};
       position: absolute;
       bottom: 1.5rem;
       z-index: -1;

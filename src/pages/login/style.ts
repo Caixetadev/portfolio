@@ -19,7 +19,7 @@ export const Form = styled.form`
     width: 43rem;
     height: 54.8rem;
     border-radius: 0.8rem;
-    background-color: ${theme.colors.background_secundary};
+    background-color: ${theme.colors.background_secondary};
 
     @media (max-width: 56rem) {
       width: 90%;

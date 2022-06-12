@@ -5,7 +5,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: ${theme.colors.background_secundary};
+    background-color: ${theme.colors.background_secondary};
     width: 13.6rem;
     height: auto;
     padding-bottom: 1rem;

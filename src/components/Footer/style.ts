@@ -71,7 +71,7 @@ export const Copy = styled.p`
 
     span {
       margin-left: 0.5rem;
-      color: ${theme.colors.text_gray_ligth};
+      color: ${theme.colors.text_gray_light};
     }
   `}
 `;
