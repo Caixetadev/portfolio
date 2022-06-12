@@ -5,17 +5,17 @@ import Instagram from "/public/assets/instagram.svg";
 export const icons = [
   {
     image: Linkedin.src,
-    alt: "Icone do Linkedin",
+    alt: "Ícone do Linkedin",
     path: "https://www.linkedin.com/in/caixetadev/",
   },
   {
     image: Github.src,
-    alt: "Icone do Github",
+    alt: "Ícone do Github",
     path: "https://github.com/caixetadev",
   },
   {
     image: Instagram.src,
-    alt: "Icone do Instagram",
+    alt: "Ícone do Instagram",
     path: "https://www.instagram.com/caixetadev/",
   },
 ];
