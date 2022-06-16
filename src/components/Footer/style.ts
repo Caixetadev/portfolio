@@ -13,12 +13,24 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 10rem;
+
+  @media (max-width: 650px) {
+    padding: 0rem;
+  }
 `;
 
 export const Work = styled.h2`
   ${({ theme }) => css`
     font-weight: 600;
     font-size: 2.4rem;
+
+    @media (max-width: 650px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 1.8rem;
+    }
   `}
 `;
 
@@ -26,6 +38,10 @@ export const City = styled.p`
   ${({ theme }) => css`
     margin: 3rem 0;
     color: ${theme.colors.text_gray};
+
+    @media (max-width: 650px) {
+      font-size: 1.5rem;
+    }
   `}
 `;
 
@@ -34,6 +50,14 @@ export const Email = styled.a`
     font-size: 4.8rem;
     font-weight: 700;
     color: ${theme.colors.text_blue};
+
+    @media (max-width: 650px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 2.6rem;
+    }
   `}
 `;
 
@@ -41,6 +65,10 @@ export const Phone = styled.h2`
   margin: 3rem 0;
   font-size: 2rem;
   font-weight: 500;
+
+  @media (max-width: 400px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const SocialLinks = styled.div`
@@ -57,6 +85,10 @@ export const Link = styled.a`
     & + a {
       margin-left: 2rem;
     }
+
+    @media (max-width: 400px) {
+      font-size: 1.4rem;
+    }
   `}
 `;
 
@@ -64,7 +96,6 @@ export const Copy = styled.p`
   ${({ theme }) => css`
     padding: 2rem 0;
     display: flex;
-    justify-content: flex-end;
     font-weight: 600;
     font-size: 1.2rem;
     color: ${theme.colors.text_gray};
@@ -72,6 +103,15 @@ export const Copy = styled.p`
     span {
       margin-left: 0.5rem;
       color: ${theme.colors.text_gray_light};
+    }
+
+    @media (max-width: 600px) {
+      margin-top: 5rem;
+    }
+
+    @media (max-width: 400px) {
+      margin-top: 2rem;
+      font-size: 1rem;
     }
   `}
 `;
