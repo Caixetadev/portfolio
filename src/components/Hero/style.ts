@@ -26,11 +26,19 @@ export const Name = styled.h1`
   }
   font-weight: 600;
   font-size: 4.8rem;
+
+  @media (max-width: 600px) {
+    font-size: 4rem;
+  }
 `;
 
 export const Description = styled.p`
   max-width: 45%;
   font-weight: 300;
+
+  @media (max-width: 600px) {
+    max-width: 90%;
+  }
 `;
 
 export const Icons = styled.div`
