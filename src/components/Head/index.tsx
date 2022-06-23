@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import Banner from "/public/assets/banner.jpg";
+import Banner from "/public/assets/banner.png";
 
 export function Header() {
   return (
