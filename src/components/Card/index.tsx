@@ -16,7 +16,7 @@ export function Card({ projects }: { projects: Array<IProjects> }) {
             <S.Description>{description}</S.Description>
             <Button link={linkPreview}>{t("projects.button")}</Button>
           </S.Info>
-          <S.Image src={image} />
+          <S.Image src={image} alt="Image Project" />
         </S.Card>
       ))}
     </>

@@ -23,7 +23,7 @@ export function ButtonTop() {
   }
 
   return (
-    <BtnTop ref={buttonEl} onClick={scrollTop}>
+    <BtnTop aria-label="button top" ref={buttonEl} onClick={scrollTop}>
       <FaAngleUp />
     </BtnTop>
   );

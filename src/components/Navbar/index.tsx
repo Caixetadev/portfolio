@@ -94,6 +94,7 @@ export function Navbar() {
             </S.NavItems>
           </S.Nav>
           <S.MenuHamburger
+            aria-label="Menu Hamburger"
             onClick={() => setShowNav((prev) => !prev)}
             className={nav ? "active" : ""}
           >
