@@ -8,8 +8,6 @@
 
 <img src="https://cdn.discordapp.com/attachments/735929313328758864/985331447411904512/unknown.png" alt="exemplo imagem">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
-
 ## 📫 Contribuindo para o Portfólio
 
 Para contribuir com o Portfólio, siga estas etapas:
