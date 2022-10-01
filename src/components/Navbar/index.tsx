@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
-
-import { useTranslation } from "next-i18next";
-
-import { Container } from "../../styles/global";
-import Logo from "/public/assets/logo.svg";
+import { useCallback, useEffect, useState } from "react";
 
 import { Link } from "react-scroll";
 
-import * as S from "./style";
+import { useTranslation } from "next-i18next";
+
 import { GlobeDropdown } from "../GlobeDropdown";
+
+import Logo from "/public/assets/logo.svg";
+
+import { Container } from "../../styles/global";
+
+import * as S from "./style";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,19 +18,21 @@ export function Navbar() {
 
   const { t } = useTranslation("common");
 
-  useEffect(() => {
-    const scroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const onScroll = useCallback(() => {
+    const scrollIsGreaterThanTwenty = () =>
+      window.scrollY > 20 ? setIsScrolled(true) : setIsScrolled(false);
 
-    window.addEventListener("scroll", scroll);
+    window.addEventListener("scroll", scrollIsGreaterThanTwenty);
 
-    return () => window.removeEventListener("scroll", scroll);
+    return () =>
+      window.removeEventListener("scroll", scrollIsGreaterThanTwenty);
   }, []);
+
+  const toggleMenu = useCallback(() => setShowNav((prev) => !prev), []);
+
+  useEffect(() => {
+    onScroll();
+  }, [onScroll]);
 
   useEffect(() => {
     nav
@@ -95,7 +99,7 @@ export function Navbar() {
           </S.Nav>
           <S.MenuHamburger
             aria-label="Menu Hamburger"
-            onClick={() => setShowNav((prev) => !prev)}
+            onClick={toggleMenu}
             className={nav ? "active" : ""}
           >
             <S.Bar />
@@ -110,7 +114,7 @@ export function Navbar() {
                 offset={-250}
                 smooth="easeInQuint"
                 duration={700}
-                onClick={() => setShowNav((prev) => !prev)}
+                onClick={toggleMenu}
               >
                 {t("header.about")}
               </Link>
@@ -122,7 +126,7 @@ export function Navbar() {
                 offset={-150}
                 smooth="easeInQuint"
                 duration={700}
-                onClick={() => setShowNav((prev) => !prev)}
+                onClick={toggleMenu}
               >
                 {t("header.projects")}
               </Link>
@@ -131,15 +135,13 @@ export function Navbar() {
               <S.Link
                 href="https://linkedin.com/in/caixetadev"
                 target="_blank"
-                onClick={() => setShowNav((prev) => !prev)}
+                onClick={toggleMenu}
               >
                 {t("header.linkedin")}
               </S.Link>
             </S.ItemsMobile>
             <S.ItemsMobile>
-              <S.Link onClick={() => setShowNav((prev) => !prev)}>
-                {t("header.curriculum")}
-              </S.Link>
+              <S.Link onClick={toggleMenu}>{t("header.curriculum")}</S.Link>
             </S.ItemsMobile>
             <S.ItemsMobile>
               <Link
@@ -147,7 +149,7 @@ export function Navbar() {
                 spy={false}
                 smooth="easeInOutQuart"
                 duration={1000}
-                onClick={() => setShowNav((prev) => !prev)}
+                onClick={toggleMenu}
               >
                 {t("header.contact")}
               </Link>
