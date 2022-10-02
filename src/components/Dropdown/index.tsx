@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ReactNode, useState } from "react";
 
 type DropdownProps = {
@@ -11,9 +10,7 @@ import * as S from "./style";
 export function Dropdown({ title, children }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  function handleToggle() {
-    setIsOpen((prev) => !prev);
-  }
+  const handleToggle = () => setIsOpen((prev) => !prev);
 
   return (
     <S.Wrapper>
