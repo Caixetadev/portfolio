@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 
 import { Dropdown } from "../Dropdown";
 import { options } from "./options";
-import * as S from "./style";
 
 import Globe from "/public/assets/globe.svg";
+
+import * as S from "./style";
 
 export function GlobeDropdown() {
   const router = useRouter();

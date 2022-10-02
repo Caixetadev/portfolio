@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Button } from "../../components";
+import Image from "next/image";
 
 import ArrowLeft from "/public/assets/arrow-left.svg";
+import { Button } from "../../components";
 
 import * as S from "./style";
-import Image from "next/image";
 
 function Login() {
   return (

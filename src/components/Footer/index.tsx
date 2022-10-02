@@ -1,5 +1,4 @@
 import { useTranslation } from "next-i18next";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Container } from "../../styles/global";
 
 import * as S from "./style";

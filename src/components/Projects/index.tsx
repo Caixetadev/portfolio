@@ -1,8 +1,11 @@
 import { useTranslation } from "next-i18next";
-import { Container } from "../../styles/global";
+
 import { IProjects } from "../../types";
+
+import { Container } from "../../styles/global";
 import { Card } from "../Card";
 import { Title } from "../Title";
+
 import * as S from "./style";
 
 export function Projects({ projects }: { projects: Array<IProjects> }) {

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Container } from "../../styles/global";
 import { Title } from "..";
 

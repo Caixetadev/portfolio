@@ -1,9 +1,10 @@
+import { useTranslation } from "next-i18next";
+
+import { icons } from "./icons";
+import { Button } from "../Button";
 import { Container } from "../../styles/global";
 
 import * as S from "./style";
-import { icons } from "./icons";
-import { Button } from "../Button";
-import { useTranslation } from "next-i18next";
 
 export function Hero() {
   const { t } = useTranslation("common");

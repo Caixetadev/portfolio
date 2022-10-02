@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
+
 import { FaAngleUp } from "react-icons/fa";
+
 import BtnTop from "./style";
 
 export function ButtonTop() {
