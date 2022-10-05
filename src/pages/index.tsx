@@ -9,14 +9,9 @@ import { IProjects } from "../types";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import {
-  Navbar,
-  ButtonTop,
-  Footer,
-  About,
-  Hero,
-  Projects,
-} from "../components";
+import { ButtonTop, About, Hero, Projects } from "../components";
+
+import { Main } from "../templates/Main";
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   useEffect(() => {
@@ -24,14 +19,12 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   }, []);
 
   return (
-    <>
-      <Navbar />
+    <Main>
       <Hero />
       <About />
       <Projects projects={projects} />
       <ButtonTop />
-      <Footer />
-    </>
+    </Main>
   );
 };
 
