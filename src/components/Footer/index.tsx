@@ -35,7 +35,8 @@ export function Footer() {
           </S.SocialLinks>
         </S.Wrapper>
         <S.Copy>
-          &copy; {t("footer.right")} <span>Rafael Caixeta</span>
+          &copy; {new Date().getFullYear()} {t("footer.right")}{" "}
+          <span>Rafael Caixeta</span>
         </S.Copy>
       </Container>
     </S.Footer>
