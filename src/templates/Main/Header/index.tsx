@@ -4,15 +4,15 @@ import { Link } from "react-scroll";
 
 import { useTranslation } from "next-i18next";
 
-import { GlobeDropdown } from "../GlobeDropdown";
+import { GlobeDropdown } from "../../../components/GlobeDropdown";
 
 import Logo from "/public/assets/logo.svg";
 
-import { Container } from "../../styles/global";
+import { Container } from "../../../styles/global";
 
 import * as S from "./style";
 
-export function Navbar() {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [nav, setShowNav] = useState(false);
 

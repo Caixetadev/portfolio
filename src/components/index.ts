@@ -3,7 +3,5 @@ export * from "./Title";
 export * from "./About";
 export * from "./Hero";
 export * from "./ButtonTop";
-export * from "./Footer";
-export * from "./Navbar";
 export * from "./Button";
 export * from "./Projects";
