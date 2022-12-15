@@ -12,6 +12,9 @@ import "aos/dist/aos.css";
 import { ButtonTop, About, Hero, Projects } from "../components";
 
 import { Main } from "../templates/Main";
+import { client } from "../service/apollo";
+import { gql } from "@apollo/client";
+import { GetProjectsQuery } from "../graphql/generated";
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   useEffect(() => {
@@ -29,13 +32,25 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const url = await fetch("https://apiportfoliocaixeta.herokuapp.com/");
+  const { data } = await client.query<GetProjectsQuery>({
+    query: gql`
+      query GetProjects {
+        projects(orderBy: updatedAt_DESC) {
+          link
+          image
+          title
+          description
+          createdAt
+        }
+      }
+    `,
+  });
 
-  const data: IProjects = await url.json();
+  // const data: IProjects = await url.json();
 
   return {
     props: {
-      projects: data,
+      projects: data.projects,
       ...(await serverSideTranslations(locale as any, ["common", "header"])),
     },
     revalidate: 60 * 60 * 8,
