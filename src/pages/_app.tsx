@@ -1,16 +1,29 @@
+import { useEffect } from "react";
+
+import { appWithTranslation } from "next-i18next";
+
 import type { AppProps } from "next/app";
-import Header from "../components/Head";
+import { ThemeProvider } from "styled-components";
+
+import { hotjar } from "react-hotjar";
+
+import { Header } from "../components";
+
 import GlobalStyle from "../styles/global";
 import theme from "../styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    hotjar.initialize(2993174, 6);
+  }, []);
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header />
       <Component {...pageProps} />
-      <GlobalStyle theme={theme} />
-    </>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -1,0 +1,26 @@
+{
+  "header": {
+    "about": "Sobre",
+    "projects": "proyectos",
+    "linkedin": "Linkedin",
+    "curriculum": "Plan de Estudios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "description": "Desarrollador front-end, especializado en la creación de sitios web modernos y soluciones creativas para Internet.",
+    "iam": "Soy",
+    "chat": "charlemos"
+  },
+  "about": {
+    "title": "Sobre",
+    "description": "Hola, mi nombre es Rafael Caixeta, un desarrollador web autodidacta y freelance. Actualmente estoy trabajando en el desarrollo de Frontend, centrándome en la creación de interfaces receptivas, escribiendo códigos limpios y eficientes. Mis lenguajes de programación favoritos son React, JavaScript, Typescript y Next.js. Soy un apasionado de la tecnología, los libros, los juegos y la música. Puedes contactarme a través de LinkedIn o por correo electrónico y puedes echar un vistazo a lo que estoy desarrollando en GitHub. Si quieres chatear, envíame un mensaje en Discord (caixeta#7777)."
+  },
+  "projects": {
+    "title": "Proyectos",
+    "button": "ver proyecto"
+  },
+  "footer": {
+    "ready": "¿listo para trabajar conmigo?",
+    "right": "Todos los derechos reservados por"
+  }
+}

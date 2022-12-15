@@ -2,13 +2,11 @@
 
 <p>
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+  <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
   <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
 </p>
 
-<img src="https://github.com/Caixetadev/portfolio2.0/blob/main/public/assets/home.png?raw=true" alt="exemplo imagem">
-
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+<img src="https://cdn.discordapp.com/attachments/735929313328758864/985331447411904512/unknown.png" alt="exemplo imagem">
 
 ## 📫 Contribuindo para o Portfólio
 

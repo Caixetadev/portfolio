@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import common from "../../public/locales/en-US/common.json";
 
 export interface ITechs {
   icon: JSX.Element;
-  lang: string;
+  color: string;
 }
 
 export interface IProjects {
@@ -12,9 +12,11 @@ export interface IProjects {
   language: string;
   language2: string;
   language3?: string;
-  icons: { icon: string; icon2: string };
+  linkRepo: string;
+  linkPreview: string;
 }
 
-export interface ISectionTitleProps {
-  title: string;
+export interface Resources {
+  common: typeof common;
+  // as many as files you have
 }
