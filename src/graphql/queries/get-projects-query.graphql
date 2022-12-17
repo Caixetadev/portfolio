@@ -1,0 +1,9 @@
+query GetProjects {
+  projects(orderBy: updatedAt_DESC) {
+    link
+    image
+    title
+    description
+    createdAt
+  }
+}

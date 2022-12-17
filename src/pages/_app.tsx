@@ -7,10 +7,15 @@ import { ThemeProvider } from "styled-components";
 
 import { hotjar } from "react-hotjar";
 
-import { Header } from "../components";
+import { Header } from "components";
 
-import GlobalStyle from "../styles/global";
-import theme from "../styles/theme";
+import GlobalStyle from "styles/global";
+
+import theme from "styles/theme";
+
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../service/apollo";
+import { ProjectsProvider } from "contexts/projectsContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -19,9 +24,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Component {...pageProps} />
-      <GlobalStyle />
+      <ApolloProvider client={client}>
+        <ProjectsProvider>
+          <Header />
+          <Component {...pageProps} />
+          <GlobalStyle />
+        </ProjectsProvider>
+      </ApolloProvider>
     </ThemeProvider>
   );
 }

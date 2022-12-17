@@ -6,14 +6,10 @@ export interface ITechs {
 }
 
 export interface IProjects {
-  name: string;
+  title: string;
   image: string;
   description: string;
-  language: string;
-  language2: string;
-  language3?: string;
-  linkRepo: string;
-  linkPreview: string;
+  link: string;
 }
 
 export interface Resources {

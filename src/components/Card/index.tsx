@@ -1,20 +1,25 @@
+import { ProjectsContext } from "contexts/projectsContext";
+import { useProjectsContext } from "hooks/useProjectsContext";
 import { useTranslation } from "next-i18next";
-import { IProjects } from "../../types";
+import { useContext } from "react";
+import { IProjects } from "types";
 import { Button } from "../Button";
 
 import * as S from "./style";
 
-export function Card({ projects }: { projects: Array<IProjects> }) {
+export function Card() {
+  const { projects } = useProjectsContext();
+
   const { t } = useTranslation("common");
 
   return (
     <>
-      {projects.map(({ name, image, description, linkPreview }) => (
-        <S.Card data-aos="fade-right" key={name}>
+      {projects.map(({ title, image, description, link }) => (
+        <S.Card data-aos="fade-right" key={title}>
           <S.Info>
-            <S.Title>{name}</S.Title>
+            <S.Title>{title}</S.Title>
             <S.Description>{description}</S.Description>
-            <Button link={linkPreview}>{t("projects.button")}</Button>
+            <Button link={link}>{t("projects.button")}</Button>
           </S.Info>
           <S.Image src={image} alt="Image Project" />
         </S.Card>

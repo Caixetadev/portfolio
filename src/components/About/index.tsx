@@ -1,4 +1,5 @@
-import { Container } from "../../styles/global";
+import { Container } from "styles/global";
+
 import { Title } from "..";
 
 import * as S from "./style";
