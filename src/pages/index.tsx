@@ -1,6 +1,6 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import type { GetStaticProps, NextPage } from "next";
 
@@ -15,8 +15,14 @@ import { Main } from "templates/Main";
 import { client } from "service/apollo";
 import { gql } from "@apollo/client";
 import { GetProjectsQuery } from "graphql/generated";
+import { ProjectsContext } from "contexts/projectsContext";
+import { useProjectsContext } from "hooks/useProjectsContext";
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
+  const { setProjects } = useProjectsContext();
+
+  setProjects(projects);
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
@@ -25,7 +31,7 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
     <Main>
       <Hero />
       <About />
-      <Projects projects={projects} />
+      <Projects />
       <ButtonTop />
     </Main>
   );
@@ -45,8 +51,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       }
     `,
   });
-
-  // const data: IProjects = await url.json();
 
   return {
     props: {

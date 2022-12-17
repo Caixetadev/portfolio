@@ -8,14 +8,14 @@ import { Title } from "../Title";
 
 import * as S from "./style";
 
-export function Projects({ projects }: { projects: Array<IProjects> }) {
+export function Projects() {
   const { t } = useTranslation("common");
 
   return (
     <S.SectionProjects id="projects">
       <Container>
         <Title>{t("projects.title")}</Title>
-        <Card projects={projects} />
+        <Card />
       </Container>
     </S.SectionProjects>
   );

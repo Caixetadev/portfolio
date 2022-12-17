@@ -1,10 +1,15 @@
+import { ProjectsContext } from "contexts/projectsContext";
+import { useProjectsContext } from "hooks/useProjectsContext";
 import { useTranslation } from "next-i18next";
+import { useContext } from "react";
 import { IProjects } from "types";
 import { Button } from "../Button";
 
 import * as S from "./style";
 
-export function Card({ projects }: { projects: Array<IProjects> }) {
+export function Card() {
+  const { projects } = useProjectsContext();
+
   const { t } = useTranslation("common");
 
   return (
