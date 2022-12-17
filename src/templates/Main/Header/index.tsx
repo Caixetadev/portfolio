@@ -11,28 +11,15 @@ import Logo from "/public/assets/logo.svg";
 import { Container } from "../../../styles/global";
 
 import * as S from "./style";
+import { useOnScroll } from "../../../hooks/useOnScroll";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [nav, setShowNav] = useState(false);
+  const { isScrolled } = useOnScroll();
 
   const { t } = useTranslation("common");
 
-  const onScroll = useCallback(() => {
-    const scrollIsGreaterThanTwenty = () =>
-      window.scrollY > 20 ? setIsScrolled(true) : setIsScrolled(false);
-
-    window.addEventListener("scroll", scrollIsGreaterThanTwenty);
-
-    return () =>
-      window.removeEventListener("scroll", scrollIsGreaterThanTwenty);
-  }, []);
-
   const toggleMenu = useCallback(() => setShowNav((prev) => !prev), []);
-
-  useEffect(() => {
-    onScroll();
-  }, [onScroll]);
 
   useEffect(() => {
     nav
