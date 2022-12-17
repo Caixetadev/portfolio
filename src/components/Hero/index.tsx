@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 
 import { icons } from "./icons";
 import { Button } from "../Button";
-import { Container } from "../../styles/global";
+import { Container } from "styles/global";
 
 import * as S from "./style";
 

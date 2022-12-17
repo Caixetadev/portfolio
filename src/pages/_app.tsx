@@ -7,11 +7,11 @@ import { ThemeProvider } from "styled-components";
 
 import { hotjar } from "react-hotjar";
 
-import { Header } from "../components";
+import { Header } from "components";
 
-import GlobalStyle from "../styles/global";
+import GlobalStyle from "styles/global";
 
-import theme from "../styles/theme";
+import theme from "styles/theme";
 
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../service/apollo";

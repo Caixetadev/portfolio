@@ -1,5 +1,5 @@
 import { useTranslation } from "next-i18next";
-import { IProjects } from "../../types";
+import { IProjects } from "types";
 import { Button } from "../Button";
 
 import * as S from "./style";

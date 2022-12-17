@@ -11,6 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "baseUrl": "./src",
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true

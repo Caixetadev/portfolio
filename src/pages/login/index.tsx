@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import ArrowLeft from "/public/assets/arrow-left.svg";
-import { Button } from "../../components";
+import { Button } from "components";
 
 import * as S from "./style";
 

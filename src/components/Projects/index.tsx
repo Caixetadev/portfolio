@@ -1,8 +1,8 @@
 import { useTranslation } from "next-i18next";
 
-import { IProjects } from "../../types";
+import { IProjects } from "types";
 
-import { Container } from "../../styles/global";
+import { Container } from "styles/global";
 import { Card } from "../Card";
 import { Title } from "../Title";
 

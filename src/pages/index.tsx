@@ -4,17 +4,17 @@ import { useEffect } from "react";
 
 import type { GetStaticProps, NextPage } from "next";
 
-import { IProjects } from "../types";
+import { IProjects } from "types";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import { ButtonTop, About, Hero, Projects } from "../components";
+import { ButtonTop, About, Hero, Projects } from "components";
 
-import { Main } from "../templates/Main";
-import { client } from "../service/apollo";
+import { Main } from "templates/Main";
+import { client } from "service/apollo";
 import { gql } from "@apollo/client";
-import { GetProjectsQuery } from "../graphql/generated";
+import { GetProjectsQuery } from "graphql/generated";
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   useEffect(() => {
