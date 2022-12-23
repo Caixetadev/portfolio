@@ -1,8 +1,6 @@
-import { ProjectsContext } from "contexts/projectsContext";
 import { useProjectsContext } from "hooks/useProjectsContext";
 import { useTranslation } from "next-i18next";
-import { useContext } from "react";
-import { IProjects } from "types";
+
 import { Button } from "../Button";
 
 import * as S from "./style";

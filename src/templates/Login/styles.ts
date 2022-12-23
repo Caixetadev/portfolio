@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
 
-import Link from "next/link";
-
 export const Section = styled.section`
   display: flex;
   justify-content: center;

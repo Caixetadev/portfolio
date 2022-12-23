@@ -1,56 +1,25 @@
+import type { GetStaticProps, NextPage } from "next";
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { useContext, useEffect } from "react";
-
-import type { GetStaticProps, NextPage } from "next";
+import { ProjectsProvider } from "contexts/projectsContext";
 
 import { IProjects } from "types";
 
-import Aos from "aos";
-import "aos/dist/aos.css";
+import { ProjectsService } from "service/queries/projects";
 
-import { ButtonTop, About, Hero, Projects } from "components";
+import { Home } from "templates/Home";
 
-import { Main } from "templates/Main";
-import { client } from "service/apollo";
-import { gql } from "@apollo/client";
-import { GetProjectsQuery } from "graphql/generated";
-import { ProjectsContext } from "contexts/projectsContext";
-import { useProjectsContext } from "hooks/useProjectsContext";
-
-const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
-  const { setProjects } = useProjectsContext();
-
-  setProjects(projects);
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
-
+const HomePage: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   return (
-    <Main>
-      <Hero />
-      <About />
-      <Projects />
-      <ButtonTop />
-    </Main>
+    <ProjectsProvider projects={projects}>
+      <Home />
+    </ProjectsProvider>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { data } = await client.query<GetProjectsQuery>({
-    query: gql`
-      query GetProjects {
-        projects(orderBy: updatedAt_DESC) {
-          link
-          image
-          title
-          description
-          createdAt
-        }
-      }
-    `,
-  });
+  const { data } = await ProjectsService.getProjects();
 
   return {
     props: {
@@ -61,4 +30,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Home;
+export default HomePage;

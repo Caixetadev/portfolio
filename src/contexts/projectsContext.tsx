@@ -8,22 +8,19 @@ import {
 
 import { IProjects } from "types";
 
-type ProjectsProvider = { children: ReactNode };
+type ProjectsProvider = { children: ReactNode; projects: IProjects[] };
 
 interface IProjectsContext {
   projects: IProjects[];
-  setProjects: Dispatch<SetStateAction<IProjects[]>>;
 }
 
 export const ProjectsContext = createContext<IProjectsContext>(
   {} as IProjectsContext
 );
 
-export const ProjectsProvider = ({ children }: ProjectsProvider) => {
-  const [projects, setProjects] = useState<IProjects[]>([]);
-
+export const ProjectsProvider = ({ children, projects }: ProjectsProvider) => {
   return (
-    <ProjectsContext.Provider value={{ projects, setProjects }}>
+    <ProjectsContext.Provider value={{ projects }}>
       {children}
     </ProjectsContext.Provider>
   );

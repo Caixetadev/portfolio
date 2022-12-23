@@ -1,7 +1,6 @@
 const { i18n } = require("./next-i18next.config");
 /** @type {import('next').NextConfig} */
 module.exports = {
-  pageExtensions: ["tsx"],
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
