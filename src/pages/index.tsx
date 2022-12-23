@@ -10,7 +10,7 @@ import { ProjectsProvider } from "contexts/projectsContext";
 
 import { IProjects } from "types";
 
-import { Main } from "templates/Main";
+import { Layout } from "components/Layout";
 
 import { ButtonTop, About, Hero, Projects } from "components";
 
@@ -25,12 +25,12 @@ const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
 
   return (
     <ProjectsProvider projects={projects}>
-      <Main>
+      <Layout>
         <Hero />
         <About />
         <Projects />
         <ButtonTop />
-      </Main>
+      </Layout>
     </ProjectsProvider>
   );
 };
