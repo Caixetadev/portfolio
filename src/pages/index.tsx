@@ -1,8 +1,10 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import type { GetStaticProps, NextPage } from "next";
+
+import { ProjectsProvider } from "contexts/projectsContext";
 
 import { IProjects } from "types";
 
@@ -15,25 +17,21 @@ import { Main } from "templates/Main";
 import { client } from "service/apollo";
 import { gql } from "@apollo/client";
 import { GetProjectsQuery } from "graphql/generated";
-import { ProjectsContext } from "contexts/projectsContext";
-import { useProjectsContext } from "hooks/useProjectsContext";
 
 const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
-  const { setProjects } = useProjectsContext();
-
-  setProjects(projects);
-
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
 
   return (
-    <Main>
-      <Hero />
-      <About />
-      <Projects />
-      <ButtonTop />
-    </Main>
+    <ProjectsProvider projects={projects}>
+      <Main>
+        <Hero />
+        <About />
+        <Projects />
+        <ButtonTop />
+      </Main>
+    </ProjectsProvider>
   );
 };
 
