@@ -1,36 +1,19 @@
-import { useEffect } from "react";
-
 import type { GetStaticProps, NextPage } from "next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-import Aos from "aos";
 
 import { ProjectsProvider } from "contexts/projectsContext";
 
 import { IProjects } from "types";
 
-import { Layout } from "components/Layout";
-
-import { ButtonTop, About, Hero, Projects } from "components";
-
 import { ProjectsService } from "service/queries/projects";
 
-import "aos/dist/aos.css";
+import { Home } from "templates/Home";
 
-const Home: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
-
+const HomePage: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
   return (
     <ProjectsProvider projects={projects}>
-      <Layout>
-        <Hero />
-        <About />
-        <Projects />
-        <ButtonTop />
-      </Layout>
+      <Home />
     </ProjectsProvider>
   );
 };
@@ -47,4 +30,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Home;
+export default HomePage;
