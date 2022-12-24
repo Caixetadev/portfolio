@@ -1,10 +1,4 @@
-import {
-  useState,
-  createContext,
-  ReactNode,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { createContext, ReactNode } from "react";
 
 import { IProjects } from "types";
 
