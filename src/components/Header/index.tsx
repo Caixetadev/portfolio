@@ -15,7 +15,7 @@ import { useOnScroll } from "hooks/useOnScroll";
 
 export function Header() {
   const [nav, setShowNav] = useState(false);
-  const { isScrolled } = useOnScroll();
+  const { scrollIsGreaterThanHeight } = useOnScroll(20);
 
   const { t } = useTranslation("common");
 
@@ -28,7 +28,7 @@ export function Header() {
   }, [nav]);
 
   return (
-    <S.Header isScrolled={isScrolled}>
+    <S.Header isScrolled={scrollIsGreaterThanHeight}>
       <Container>
         <S.Wrapper>
           <Link to="home" spy={false} smooth="easeInOutQuart" duration={1000}>
