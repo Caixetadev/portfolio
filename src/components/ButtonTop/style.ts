@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 
-const BtnTop = styled.button`
-  ${({ theme }) => css`
+type ButtonTopProps = {
+  scrollIsGreaterThanHeight: boolean;
+};
+
+const BtnTop = styled.button<ButtonTopProps>`
+  ${({ theme, scrollIsGreaterThanHeight }) => css`
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -13,7 +17,7 @@ const BtnTop = styled.button`
     cursor: pointer;
     border: none;
     display: flex;
-    opacity: 0;
+    opacity: ${scrollIsGreaterThanHeight ? "1" : "0"};
     transition: all 0.4s ease;
     justify-content: center;
     align-items: center;
