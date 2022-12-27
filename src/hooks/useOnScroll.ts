@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export function useOnScroll(height: number = 20) {
-  const [isScrolled, setIsScrolled] = useState(false);
+export function useOnScroll(height: number) {
+  const [scrollIsGreaterThanHeight, setScrollIsGreaterThanHeight] =
+    useState(false);
+
+  const handleScroll = useCallback(() => {
+    setScrollIsGreaterThanHeight(window.scrollY > height);
+  }, [height]);
 
   useEffect(() => {
-    const scrollIsGreaterThanHeight = () =>
-      window.scrollY > height ? setIsScrolled(true) : setIsScrolled(false);
+    window.addEventListener("scroll", handleScroll);
 
-    window.addEventListener("scroll", scrollIsGreaterThanHeight);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-    return () =>
-      window.removeEventListener("scroll", scrollIsGreaterThanHeight);
-  });
-
-  return { isScrolled };
+  return { scrollIsGreaterThanHeight };
 }

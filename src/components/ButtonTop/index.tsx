@@ -1,3 +1,4 @@
+import { useOnScroll } from "hooks/useOnScroll";
 import { useEffect, useRef } from "react";
 
 import { FaAngleUp } from "react-icons/fa";
@@ -5,17 +6,7 @@ import { FaAngleUp } from "react-icons/fa";
 import BtnTop from "./style";
 
 export function ButtonTop() {
-  const buttonEl = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    document.addEventListener(`scroll`, () => {
-      if (window.scrollY < 200) {
-        buttonEl.current!.style.opacity = "0";
-      } else {
-        buttonEl.current!.style.opacity = "1";
-      }
-    });
-  }, []);
+  const { scrollIsGreaterThanHeight } = useOnScroll(200);
 
   function scrollTop() {
     window.scrollTo({
@@ -25,7 +16,11 @@ export function ButtonTop() {
   }
 
   return (
-    <BtnTop aria-label="button top" ref={buttonEl} onClick={scrollTop}>
+    <BtnTop
+      aria-label="button top"
+      scrollIsGreaterThanHeight={scrollIsGreaterThanHeight}
+      onClick={scrollTop}
+    >
       <FaAngleUp />
     </BtnTop>
   );
