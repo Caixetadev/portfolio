@@ -14,7 +14,7 @@ import GlobalStyle from "styles/global";
 import theme from "styles/theme";
 
 import { ApolloProvider } from "@apollo/client";
-import { client } from "../service/apollo";
+import { client } from "../services/apollo";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

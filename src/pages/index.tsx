@@ -6,7 +6,7 @@ import { ProjectsProvider } from "contexts/projectsContext";
 
 import { IProjects } from "types";
 
-import { ProjectsService } from "service/queries/projects";
+import { ProjectsService } from "services/queries/projects";
 
 import { Home } from "templates/Home";
 
