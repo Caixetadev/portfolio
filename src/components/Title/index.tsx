@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Container } from "styles/global";
+import { Container } from "../../styles/global";
 
 import * as S from "./style";
 
