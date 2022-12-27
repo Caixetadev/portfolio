@@ -12,20 +12,19 @@ import { Container } from "styles/global";
 
 import * as S from "./style";
 import { useOnScroll } from "hooks/useOnScroll";
+import { useToggle } from "hooks/useToggle";
 
 export function Header() {
-  const [nav, setShowNav] = useState(false);
   const { scrollIsGreaterThanHeight } = useOnScroll(20);
+  const { state, toggle } = useToggle();
 
   const { t } = useTranslation("common");
 
-  const toggleMenu = useCallback(() => setShowNav((prev) => !prev), []);
-
   useEffect(() => {
-    nav
+    state
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "visible");
-  }, [nav]);
+  }, [state]);
 
   return (
     <S.Header isScrolled={scrollIsGreaterThanHeight}>
@@ -86,13 +85,13 @@ export function Header() {
           </S.Nav>
           <S.MenuHamburger
             aria-label="Menu Hamburger"
-            onClick={toggleMenu}
-            className={nav ? "active" : ""}
+            onClick={toggle}
+            className={state ? "active" : ""}
           >
             <S.Bar />
           </S.MenuHamburger>
         </S.Wrapper>
-        <S.MobileWrapper className={nav ? "active" : ""}>
+        <S.MobileWrapper className={state ? "active" : ""}>
           <S.NavItemsMobile>
             <S.ItemsMobile>
               <Link
@@ -101,7 +100,7 @@ export function Header() {
                 offset={-250}
                 smooth="easeInQuint"
                 duration={700}
-                onClick={toggleMenu}
+                onClick={toggle}
               >
                 {t("header.about")}
               </Link>
@@ -113,7 +112,7 @@ export function Header() {
                 offset={-150}
                 smooth="easeInQuint"
                 duration={700}
-                onClick={toggleMenu}
+                onClick={toggle}
               >
                 {t("header.projects")}
               </Link>
@@ -122,13 +121,13 @@ export function Header() {
               <S.Link
                 href="https://linkedin.com/in/caixetadev"
                 target="_blank"
-                onClick={toggleMenu}
+                onClick={toggle}
               >
                 {t("header.linkedin")}
               </S.Link>
             </S.ItemsMobile>
             <S.ItemsMobile>
-              <S.Link onClick={toggleMenu}>{t("header.curriculum")}</S.Link>
+              <S.Link onClick={toggle}>{t("header.curriculum")}</S.Link>
             </S.ItemsMobile>
             <S.ItemsMobile>
               <Link
@@ -136,7 +135,7 @@ export function Header() {
                 spy={false}
                 smooth="easeInOutQuart"
                 duration={1000}
-                onClick={toggleMenu}
+                onClick={toggle}
               >
                 {t("header.contact")}
               </Link>
