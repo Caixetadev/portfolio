@@ -1,4 +1,4 @@
-import { client } from "service/apollo";
+import { client } from "services/apollo";
 
 import { GET_PROJECTS } from "./queries";
 
