@@ -1,4 +1,6 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
+
+import { useToggle } from "hooks/useToggle";
 
 type DropdownProps = {
   children: ReactNode;
@@ -8,14 +10,12 @@ type DropdownProps = {
 import * as S from "./style";
 
 export function Dropdown({ title, children }: DropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleToggle = () => setIsOpen((prev) => !prev);
+  const { state, toggle } = useToggle();
 
   return (
     <S.Wrapper>
-      <S.Title onClick={handleToggle}>{title}</S.Title>
-      <S.Content isOpen={isOpen}>{children}</S.Content>
+      <S.Title onClick={toggle}>{title}</S.Title>
+      <S.Content isOpen={state}>{children}</S.Content>
     </S.Wrapper>
   );
 }
