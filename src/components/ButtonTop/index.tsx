@@ -4,18 +4,18 @@ import { FaAngleUp } from "react-icons/fa";
 
 import { scrollTop } from "./functions/scrollTop";
 
-import BtnTop from "./style";
+import * as S from "./style";
 
 export function ButtonTop() {
   const { scrollIsGreaterThanHeight } = useOnScroll(200);
 
   return (
-    <BtnTop
+    <S.ButtonTop
       aria-label="button top"
       scrollIsGreaterThanHeight={scrollIsGreaterThanHeight}
       onClick={scrollTop}
     >
       <FaAngleUp />
-    </BtnTop>
+    </S.ButtonTop>
   );
 }
