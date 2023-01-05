@@ -2,8 +2,9 @@ import { Container } from "styles/global";
 
 import { Title } from "..";
 
+import { useTranslation, Trans } from "next-i18next";
+
 import * as S from "./style";
-import { useTranslation } from "next-i18next";
 
 export function About() {
   const { t } = useTranslation("common");
@@ -13,7 +14,18 @@ export function About() {
       <Container>
         <div>
           <Title>{t("about.title")}</Title>
-          <S.Paragraph data-aos="fade-up">{t("about.description")}</S.Paragraph>
+          <S.Paragraph data-aos="fade-up">
+            {t("about.description")}{" "}
+            <Trans>
+              <S.Link
+                href="https:discordapp.com/users/437264698786971660"
+                target="_blank"
+              >
+                {t("about.link")}
+              </S.Link>
+            </Trans>
+            {"."}
+          </S.Paragraph>
         </div>
       </Container>
     </S.SectionAbout>
