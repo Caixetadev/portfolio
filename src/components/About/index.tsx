@@ -18,7 +18,7 @@ export function About() {
             {t("about.description")}{" "}
             <Trans>
               <S.Link
-                href="https:discordapp.com/users/437264698786971660"
+                href="https://discordapp.com/users/437264698786971660"
                 target="_blank"
               >
                 {t("about.link")}
