@@ -1,5 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { act } from "react-dom/test-utils";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { useToggle } from "./useToggle";
 
 describe("useToggle", () => {
@@ -9,7 +8,7 @@ describe("useToggle", () => {
     expect(result.current.state).toBe(false);
   });
 
-  it("should change state to true before false", () => {
+  it("should change the state to true and then to false", () => {
     const { result } = renderHook(() => useToggle());
 
     act(() => {

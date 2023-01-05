@@ -4,7 +4,7 @@ type ButtonTopProps = {
   scrollIsGreaterThanHeight: boolean;
 };
 
-const BtnTop = styled.button<ButtonTopProps>`
+export const ButtonTop = styled.button<ButtonTopProps>`
   ${({ theme, scrollIsGreaterThanHeight }) => css`
     position: fixed;
     bottom: 30px;
@@ -28,5 +28,3 @@ const BtnTop = styled.button<ButtonTopProps>`
     }
   `}
 `;
-
-export default BtnTop;
