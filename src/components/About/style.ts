@@ -32,7 +32,6 @@ export const Paragraph = styled.p`
 
 export const Link = styled.a`
   ${({ theme }) => css`
-    text-decoration: underline;
-    text-decoration-color: ${theme.colors.text_blue};
+    color: ${theme.colors.text_blue};
   `}
 `;
