@@ -81,9 +81,14 @@ export const Link = styled.a`
     text-transform: uppercase;
     font-weight: 700;
     margin-top: 2rem;
+    transition: all 0.3s ease;
 
     & + a {
       margin-left: 2rem;
+    }
+
+    &:hover {
+      color: ${theme.colors.text_blue};
     }
 
     @media (max-width: 400px) {
