@@ -4,7 +4,12 @@
     "projects": "Projetos",
     "linkedin": "Linkedin",
     "curriculum": "Curriculo",
-    "contact": "Contato"
+    "contact": "Contato",
+    "languages": {
+      "english": "Inglês",
+      "spanish": "Espanhol",
+      "portuguese": "Português"
+    }
   },
   "hero": {
     "description": "Desenvolvedor front-end, especializado na criação de sites modernos e soluções criativas para a internet.",
