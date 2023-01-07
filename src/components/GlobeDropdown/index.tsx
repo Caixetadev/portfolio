@@ -5,15 +5,20 @@ import Image from "next/image";
 import Globe from "/public/assets/globe.svg";
 
 import { useGetLanguageOptions } from "./hooks/useGetLanguageOptions";
-import { useOnChangeLanguage } from "./hooks/useOnChangeLanguage";
 
 import { Dropdown } from "../Dropdown";
 
 import * as S from "./style";
+import { useRouter } from "next/router";
 
 function GlobeDropdown() {
   const { options } = useGetLanguageOptions();
-  const { onChangeLanguage } = useOnChangeLanguage();
+
+  const router = useRouter();
+
+  const onChangeLanguage = (lang: string) => () => {
+    router.push(router.asPath, undefined, { locale: lang });
+  };
 
   return (
     <Dropdown
