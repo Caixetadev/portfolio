@@ -4,7 +4,12 @@
     "projects": "Projects",
     "linkedin": "Linkedin",
     "curriculum": "Resume",
-    "contact": "Contact"
+    "contact": "Contact",
+    "languages": {
+      "english": "English",
+      "spanish": "Spanish",
+      "portuguese": "Portuguese"
+    }
   },
   "hero": {
     "description": "A Front-end developer, specialized in creating modern websites and creative solutions for web.",

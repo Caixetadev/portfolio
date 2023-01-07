@@ -1,18 +1,19 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
+import { memo } from "react";
 
-import { Dropdown } from "../Dropdown";
-import { options } from "./options";
+import Image from "next/image";
 
 import Globe from "/public/assets/globe.svg";
 
+import { useGetLanguageOptions } from "./hooks/useGetLanguageOptions";
+import { useOnChangeLanguage } from "./hooks/useOnChangeLanguage";
+
+import { Dropdown } from "../Dropdown";
+
 import * as S from "./style";
 
-export function GlobeDropdown() {
-  const router = useRouter();
-  const onChangeLanguage = (lang: string) => () => {
-    router.push(router.asPath, undefined, { locale: lang });
-  };
+function GlobeDropdown() {
+  const { options } = useGetLanguageOptions();
+  const { onChangeLanguage } = useOnChangeLanguage();
 
   return (
     <Dropdown
@@ -29,3 +30,5 @@ export function GlobeDropdown() {
     </Dropdown>
   );
 }
+
+export default memo(GlobeDropdown);

@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 
 import { useTranslation } from "next-i18next";
 
-import { GlobeDropdown } from "components/GlobeDropdown";
+import GlobeDropdown from "components/GlobeDropdown";
 
 import Logo from "/public/assets/logo.svg";
 
