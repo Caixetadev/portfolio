@@ -21,7 +21,7 @@ function GlobeDropdown() {
     >
       <S.Content>
         {options.map(({ flag, name, value }) => (
-          <S.Option key={name} onClick={() => onChangeLanguage(value)}>
+          <S.Option key={name} onClick={onChangeLanguage(value)}>
             <Image src={flag} alt={name} width={20} height={20} />
             <span>{name}</span>
           </S.Option>
