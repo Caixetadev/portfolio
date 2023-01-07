@@ -2,23 +2,18 @@ import { memo } from "react";
 
 import Image from "next/image";
 
-import Globe from "/public/assets/globe.svg";
-
 import { useGetLanguageOptions } from "./hooks/useGetLanguageOptions";
+import { useOnChangeLanguage } from "./hooks/useOnChangeLanguage";
+
+import Globe from "/public/assets/globe.svg";
 
 import { Dropdown } from "../Dropdown";
 
 import * as S from "./style";
-import { useRouter } from "next/router";
 
 function GlobeDropdown() {
   const { options } = useGetLanguageOptions();
-
-  const router = useRouter();
-
-  const onChangeLanguage = (lang: string) => () => {
-    router.push(router.asPath, undefined, { locale: lang });
-  };
+  const { onChangeLanguage } = useOnChangeLanguage();
 
   return (
     <Dropdown
@@ -26,7 +21,7 @@ function GlobeDropdown() {
     >
       <S.Content>
         {options.map(({ flag, name, value }) => (
-          <S.Option key={name} onClick={onChangeLanguage(value)}>
+          <S.Option key={name} onClick={() => onChangeLanguage(value)}>
             <Image src={flag} alt={name} width={20} height={20} />
             <span>{name}</span>
           </S.Option>
