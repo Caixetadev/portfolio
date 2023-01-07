@@ -6,9 +6,11 @@ import { options } from "./options";
 
 import Globe from "/public/assets/globe.svg";
 
+import { memo } from "react";
+
 import * as S from "./style";
 
-export function GlobeDropdown() {
+function GlobeDropdown() {
   const router = useRouter();
   const onChangeLanguage = (lang: string) => () => {
     router.push(router.asPath, undefined, { locale: lang });
@@ -29,3 +31,5 @@ export function GlobeDropdown() {
     </Dropdown>
   );
 }
+
+export default memo(GlobeDropdown);
