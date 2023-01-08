@@ -25,4 +25,16 @@ describe("useToggle", () => {
 
     expect(result.current.state).toBe(false);
   });
+
+  test("should define initial state", () => {
+    const { result } = renderHook(() => useToggle(true));
+
+    expect(result.current.state).toBe(true);
+
+    act(() => {
+      result.current.toggle();
+    });
+
+    expect(result.current.state).toBe(false);
+  });
 });
