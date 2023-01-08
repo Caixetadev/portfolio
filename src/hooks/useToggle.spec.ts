@@ -11,6 +11,8 @@ describe("useToggle", () => {
   it("should toggle the state", () => {
     const { result } = renderHook(() => useToggle());
 
+    expect(result.current.state).toBe(false);
+
     act(() => {
       result.current.toggle();
     });
