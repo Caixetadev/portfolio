@@ -11,11 +11,11 @@ export function Footer() {
       <Container>
         <S.Wrapper>
           <S.Work>{t("footer.ready")}</S.Work>
-          <S.City>Uberlândia, MG, Brazil</S.City>
+          <S.City>Goiânia, GO, Brazil</S.City>
           <S.Email href="mailto:caixetadev@gmail.com" target="_blank">
             caixetadev@gmail.com
           </S.Email>
-          <S.Phone>(+55) 62 996 870 432</S.Phone>
+          <S.Phone>(+55) 62 99687-0432</S.Phone>
           <S.SocialLinks>
             <S.Link href="https://github.com/Caixetadev" target="_blank">
               github
