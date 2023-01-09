@@ -11,7 +11,7 @@ export function Footer() {
       <Container>
         <S.Wrapper>
           <S.Work>{t("footer.ready")}</S.Work>
-          <S.City>Uberlândia, MG, Brazil</S.City>
+          <S.City>Goiânia, GO, Brazil</S.City>
           <S.Email href="mailto:caixetadev@gmail.com" target="_blank">
             caixetadev@gmail.com
           </S.Email>
