@@ -19,12 +19,22 @@ const HomePage: NextPage<{ projects: Array<IProjects> }> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { data } = await ProjectsService.getProjects();
+  if (!locale) return { props: { projects: [] } };
+
+  const format = locale.replace("-", "_");
+
+  const { data } = await ProjectsService.getProjects(
+    locale === "pt-BR" ? "en_US" : format
+  );
 
   return {
     props: {
       projects: data.projects,
-      ...(await serverSideTranslations(locale as any, ["common"], null, ['en', 'es', 'pt'])),
+      ...(await serverSideTranslations(locale as any, ["common"], null, [
+        "en",
+        "es",
+        "pt",
+      ])),
     },
     revalidate: 60 * 60 * 8,
   };
