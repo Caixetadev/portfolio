@@ -4,8 +4,9 @@ import * as S from "./style";
 
 export function Button({ children, link }: ButtonProps) {
   return (
-    <S.Button target="_blank" href={link}>
-      {children}
-    </S.Button>
+    <>
+      {link && <S.ButtonLink href={link}>{children}</S.ButtonLink>}
+      {!link && <S.Button>{children}</S.Button>}
+    </>
   );
 }

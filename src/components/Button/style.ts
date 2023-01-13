@@ -19,3 +19,5 @@ export const Button = styled.a`
     transform: scale(1.1);
   }
 `;
+
+export const ButtonLink = styled(Button)``;
