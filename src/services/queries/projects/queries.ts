@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_PROJECTS = gql`
-  query GetProjects {
-    projects(orderBy: updatedAt_DESC) {
+  query GetProjects($locale: Locale!) {
+    projects(orderBy: updatedAt_DESC, locales: [$locale]) {
       link
       image
       title
