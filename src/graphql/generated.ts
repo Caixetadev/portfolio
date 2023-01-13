@@ -819,7 +819,8 @@ export enum Languages {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  En = 'en'
+  EnUs = 'en_US',
+  EsEs = 'es_ES'
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -1045,8 +1046,11 @@ export type MutationPublishManyAssetsConnectionArgs = {
 
 
 export type MutationPublishManyProjectsArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
   to?: Array<Stage>;
   where?: InputMaybe<ProjectManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1056,15 +1060,21 @@ export type MutationPublishManyProjectsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   from?: InputMaybe<Stage>;
   last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: InputMaybe<ProjectManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 export type MutationPublishProjectArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
   to?: Array<Stage>;
   where: ProjectWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1080,10 +1090,13 @@ export type MutationSchedulePublishAssetArgs = {
 
 
 export type MutationSchedulePublishProjectArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: ProjectWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -1099,8 +1112,10 @@ export type MutationScheduleUnpublishAssetArgs = {
 
 export type MutationScheduleUnpublishProjectArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where: ProjectWhereUniqueInput;
 };
 
@@ -1137,6 +1152,8 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
 
 export type MutationUnpublishManyProjectsArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<ProjectManyWhereInput>;
 };
 
@@ -1147,14 +1164,18 @@ export type MutationUnpublishManyProjectsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   from?: Array<Stage>;
   last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<ProjectManyWhereInput>;
 };
 
 
 export type MutationUnpublishProjectArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where: ProjectWhereUniqueInput;
 };
 
@@ -1260,6 +1281,10 @@ export type Project = Node & {
   id: Scalars['ID'];
   image: Scalars['String'];
   link?: Maybe<Scalars['String']>;
+  /** System Locale field */
+  locale: Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<Project>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -1272,6 +1297,11 @@ export type Project = Node & {
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+export type ProjectCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
 };
 
 
@@ -1295,6 +1325,17 @@ export type ProjectHistoryArgs = {
 };
 
 
+export type ProjectLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  locales?: Array<Locale>;
+};
+
+
+export type ProjectPublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
 export type ProjectPublishedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1310,6 +1351,11 @@ export type ProjectScheduledInArgs = {
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ProjectUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
 };
 
 
@@ -1337,11 +1383,31 @@ export type ProjectConnection = {
 
 export type ProjectCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** description input for default locale (en_US) */
   description?: InputMaybe<Scalars['String']>;
   image: Scalars['String'];
   link?: InputMaybe<Scalars['String']>;
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateLocalizationDataInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateLocalizationInput = {
+  /** Localization input */
+  data: ProjectCreateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type ProjectCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: InputMaybe<Array<ProjectCreateLocalizationInput>>;
 };
 
 export type ProjectCreateManyInlineInput = {
@@ -1393,25 +1459,6 @@ export type ProjectManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
-  description?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  description_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  description_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values that are not equal to given value. */
-  description_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  description_starts_with?: InputMaybe<Scalars['String']>;
   documentInStages_every?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_none?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_some?: InputMaybe<ProjectWhereStageInput>;
@@ -1548,10 +1595,32 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
+  /** description input for default locale (en_US) */
   description?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   link?: InputMaybe<Scalars['String']>;
+  /** Manage document localizations */
+  localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   title?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectUpdateLocalizationDataInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectUpdateLocalizationInput = {
+  data: ProjectUpdateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type ProjectUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: InputMaybe<Array<ProjectCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete?: InputMaybe<Array<Locale>>;
+  /** Localizations to update */
+  update?: InputMaybe<Array<ProjectUpdateLocalizationInput>>;
+  upsert?: InputMaybe<Array<ProjectUpsertLocalizationInput>>;
 };
 
 export type ProjectUpdateManyInlineInput = {
@@ -1572,10 +1641,27 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
+  /** description input for default locale (en_US) */
   description?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   link?: InputMaybe<Scalars['String']>;
+  /** Optional updates to localizations */
+  localizations?: InputMaybe<ProjectUpdateManyLocalizationsInput>;
   title?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectUpdateManyLocalizationDataInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type ProjectUpdateManyLocalizationInput = {
+  data: ProjectUpdateManyLocalizationDataInput;
+  locale: Locale;
+};
+
+export type ProjectUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update?: InputMaybe<Array<ProjectUpdateManyLocalizationInput>>;
 };
 
 export type ProjectUpdateManyWithNestedWhereInput = {
@@ -1612,6 +1698,12 @@ export type ProjectUpsertInput = {
   create: ProjectCreateInput;
   /** Update document if it exists */
   update: ProjectUpdateInput;
+};
+
+export type ProjectUpsertLocalizationInput = {
+  create: ProjectCreateLocalizationDataInput;
+  locale: Locale;
+  update: ProjectUpdateLocalizationDataInput;
 };
 
 export type ProjectUpsertWithNestedWhereUniqueInput = {
