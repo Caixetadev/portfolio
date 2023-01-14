@@ -5,7 +5,7 @@ export function useOnScroll(height: number) {
     useState(false);
 
   const handleScroll = useCallback(() => {
-    setScrollIsGreaterThanHeight(window.scrollY > height);
+    setScrollIsGreaterThanHeight(window.scrollY >= height);
   }, [height]);
 
   useEffect(() => {
