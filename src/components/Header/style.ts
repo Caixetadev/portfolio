@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 
 type PropsHeader = {
   isScrolled: boolean;
+  showHeader: boolean;
 };
 
 export const Header = styled.header<PropsHeader>`
-  ${({ theme, isScrolled }) => css`
+  ${({ theme, isScrolled, showHeader }) => css`
     display: flex;
     align-items: center;
     background-color: ${isScrolled
@@ -15,7 +16,7 @@ export const Header = styled.header<PropsHeader>`
     height: ${isScrolled ? "7rem" : "8rem"};
     backdrop-filter: blur(5px);
     position: fixed;
-    top: 0;
+    top: ${showHeader ? "-130px" : "0px"};
     left: 0;
     z-index: 2;
     transition: all 0.3s ease;
