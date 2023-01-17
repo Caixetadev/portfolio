@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { Link } from "react-scroll";
 
@@ -13,10 +13,12 @@ import { Container } from "styles/global";
 import * as S from "./style";
 import { useOnScroll } from "hooks/useOnScroll";
 import { useToggle } from "hooks/useToggle";
+import { useTeste } from "hooks/teste";
 
 export function Header() {
   const { scrollIsGreaterThanHeight } = useOnScroll(20);
   const { state, toggle } = useToggle();
+  const { showHeader } = useTeste();
 
   const { t } = useTranslation("common");
 
@@ -27,7 +29,7 @@ export function Header() {
   }, [state]);
 
   return (
-    <S.Header isScrolled={scrollIsGreaterThanHeight}>
+    <S.Header showHeader={showHeader} isScrolled={scrollIsGreaterThanHeight}>
       <Container>
         <S.Wrapper>
           <Link to="home" spy={false} smooth="easeInOutQuart" duration={1000}>

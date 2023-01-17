@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 import { IProjects } from "types";
 
@@ -12,10 +12,14 @@ export const ProjectsContext = createContext<IProjectsContext>(
   {} as IProjectsContext
 );
 
-export const ProjectsProvider = ({ children, projects }: ProjectsProvider) => {
+const ProjectsProvider = ({ children, projects }: ProjectsProvider) => {
   return (
     <ProjectsContext.Provider value={{ projects }}>
       {children}
     </ProjectsContext.Provider>
   );
 };
+
+const useProjectsContext = () => useContext(ProjectsContext);
+
+export { ProjectsProvider, useProjectsContext };
