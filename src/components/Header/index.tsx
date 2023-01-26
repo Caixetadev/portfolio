@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { Link } from "react-scroll";
 
@@ -10,15 +10,16 @@ import Logo from "/public/assets/logo.svg";
 
 import { Container } from "styles/global";
 
-import * as S from "./style";
 import { useOnScroll } from "hooks/useOnScroll";
 import { useToggle } from "hooks/useToggle";
-import { useTeste } from "hooks/teste";
+import { useShowHeader } from "components/Header/hooks/useShowHeader";
+
+import * as S from "./style";
 
 export function Header() {
   const { scrollIsGreaterThanHeight } = useOnScroll(20);
   const { state, toggle } = useToggle();
-  const { showHeader } = useTeste();
+  const { showHeader } = useShowHeader();
 
   const { t } = useTranslation("common");
 
