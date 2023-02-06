@@ -12,14 +12,12 @@ import { Container } from "styles/global";
 
 import { useOnScroll } from "hooks/useOnScroll";
 import { useToggle } from "hooks/useToggle";
-import { useShowHeader } from "components/Header/hooks/useShowHeader";
 
 import * as S from "./style";
 
 export function Header() {
   const { scrollIsGreaterThanHeight } = useOnScroll(20);
   const { state, toggle } = useToggle();
-  const { showHeader } = useShowHeader();
 
   const { t } = useTranslation("common");
 
@@ -30,7 +28,7 @@ export function Header() {
   }, [state]);
 
   return (
-    <S.Header showHeader={showHeader} isScrolled={scrollIsGreaterThanHeight}>
+    <S.Header isScrolled={scrollIsGreaterThanHeight}>
       <Container>
         <S.Wrapper>
           <Link to="home" spy={false} smooth="easeInOutQuart" duration={1000}>
