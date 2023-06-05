@@ -67,9 +67,6 @@ export function Header() {
                 </S.Link>
               </S.Items>
               <S.Items>
-                <S.Link>{t("header.curriculum")}</S.Link>
-              </S.Items>
-              <S.Items>
                 <GlobeDropdown />
               </S.Items>
               <S.Items>
