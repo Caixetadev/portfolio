@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import { Container } from "styles/global";
 
 import * as S from "./style";
+import { Link } from "react-scroll";
 
 export function Hero() {
   const { t } = useTranslation("common");
@@ -26,7 +27,15 @@ export function Hero() {
               </S.Link>
             ))}
           </S.Icons>
-          <Button>{t("hero.chat")}</Button>
+          <Link
+            to="contact"
+            spy={false}
+            offset={-250}
+            smooth="easeInQuint"
+            duration={700}
+          >
+            <Button>{t("hero.chat")}</Button>
+          </Link>
         </S.Wrapper>
         <S.Box>
           <S.Arrow />
