@@ -16,16 +16,15 @@ export const Card = styled.div`
 
     @media (max-width: 1200px) {
       width: 100%;
-      margin: 13rem auto;
       &:nth-child(2n + 1) {
         margin-left: 0;
       }
     }
 
     @media (max-width: 656px) {
+      margin-top: 3rem;
       flex-direction: column-reverse;
       width: 100%;
-      margin: 13rem auto;
       height: auto;
       &:nth-child(2n + 1) {
         margin-left: 0;
@@ -59,6 +58,10 @@ export const Info = styled.div`
 export const Title = styled.h1`
   font-size: 3.2rem;
   font-weight: 500;
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+  }
 `;
 
 export const Description = styled.p`
@@ -66,4 +69,8 @@ export const Description = styled.p`
   font-weight: 300;
   text-align: center;
   max-width: 90%;
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
 `;

@@ -18,8 +18,7 @@
   },
   "about": {
     "title": "About",
-    "description": "Hi, my name is Rafael Caixeta, a self-taught and freelance web developer. I'm currently working into Frontend development, focusing on building responsive interfaces, writting clean and efficient codes. My favorite programming languages are React, JavaScript, Typescript and Next.js. I’m passionate about technology, books, games and music. You can contact me through LinkedIn or by email and you can take a look on what I'm developing on GitHub. If you want to chat, send me a message on Discord",
-    "link": "(caixeta#9962)"
+    "description": "<p>Hi, my name is Rafael Caixeta, a self-taught and freelance web developer.</p> <p>I'm currently working into Frontend development, focusing on building responsive interfaces, writting clean and efficient codes.</p> <p>My favorite programming languages are React, JavaScript, Typescript and Next.js.</p> <p>I’m passionate about technology, books, games and music.</p> <p>You can contact me through LinkedIn or by email and you can take a look on what I'm developing on GitHub.</p> <p>If you want to chat, send me a message on Discord <a href='https://discordapp.com/users/437264698786971660' target='_blank'>(caixeta#9962)</a>.</p>"
   },
   "projects": {
     "title": "Projects",

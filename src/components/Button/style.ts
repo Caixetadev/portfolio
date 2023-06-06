@@ -18,6 +18,10 @@ export const Button = styled.a`
   &:hover {
     transform: scale(1.1);
   }
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const ButtonLink = styled(Button)``;

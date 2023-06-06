@@ -1,13 +1,5 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  @media (max-width: 992px) {
-    h2 {
-      font-size: 3rem;
-    }
-  }
-`;
-
 export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: 4.8rem;
@@ -22,6 +14,16 @@ export const Title = styled.h2`
       position: absolute;
       bottom: 1.5rem;
       z-index: -1;
+    }
+
+    @media (max-width: 600px) {
+      &:before {
+        height: 10px;
+        width: 6rem;
+        bottom: 8px;
+      }
+
+      font-size: 3rem;
     }
   `}
 `;

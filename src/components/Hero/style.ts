@@ -12,6 +12,10 @@ export const SectionHome = styled.main`
   background-image: url(${Text.src});
   background-repeat: no-repeat;
   background-position: right;
+
+  @media (max-width: 600px) {
+    background-size: 380px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -24,11 +28,17 @@ export const Name = styled.h1`
     font-weight: 500;
     font-size: 2.4rem;
   }
+
   font-weight: 600;
   font-size: 4.8rem;
 
   @media (max-width: 600px) {
-    font-size: 4rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 2rem;
+    }
   }
 `;
 

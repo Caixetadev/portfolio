@@ -18,8 +18,7 @@
   },
   "about": {
     "title": "Sobre",
-    "description": "Olá, meu nome é Rafael Caixeta, desenvolvedor web autodidata e freelancer. Atualmente estou trabalhando no desenvolvimento Frontend, focando na construção de interfaces responsivas, escrevendo códigos limpos e eficientes. Minhas linguagens de programação favoritas são React, JavaScript, Typescript e Next.js. Sou apaixonado por tecnologia, livros, jogos e música. Você pode entrar em contato comigo pelo LinkedIn ou por e-mail e dar uma olhada no que estou desenvolvendo no GitHub. Se quiser bater um papo, me mande uma mensagem no Discord",
-    "link": "(caixeta#9962)"
+    "description": "<p>Olá, meu nome é Rafael Caixeta, desenvolvedor web autodidata e freelancer.</p> <p>Atualmente estou trabalhando no desenvolvimento Frontend, focando na construção de interfaces responsivas, escrevendo códigos limpos e eficientes.</p> <p>Minhas linguagens de programação favoritas são React, JavaScript, Typescript e Next.js.</p> <p>Sou apaixonado por tecnologia, livros, jogos e música.</p> <p>Você pode entrar em contato comigo pelo LinkedIn ou por e-mail e dar uma olhada no que estou desenvolvendo no GitHub.</p> <p>Se quiser bater um papo, me mande uma mensagem no Discord <a href='https://discordapp.com/users/437264698786971660' target='_blank'>(caixeta#9962)</a>.</p>"
   },
   "projects": {
     "title": "Projetos",

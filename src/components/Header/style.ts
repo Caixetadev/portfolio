@@ -112,7 +112,7 @@ export const NavItemsMobile = styled.ul`
 export const ItemsMobile = styled.li`
   text-transform: uppercase;
   font-weight: 500;
-  margin: 3rem 0; ;
+  margin: 3rem 0;
 `;
 
 export const NavItems = styled.ul`
@@ -139,6 +139,7 @@ export const Items = styled.li`
 
 export const Logo = styled.img`
   cursor: pointer;
+  width: 120px;
 `;
 
 export const Link = styled.a``;
