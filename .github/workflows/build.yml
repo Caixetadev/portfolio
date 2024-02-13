@@ -1,9 +1,9 @@
 name: Build and Test on Pull Requests
 
 on:
-  pull_request:
+  push:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
