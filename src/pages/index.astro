@@ -60,14 +60,13 @@ const experiences = await getCollection('experiences')
         <ul class="divide-y divide-[#2a2a2a]">
           {
             experiences.map((project) => (
-              <div class="py-4 first:pt-0">
-                <Experience
-                  title={project.data.title}
-                  description={project.data.description}
-                  location={project.data.location}
-                  dates={project.data.dates}
-                />
-              </div>
+              <Experience
+                class="py-4 first:pt-0"
+                title={project.data.title}
+                description={project.data.description}
+                location={project.data.location}
+                dates={project.data.dates}
+              />
             ))
           }
         </ul>
