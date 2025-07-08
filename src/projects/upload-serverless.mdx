@@ -1,0 +1,54 @@
+---
+title: "Serverless Image Upload (Golang + AWS + Terraform)"
+slug: "upload-serverless"
+description: "A serverless image upload application"
+date: DATE[yyyy/MM/dd]		
+previewLink: "https://github.com/Caixetadev/upload-serverless"
+githubLink: "https://github.com/Caixetadev/upload-serverless"
+image: "/upload-serverless.png"
+technologies: [
+  {
+  language: "Golang",
+  link: "https://go.dev/"
+  },
+  {
+  language: "Terraform",
+  link: "https://developer.hashicorp.com/terraform"
+  },
+  {
+  language: "Amazon API Gateway",
+  link: "https://aws.amazon.com/api-gateway/"
+  },
+  {
+  language: "Lambda",
+  link: "https://aws.amazon.com/lambda/"
+  },
+  {
+  language: "S3",
+  link: "https://aws.amazon.com/s3/"
+  },
+  {
+  language: "SQS",
+  link: "https://aws.amazon.com/sqs/"
+  },
+  {
+  language: "SNS",
+  link: "https://aws.amazon.com/sns/"
+  },
+  {
+  language: "SES",
+  link: "https://aws.amazon.com/ses/"
+  }
+]
+---
+This project was developed with the goal of studying AWS services.
+It’s a fully serverless image upload application built with Go (Golang) and several AWS services. The entire infrastructure was provisioned using Terraform, which allowed me to learn a lot about both AWS and infrastructure as code.
+
+As shown in the diagram below, the flow begins with a request to the API Gateway,
+which triggers a Lambda function responsible for uploading the image to S3. After the upload, metadata about the image is sent to an SQS queue.
+
+Another Lambda function listens to this queue and, when it detects new messages,
+sends a notification email using Amazon SES.
+
+If any failure occurs during the process,
+the message is redirected to a Dead Letter Queue (DLQ), and an error notification is sent to the user via Amazon SNS.

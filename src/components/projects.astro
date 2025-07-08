@@ -1,0 +1,41 @@
+---
+const mockProjects = [
+  {
+    slug: 'gophimation',
+    title: 'Gophimation',
+    time: { created: '02/13/2023' },
+  },
+  {
+    slug: 'cutez',
+    title: 'Cutez',
+    time: { created: '07/09/2023' },
+  },
+  {
+    slug: 'upload-serverless',
+    title: 'Upload Serverless',
+    time: { created: '01/01/2024' },
+  },
+]
+
+const projects = mockProjects.sort((a, b) => {
+  return new Date(b.time.created).getTime() - new Date(a.time.created).getTime()
+})
+---
+
+<div class="flex flex-col">
+  {
+    projects.map((post) => (
+      <div>
+        <div class="border-[#2a2a2a] border-t" />
+        <a
+          href={`/${post.slug}`}
+          class="flex w-full justify-between py-2"
+          astro-
+        >
+          <p>{post.title}</p>
+          <p class="mt-0 text-muted-foreground text-xs">{post.time.created}</p>
+        </a>
+      </div>
+    ))
+  }
+</div>

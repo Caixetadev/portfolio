@@ -1,0 +1,14 @@
+---
+const { dates, title, location, description } = Astro.props
+---
+
+<li class="relative">
+  <div class="flex flex-1 flex-col justify-start gap-1">
+    <time class="text-[10px] text-muted-foreground italic">
+      {dates}
+    </time>
+    <h2 class="font-medium leading-none">{title}</h2>
+    <p class="text-muted-foreground text-xs">{location}</p>
+    <span class="text-muted-foreground text-sm">{description}</span>
+  </div>
+</li>
