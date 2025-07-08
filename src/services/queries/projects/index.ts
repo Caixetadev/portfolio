@@ -1,1 +1,0 @@
-export { ProjectsService } from "./projects";

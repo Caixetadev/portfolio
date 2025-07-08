@@ -1,0 +1,64 @@
+---
+import { AnimationContainer } from '../components/animation'
+import { SEO } from 'astro-seo'
+import '../styles/global.css'
+
+const { title, description, image } = Astro.props
+
+const siteURL = 'https://caixeta.dev'
+const fullURL = siteURL + Astro.url.pathname
+const siteName = 'Rafael Caixeta'
+const twitterHandle = '@caixetadev'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <SEO
+      title={`${title} | ${siteName}`}
+      description={description}
+      canonical={fullURL}
+      openGraph={{
+        basic: {
+          title: `${title} | ${siteName}`,
+          type: 'website',
+          url: fullURL,
+          image: siteURL + image,
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: `${title} | ${siteName}`,
+        description,
+        image: siteURL + image,
+        creator: twitterHandle,
+      }}
+      extend={{
+        link: [{ rel: 'icon', href: '/favicon.svg' }],
+      }}
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+  </head>
+  <body class="antialiased mx-auto max-w-2xl md:pt-10 p-4 md:p-0">
+    <AnimationContainer client:load>
+      <slot />
+    </AnimationContainer>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+---
+import { OpenSourceChart } from './chart.jsx'
+
+type GroupedDataProps = {
+  created_at: string
+  title: string
+  html_url: string
+}
+
+const groupedData = (data: GroupedDataProps[]) => {
+  const groupedMap = new Map()
+
+  data.forEach((item) => {
+    const date = new Date(item.created_at)
+    const yearMonthDay = date.toISOString().split('T')[0]
+    const formattedDate = new Intl.DateTimeFormat('en-US').format(date)
+    const key = `${yearMonthDay}-${formattedDate}`
+
+    if (!groupedMap.has(key)) {
+      groupedMap.set(key, {
+        formattedDate,
+        value: 0,
+        pullRequests: [],
+        timestamp: date.getTime(),
+      })
+    }
+
+    const entry = groupedMap.get(key)
+    entry.pullRequests.push({
+      title: item.title,
+      url: item.html_url,
+    })
+    entry.value = entry.pullRequests.length
+  })
+
+  return Array.from(groupedMap.values()).sort(
+    (a, b) => a.timestamp - b.timestamp,
+  )
+}
+
+const processedData = groupedData(Astro.props.data)
+---
+
+<OpenSourceChart data={processedData} client:load />

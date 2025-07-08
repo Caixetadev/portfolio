@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
+import { render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => {
+    return {
+      params: { project: project.data.slug },
+      props: { project: project.data },
+    }
+  })
+}
+
+const { project } = Astro.props
+const entry = await getEntry('projects', project.slug)
+if (!entry) {
+  throw new Error('Could not find project')
+}
+const { Content } = await render(entry)
+---
+
+<Layout
+  title={project.title}
+  description={project.description}
+  image={project.image}
+>
+  <div class="h-[calc(100vh-150px)]">
+    <div class="flex flex-col gap-1 w-full">
+      <h1 class="capitalize text-2xl">{project.title}</h1>
+      <p class="text-muted-foreground text-xs">Jun 10, 2025</p>
+    </div>
+    <div class="text-muted-foreground my-2 flex flex-col gap-4">
+      <Content />
+    </div>
+
+    <a class="opacity-100!" target="_blank" href={project.previewLink}>
+      <img src={project.image} alt="" />
+    </a>
+
+    <div class="mt-2 text-xs text-muted-foreground">
+      <a href={project.githubLink} target="_blank">View Code</a>
+    </div>
+
+    <div class="mt-6">
+      <h3 class="">Technologies Used:</h3>
+      <div class="flex flex-wrap gap-2 mt-2 text-muted-foreground">
+        {
+          project.technologies.map((technologie) => (
+            <a href={technologie.link} target="_blank">
+              {technologie.language}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Refine - Frontend Developer",
+    "description": "At Refine, a company focused on building web3 solutions, I worked on developing reusable frontend components and implementing smart contract integrations to connect web applications with blockchain features.",
+    "location": "Dublin, Ireland",
+    "dates": "2024-02 - Current"
+  },
+  {
+    "id": 2,
+    "title": "Serpens - Frontend Developer",
+    "description": "At Serpens, I developed landing pages and web applications tailored to client needs, handling the full frontend development workflow.",
+    "location": "São Paulo, Brazil",
+    "dates": "2022-09 - 2023-03"
+  }
+]
