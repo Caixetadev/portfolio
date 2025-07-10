@@ -27,11 +27,7 @@ const projects = mockProjects.sort((a, b) => {
     projects.map((post) => (
       <div>
         <div class="border-[#2a2a2a] border-t" />
-        <a
-          href={`/${post.slug}`}
-          class="flex w-full justify-between py-2"
-          astro-
-        >
+        <a href={`/${post.slug}`} class="flex w-full justify-between py-2">
           <p>{post.title}</p>
           <p class="mt-0 text-muted-foreground text-xs">{post.time.created}</p>
         </a>
