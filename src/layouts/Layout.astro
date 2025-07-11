@@ -52,7 +52,26 @@ const twitterHandle = '@caixetadev'
         creator: twitterHandle,
       }}
       extend={{
-        link: [{ rel: 'icon', href: '/favicon.svg' }],
+        link: [
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: '/favicon-32x32.png',
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '196x196',
+            href: '/android-chrome-196x196.png',
+          },
+          {
+            rel: 'apple-touch-icon',
+            sizes: '180x180',
+            href: '/apple-touch-icon.png',
+          },
+          { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+        ],
       }}
     />
 
