@@ -1,0 +1,19 @@
+services:
+  portfolio:
+    container_name: portfolio
+    build:
+      context: .
+      target: production
+    ports:
+      - 3333:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`caixeta.dev`)"
+      - "traefik.http.routers.portfolio.entrypoints=websecure"
+      - "traefik.http.routers.portfolio.tls.certresolver=le"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
