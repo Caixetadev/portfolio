@@ -1,0 +1,78 @@
+---
+title: "Bitcoin CLI"
+slug: "bitcoin-cli"
+description: "A Go-based CLI to analyze and simulate a Bitcoin portfolio from real purchase data."
+date: Feb 05, 2026
+previewLink: "https://github.com/caixetadev/btc"
+githubLink: "https://github.com/caixetadev/btc"
+image: ""
+technologies: [
+  {
+    language: "Golang",
+    link: "https://go.dev/"
+  }
+]
+---
+
+A CLI written in Go to analyze and simulate the performance of a Bitcoin portfolio using real purchase data.
+
+The project was designed for people who prefer working with simple files, automation, and the command line, without relying on external platforms.
+
+**The problem**
+
+When you buy Bitcoin or satoshis, the amount you own stays the same, but the value in USD changes over time.
+
+After a few purchases, understanding how much you actually paid for each one requires digging through old transactions, checking the Bitcoin price on the purchase date, and doing manual calculations. This process is repetitive, slow, and error-prone.
+
+**The solution**
+
+The CLI automates this calculation.
+
+Using a simple CSV file with your purchases, the CLI analyzes each transaction, calculates profit or loss based on the current price, and generates a clear portfolio summary. You can also simulate price scenarios to understand how the portfolio would behave under different market conditions.
+
+Everything runs locally, directly in the terminal.
+
+## Example usage
+
+The image below shows the main command analyzing a real portfolio:
+
+```bash
+➜ btc analyze transactions.example.csv
+═══════════════════════════════════════════════════════════
+                    PORTFOLIO ANALYSIS
+═══════════════════════════════════════════════════════════
+
+  Current BTC price:      $69467.00
+  Total BTC:              0.09800000 BTC
+  Total Satoshis:         9800000 sats
+  Total invested:         $4630.00
+  Average purchase price: $47244.90
+  Current value:          $6807.77
+
+  Profit:                 +$2177.77 (+47.04%)
+
+───────────────────────────────────────────────────────────
+                    PURCHASE DETAILS
+───────────────────────────────────────────────────────────
+
+  [1] 2021-01-15 10:30
+      BTC: 0.05000000 | Sats: 5000000
+      Paid: $1800.00 | Price: $36000.00/BTC
+      Current value: $3473.35 (+$1673.35 / +92.96%)
+
+  [2] 2021-07-20 14:45
+      BTC: 0.03000000 | Sats: 3000000
+      Paid: $900.00 | Price: $30000.00/BTC
+      Current value: $2084.01 (+$1184.01 / +131.56%)
+
+  [3] 2025-01-20 15:30
+      BTC: 0.01000000 | Sats: 1000000
+      Paid: $1050.00 | Price: $105000.00/BTC
+      Current value: $694.67 (-$355.33 / -33.84%)
+
+  [4] 2025-12-15 10:00
+      BTC: 0.00800000 | Sats: 800000
+      Paid: $880.00 | Price: $110000.00/BTC
+      Current value: $555.74 (-$324.26 / -36.85%)
+
+═══════════════════════════════════════════════════════════
