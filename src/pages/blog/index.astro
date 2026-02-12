@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const posts = await getCollection('posts')
+const posts = await getCollection('posts', ({ data }) => !data.draft)
 
 const sortedPosts = posts.sort((a, b) => {
   return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()

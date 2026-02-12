@@ -93,6 +93,7 @@ const posts = defineCollection({
     date: z.string(),
     category: z.string(),
     tags: z.array(z.string()).optional(),
+    draft: z.boolean().optional(),
   }),
 })
 
