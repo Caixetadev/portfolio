@@ -14,6 +14,7 @@ export default defineConfig({
   site: 'https://caixeta.dev',
   integrations: [react(), sitemap(), mdx()],
   prefetch: true,
+  trailingSlash: 'never',
   markdown: {
     shikiConfig: {
       theme: {
