@@ -9,6 +9,11 @@ const siteURL = 'https://caixeta.dev'
 const fullURL = siteURL + Astro.url.pathname
 const siteName = 'Rafael Caixeta'
 const twitterHandle = '@caixetadev'
+
+const isHome = Astro.url.pathname === '/'
+const pageTitle = isHome
+  ? 'Rafael Caixeta — Software Engineer | Go, React & Cloud'
+  : `${title} | ${siteName}`
 ---
 
 <!doctype html>
@@ -20,36 +25,39 @@ const twitterHandle = '@caixetadev'
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      as="style"
-      crossorigin="anonymous"
     />
 
     <meta name="author" content="Rafael Caixeta" />
     <meta
       name="keywords"
-      content="frontend, go developer, next.js, open source, cloud infrastructure"
+      content="Rafael Caixeta, caixetadev, caixeta dev, rafael caixeta developer, rafael caixeta software engineer, software engineer, Go developer, React developer, frontend engineer, backend developer, Golang, JavaScript, TypeScript, Next.js, Linux, open source, cloud infrastructure, AWS"
     />
 
     <SEO
-      title={`${title} | ${siteName}`}
+      title={pageTitle}
       description={description}
       canonical={fullURL}
       openGraph={{
         basic: {
-          title: `${title} | ${siteName}`,
-          type: 'website',
+          title: pageTitle,
+          type: isHome ? 'profile' : 'website',
           url: fullURL,
           image: siteURL + image,
+        },
+        optional: {
+          siteName: siteName,
+          locale: 'en_US',
         },
       }}
       twitter={{
         card: 'summary_large_image',
-        title: `${title} | ${siteName}`,
+        title: pageTitle,
         description,
         image: siteURL + image,
         creator: twitterHandle,
+        site: twitterHandle,
       }}
       extend={{
         link: [
@@ -77,21 +85,24 @@ const twitterHandle = '@caixetadev'
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <style>
-      @view-transition {
-        navigation: auto;
-      }
-    </style>
+    <slot name="head" />
+
+    <noscript>
+      <style>
+        body * {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body
-    class="min-h-screen h-full antialiased mx-auto max-w-2xl md:pt-10 p-4 md:p-0"
+    class="min-h-screen antialiased mx-auto max-w-2xl md:pt-10 p-4 md:p-0 bg-background text-foreground"
   >
     <AnimationContainer client:load>
-      <div class="flex h-[calc(100vh-40px)] flex-col">
+      <main class="pb-5">
         <slot />
-
-        <footer class="mt-auto pt-2 text-xs text-muted-foreground"></footer>
-      </div>
+      </main>
     </AnimationContainer>
   </body>
 </html>

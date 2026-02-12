@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Projects from '../components/projects.astro'
+import BlogPosts from '../components/blog-posts.astro'
 import OpenSouceChart from '../components/open-source.astro'
 import Experience from '../components/experience.astro'
 
@@ -8,90 +9,171 @@ import { getCollection } from 'astro:content'
 
 const projects = await getCollection('openSource')
 const experiences = await getCollection('experiences')
+const allPosts = await getCollection('posts', ({ data }) => !data.draft)
+const recentPosts = allPosts
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  )
+  .slice(0, 3)
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rafael Caixeta',
+  alternateName: 'caixetadev',
+  url: 'https://caixeta.dev',
+  image: 'https://caixeta.dev/og.jpg',
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Refine',
+    url: 'https://refine.dev',
+  },
+  knowsAbout: [
+    'Go',
+    'Golang',
+    'React',
+    'JavaScript',
+    'TypeScript',
+    'Next.js',
+    'Frontend Development',
+    'Backend Development',
+    'Cloud Infrastructure',
+    'AWS',
+    'Linux',
+    'Open Source',
+    'Web3',
+    'Smart Contracts',
+  ],
+  sameAs: [
+    'https://github.com/caixetadev',
+    'https://www.linkedin.com/in/caixetadev/',
+    'https://x.com/caixetadev',
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Rafael Caixeta',
+  alternateName: 'caixetadev',
+  url: 'https://caixeta.dev',
+  author: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+  },
+}
 ---
 
 <Layout
   title="Home"
-  description="Rafael Caixeta is a software engineer working with JavaScript and React, passionate about backend development with Go, cloud technologies, and open source contributions."
+  description="Rafael Caixeta (caixetadev) is a software engineer specializing in Go, React, and cloud infrastructure. Building frontend interfaces, contributing to open source projects, and developing backend services with Golang."
   image="/og.jpg"
 >
-  <div class="animation-container">
-    <div class="animation-item">
-      <h1 class="text-2xl">Software Engineer & Open Source Enthusiast.</h1>
-      <p class="text-muted-foreground">
-        I’m Rafael Caixeta. I build frontend interfaces, contribute to open
-        source, and spend my free time coding in Go and learning cloud
-        infrastructure.
-      </p>
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+  </Fragment>
 
-      <section class="mt-4 flex flex-wrap gap-4">
+  <div>
+    <h1 class="text-2xl">Software Engineer & Open Source Enthusiast.</h1>
+    <p class="text-muted-foreground">
+      I'm Rafael Caixeta. I build frontend interfaces, contribute to open
+      source, and spend my free time coding in Go and learning cloud
+      infrastructure.
+    </p>
+
+    <section class="mt-4 flex flex-wrap gap-4">
+      <a
+        class="underline underline-offset-1 transition-all"
+        href="https://github.com/caixetadev"
+        target="_blank"
+        rel="me noopener noreferrer"
+      >
+        Github
+      </a>
+
+      <a
+        class="underline underline-offset-1 transition-all"
+        href="https://www.linkedin.com/in/caixetadev/"
+        target="_blank"
+        rel="me noopener noreferrer"
+      >
+        Linkedin
+      </a>
+
+      <a
+        class="underline underline-offset-1 transition-all"
+        href="https://x.com/caixetadev"
+        target="_blank"
+        rel="me noopener noreferrer"
+      >
+        Twitter
+      </a>
+    </section>
+
+    <section class="mt-6">
+      <h2 class="pb-4 text-muted-foreground capitalize">Featured Projects</h2>
+      <Projects />
+    </section>
+
+    <section class="mt-6">
+      <div class="flex items-center justify-between pb-4">
+        <h2 class="text-muted-foreground capitalize">Blog</h2>
         <a
-          class="underline underline-offset-1 transition-all"
-          href="https://github.com/caixetadev"
-          target="_blank"
+          href="/blog"
+          aria-label="View all blog posts"
+          class="text-muted-foreground text-xs hover:text-foreground"
+          >View all &rarr;</a
         >
-          Github
-        </a>
+      </div>
+      <BlogPosts posts={recentPosts} />
+    </section>
 
-        <a
-          class="underline underline-offset-1 transition-all"
-          href="https://www.linkedin.com/in/caixetadev/"
-          target="_blank"
-        >
-          Linkedin
-        </a>
-
-        <a
-          class="underline underline-offset-1 transition-all"
-          href="https://x.com/caixetadev"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </section>
-
-      <section class="mt-6">
-        <h2 class="pb-4 text-muted-foreground capitalize">Featured Projects</h2>
-        <Projects />
-      </section>
-
-      <section id="experience" class="mt-6">
-        <h2 class="pb-4 text-muted-foreground capitalize">Experience</h2>
-        <ul class="divide-y divide-[#2a2a2a]">
-          {
-            experiences.map((project) => (
-              <Experience
-                class="py-4 first:pt-0"
-                title={project.data.title}
-                description={project.data.description}
-                location={project.data.location}
-                dates={project.data.dates}
-              />
-            ))
-          }
-        </ul>
-      </section>
-
-      <section class="mt-6">
-        <h2 class="mb-4 text-muted-foreground capitalize">Open Source</h2>
+    <section id="experience" class="mt-6">
+      <h2 class="pb-4 text-muted-foreground capitalize">Experience</h2>
+      <ul class="divide-y divide-[#2a2a2a]">
         {
-          projects.map((project) => (
-            <div>
-              <div class="mb-5">
-                <h3>{project.data.title}</h3>
-                <p class="text-muted-foreground">{project.data.description}</p>
-              </div>
-
-              <OpenSouceChart data={project.data.data} />
-              <div class="flex items-center justify-between text-muted-foreground text-xs mt-2">
-                <p>Pull Requests made in the repository</p>
-                <span>{project.data.total_count}</span>
-              </div>
-              <div class="border-[#2a2a2a] border-t my-6" />
-            </div>
+          experiences.map((project) => (
+            <Experience
+              class="py-4 first:pt-0"
+              title={project.data.title}
+              description={project.data.description}
+              location={project.data.location}
+              dates={project.data.dates}
+            />
           ))
         }
-      </section>
-    </div>
+      </ul>
+    </section>
+
+    <section class="mt-6">
+      <h2 class="mb-4 text-muted-foreground capitalize">Open Source</h2>
+      {
+        projects.map((project) => (
+          <div>
+            <div class="mb-5">
+              <h3>{project.data.title}</h3>
+              <p class="text-muted-foreground">{project.data.description}</p>
+            </div>
+
+            <OpenSouceChart data={project.data.data} />
+            <div class="flex items-center justify-between text-muted-foreground text-xs mt-2">
+              <p>Pull Requests made in the repository</p>
+              <span>{project.data.total_count}</span>
+            </div>
+            <div class="border-[#2a2a2a] border-t my-6" />
+          </div>
+        ))
+      }
+    </section>
   </div>
 </Layout>

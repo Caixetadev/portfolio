@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft)
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+
+const words = post.body?.split(/\s+/).length ?? 0
+const readingTime = Math.max(1, Math.ceil(words / 200))
+
+const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
+  month: 'short',
+  day: '2-digit',
+  year: 'numeric',
+})
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date,
+  author: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+    url: 'https://caixeta.dev',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+    url: 'https://caixeta.dev',
+  },
+  url: `https://caixeta.dev/blog/${post.data.slug}`,
+  image: 'https://caixeta.dev/og.jpg',
+  keywords: post.data.tags?.join(', '),
+}
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image="/og.jpg"
+>
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
+  </Fragment>
+
+  <div>
+    <a
+      id="back-link"
+      href="/"
+      class="text-muted-foreground text-sm hover:text-foreground"
+    >
+      &larr; Home
+    </a>
+
+    <header class="mt-4 mb-5">
+      <h1 class="text-2xl">{post.data.title}</h1>
+      <div
+        class="flex flex-wrap items-center gap-2 text-muted-foreground text-xs mt-2"
+      >
+        <span>{formattedDate} &middot; {readingTime} min read</span>
+        {
+          post.data.tags?.map((tag) => (
+            <span class="text-xs border border-[#2a2a2a] rounded px-1.5 py-0.5">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </header>
+
+    <article class="prose">
+      <Content />
+    </article>
+  </div>
+</Layout>
+
+<script>
+  const link = document.getElementById('back-link') as HTMLAnchorElement | null
+
+  if (link && document.referrer) {
+    const fromBlog = new URL(document.referrer).pathname === '/blog'
+
+    if (fromBlog) {
+      link.href = '/blog'
+      link.innerHTML = '&larr; Blog'
+    }
+  }
+</script>

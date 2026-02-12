@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('posts', ({ data }) => !data.draft)
+
+const sortedPosts = posts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+})
+
+const grouped = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category
+    if (!acc[category]) acc[category] = []
+    acc[category].push(post)
+    return acc
+  },
+  {} as Record<string, typeof sortedPosts>,
+)
+---
+
+<Layout
+  title="Blog"
+  description="Posts about frontend development, Go, open source, and cloud infrastructure."
+  image="/og.jpg"
+>
+  <div>
+    <a href="/" class="text-muted-foreground text-sm hover:text-foreground"
+      >&larr; Home</a
+    >
+
+    <h1 class="text-2xl mt-4">Blog</h1>
+    <p class="text-muted-foreground">
+      Thoughts on Linux, cloud infrastructure, DevOps, and things I'm learning.
+    </p>
+
+    {
+      Object.entries(grouped).map(([category, posts]) => (
+        <section class="mt-6">
+          <h2 class="pb-4 text-muted-foreground capitalize">{category}</h2>
+          <div class="flex flex-col">
+            {posts.map((post) => (
+              <div>
+                <div class="border-[#2a2a2a] border-t" />
+                <a
+                  href={`/blog/${post.data.slug}`}
+                  class="flex w-full justify-between py-2"
+                >
+                  <div class="flex items-center gap-2">
+                    <p>{post.data.title}</p>
+                    {post.data.tags?.map((tag) => (
+                      <span class="text-xs text-muted-foreground border border-[#2a2a2a] rounded px-1.5 py-0.5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p class="mt-0 text-muted-foreground text-xs shrink-0">
+                    {post.data.date}
+                  </p>
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
