@@ -1,5 +1,5 @@
 ---
-import { AnimationContainer } from '../components/animation'
+import { ClientRouter } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 import '../styles/global.css'
 
@@ -22,12 +22,6 @@ const pageTitle = isHome
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-    />
 
     <meta name="author" content="Rafael Caixeta" />
     <meta
@@ -87,22 +81,13 @@ const pageTitle = isHome
 
     <slot name="head" />
 
-    <noscript>
-      <style>
-        body * {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-      </style>
-    </noscript>
+    <ClientRouter />
   </head>
   <body
     class="min-h-screen antialiased mx-auto max-w-2xl md:pt-10 p-4 md:p-0 bg-background text-foreground"
   >
-    <AnimationContainer client:load>
-      <main class="pb-5">
-        <slot />
-      </main>
-    </AnimationContainer>
+    <main class="pb-5">
+      <slot />
+    </main>
   </body>
 </html>
