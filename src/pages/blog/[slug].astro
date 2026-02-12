@@ -21,6 +21,27 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   day: '2-digit',
   year: 'numeric',
 })
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date,
+  author: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+    url: 'https://caixeta.dev',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+    url: 'https://caixeta.dev',
+  },
+  url: `https://caixeta.dev/blog/${post.data.slug}`,
+  image: 'https://caixeta.dev/og.jpg',
+  keywords: post.data.tags?.join(', '),
+}
 ---
 
 <Layout
@@ -28,6 +49,14 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   description={post.data.description}
   image="/og.jpg"
 >
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
+  </Fragment>
+
   <div>
     <a
       id="back-link"
@@ -60,7 +89,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
 </Layout>
 
 <script>
-  const link = document.getElementById('back-link')
+  const link = document.getElementById('back-link') as HTMLAnchorElement | null
 
   if (link && document.referrer) {
     const fromBlog = new URL(document.referrer).pathname === '/blog'

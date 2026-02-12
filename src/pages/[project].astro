@@ -16,6 +16,23 @@ if (!entry) {
   throw new Error('Could not find project')
 }
 const { Content } = await render(entry)
+
+const projectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: project.title,
+  description: project.description,
+  datePublished: project.date,
+  author: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+    url: 'https://caixeta.dev',
+  },
+  codeRepository: project.githubLink,
+  url: project.previewLink,
+  programmingLanguage: project.technologies.map((t) => t.language),
+  image: `https://caixeta.dev${project.image}`,
+}
 ---
 
 <Layout
@@ -23,6 +40,10 @@ const { Content } = await render(entry)
   description={project.description}
   image={!!project.image ? project.image : '/og.jpg'}
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
+  </Fragment>
+
   <div>
     <a href="/" class="text-muted-foreground text-sm hover:text-foreground"
       >&larr; Home</a
@@ -40,7 +61,11 @@ const { Content } = await render(entry)
     {
       !!project.image && (
         <a class="opacity-100!" target="_blank" href={project.previewLink}>
-          <img src={project.image} alt="project image" fetchpriority="high" />
+          <img
+            src={project.image}
+            alt={`Screenshot of ${project.title} project by Rafael Caixeta`}
+            fetchpriority="high"
+          />
         </a>
       )
     }
@@ -48,7 +73,7 @@ const { Content } = await render(entry)
     {
       !!project.githubLink && (
         <div class="mt-2 text-xs text-muted-foreground">
-          <a href={project.githubLink} target="_blank">
+          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
             View Code
           </a>
         </div>
@@ -60,7 +85,7 @@ const { Content } = await render(entry)
       <div class="flex flex-wrap gap-2 mt-2 text-muted-foreground">
         {
           project.technologies.map((technologie) => (
-            <a href={technologie.link} target="_blank">
+            <a href={technologie.link} target="_blank" rel="noopener noreferrer">
               {technologie.language}
             </a>
           ))

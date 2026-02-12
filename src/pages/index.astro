@@ -11,15 +11,78 @@ const projects = await getCollection('openSource')
 const experiences = await getCollection('experiences')
 const allPosts = await getCollection('posts')
 const recentPosts = allPosts
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  )
   .slice(0, 3)
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rafael Caixeta',
+  alternateName: 'caixetadev',
+  url: 'https://caixeta.dev',
+  image: 'https://caixeta.dev/og.jpg',
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Refine',
+    url: 'https://refine.dev',
+  },
+  knowsAbout: [
+    'Go',
+    'Golang',
+    'React',
+    'JavaScript',
+    'TypeScript',
+    'Next.js',
+    'Frontend Development',
+    'Backend Development',
+    'Cloud Infrastructure',
+    'AWS',
+    'Linux',
+    'Open Source',
+    'Web3',
+    'Smart Contracts',
+  ],
+  sameAs: [
+    'https://github.com/caixetadev',
+    'https://www.linkedin.com/in/caixetadev/',
+    'https://x.com/caixetadev',
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Rafael Caixeta',
+  alternateName: 'caixetadev',
+  url: 'https://caixeta.dev',
+  author: {
+    '@type': 'Person',
+    name: 'Rafael Caixeta',
+  },
+}
 ---
 
 <Layout
   title="Home"
-  description="Rafael Caixeta is a software engineer working with JavaScript and React, passionate about backend development with Go, cloud technologies, and open source contributions."
+  description="Rafael Caixeta (caixetadev) is a software engineer specializing in Go, React, and cloud infrastructure. Building frontend interfaces, contributing to open source projects, and developing backend services with Golang."
   image="/og.jpg"
 >
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+  </Fragment>
+
   <div>
     <h1 class="text-2xl">Software Engineer & Open Source Enthusiast.</h1>
     <p class="text-muted-foreground">
@@ -33,6 +96,7 @@ const recentPosts = allPosts
         class="underline underline-offset-1 transition-all"
         href="https://github.com/caixetadev"
         target="_blank"
+        rel="me noopener noreferrer"
       >
         Github
       </a>
@@ -41,6 +105,7 @@ const recentPosts = allPosts
         class="underline underline-offset-1 transition-all"
         href="https://www.linkedin.com/in/caixetadev/"
         target="_blank"
+        rel="me noopener noreferrer"
       >
         Linkedin
       </a>
@@ -49,6 +114,7 @@ const recentPosts = allPosts
         class="underline underline-offset-1 transition-all"
         href="https://x.com/caixetadev"
         target="_blank"
+        rel="me noopener noreferrer"
       >
         Twitter
       </a>
@@ -62,7 +128,12 @@ const recentPosts = allPosts
     <section class="mt-6">
       <div class="flex items-center justify-between pb-4">
         <h2 class="text-muted-foreground capitalize">Blog</h2>
-        <a href="/blog" aria-label="View all blog posts" class="text-muted-foreground text-xs hover:text-foreground">View all &rarr;</a>
+        <a
+          href="/blog"
+          aria-label="View all blog posts"
+          class="text-muted-foreground text-xs hover:text-foreground"
+          >View all &rarr;</a
+        >
       </div>
       <BlogPosts posts={recentPosts} />
     </section>
