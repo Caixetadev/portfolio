@@ -1,0 +1,131 @@
+---
+title: "How SGID works on Linux"
+slug: "sgid-linux"
+description: "Entenda o SGID, como ele funciona e como ele pode ajudar em diretórios compartilhados para times de desenvolvimento."
+date: "02/10/2026"
+category: "Linux"
+tags: ["permissions"]
+---
+
+Um dia você roda o comando `ls -lha` e percebe que um diretório está com uma permissão "estranha": no lugar da letra `x` no grupo, aparece a letra `s`. O que isso significa? Qual a diferença entre `x` e `s`?
+
+Neste artigo, você vai entender o SGID, como ele funciona e como ele pode ajudar em diretórios compartilhados para times de desenvolvimento.
+
+## O problema
+
+Por padrão, quando um usuário cria um arquivo ou diretório no Linux, o grupo do arquivo será o grupo principal do usuário.
+
+Isso pode gerar problemas em times de desenvolvimento. Por exemplo:
+
+- Suponha que temos dois desenvolvedores: `maria` e `jose`.
+- Cada um cria arquivos em uma pasta compartilhada.
+- Resultado sem SGID:
+
+```bash
+$ ls -lha /srv/dev
+-rw-rw-r-- 1 jose  jose   0 Feb 10 21:35 a
+-rw-rw-r-- 1 maria maria  0 Feb 10 21:35 b
+```
+
+O arquivo criado pelo José pertence ao grupo `jose`, e o da Maria ao grupo `maria`. José não pode modificar os arquivos de Maria, e vice-versa, mesmo que estejam na mesma pasta de trabalho.
+
+## O que é SGID
+
+O **SGID (Set Group ID)** é uma permissão especial que pode ser aplicada a diretórios.
+
+Quando um diretório tem SGID, **todos os arquivos e subdiretórios criados dentro dele herdam o grupo do diretório pai**, não o grupo do usuário que criou.
+
+No `ls -l`, a permissão aparece como `s` no lugar do `x` para o grupo:
+
+```bash
+drwxrws---  3 root dev  4.0K Feb 10 20:23 dev
+```
+
+  - `x` — você pode entrar no diretório
+  - `s` — você pode entrar + arquivos herdam o grupo pai
+
+## Configuração
+
+### Criando o diretório e o grupo
+
+```bash
+$ mkdir -p /srv/dev
+$ groupadd dev
+$ chgrp dev /srv/dev
+$ chmod 770 /srv/dev/
+```
+
+### Criando usuários e adicionando ao grupo
+
+```bash
+$ useradd jose -m -s /bin/bash
+$ useradd maria -m -s /bin/bash
+$ usermod -aG dev jose
+$ usermod -aG dev maria
+```
+
+## Sem SGID
+
+Se ambos criam arquivos na pasta `/srv/dev`:
+
+```bash
+$ ls -lha /srv/dev
+-rw-rw-r-- 1 jose  jose   0 Feb 10 21:35 a
+-rw-rw-r-- 1 maria maria  0 Feb 10 21:35 b
+```
+
+Cada arquivo ainda pertence ao grupo do usuário, não ao grupo `dev`. Isso não é ideal para colaboração.
+
+## Aplicando SGID
+
+Primeiro, ajustamos todos os arquivos para o grupo correto:
+
+```bash
+$ chgrp -R dev /srv/dev
+```
+
+Agora todos os arquivos pertencem ao grupo `dev`:
+
+```bash
+$ ls -lha /srv/dev
+-rw-rw-r-- 1 jose  dev  0 Feb 10 21:35 a
+-rw-rw-r-- 1 maria dev  0 Feb 10 21:35 b
+```
+
+Por fim, aplicamos SGID na pasta:
+
+```bash
+$ chmod 2770 /srv/dev/
+```
+
+> O `2` no início ativa o SGID. A pasta agora tem permissões `rwxrws---`.
+
+## Resultado
+
+Se José cria um novo arquivo:
+
+```bash
+$ su jose
+$ touch /srv/dev/c
+$ ls -lha /srv/dev
+-rw-rw-r-- 1 jose dev 0 Feb 10 21:35 c
+```
+
+E Maria cria outro arquivo:
+
+```bash
+$ su maria
+$ touch /srv/dev/d
+$ ls -lha /srv/dev
+-rw-rw-r-- 1 maria dev 0 Feb 10 21:35 d
+```
+
+Todos os arquivos pertencem ao grupo `dev`, facilitando a colaboração.
+
+## Conclusão
+
+O SGID é uma permissão poderosa para diretórios compartilhados:
+
+- **Arquivos criados herdam o grupo do diretório pai**
+- Facilita colaboração em times sem precisar mudar permissões manualmente
+- Sempre combine SGID com permissões de grupo apropriadas para manter a segurança

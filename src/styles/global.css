@@ -81,9 +81,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+html {
+  background-color: #0E0F0F;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-size: 14px !important;
   font-family: "Geist", sans-serif;
 }
@@ -138,8 +140,136 @@ tspan::selection {
   * {
     @apply border-border outline-ring/50;
   }
-
-  body {
-    @apply bg-background text-foreground;
-  }
 }
+
+code {
+  background: #141515;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+pre {
+  background: #141515 !important;
+  border: 1px solid #2a2a2a;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85em;
+}
+
+.prose {
+  line-height: 1.75;
+  color: #8F9391;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: #eee;
+}
+
+.prose h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.prose li>ul,
+.prose li>ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.prose blockquote {
+  border-left: 2px solid #2a2a2a;
+  padding-left: 1rem;
+  color: #8F9391;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.prose blockquote p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose strong {
+  font-weight: 400;
+  color: #b0b0b0;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #2a2a2a;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose img {
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
