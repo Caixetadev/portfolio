@@ -5,49 +5,49 @@ description: "Entenda o SGID, como ele funciona e como ele pode ajudar em diret�
 date: "02/10/2026"
 category: "Linux"
 tags: ["permissions"]
-draft: true
+draft: false
 ---
 
-Um dia você roda o comando `ls -lha` e percebe que um diretório está com uma permissão "estranha": no lugar da letra `x` no grupo, aparece a letra `s`. O que isso significa? Qual a diferença entre `x` e `s`?
+One day you run the command `ls -lha` and notice that a directory has a “strange” permission: instead of the letter `x` in the group, the letter `s` appears. What does this mean? What is the difference between `x` and `s`?
 
-Neste artigo, você vai entender o SGID, como ele funciona e como ele pode ajudar em diretórios compartilhados para times de desenvolvimento.
+In this article, you will learn about SGID, how it works, and how it can help with shared directories for development teams.
 
-## O problema
+## The problem
 
-Por padrão, quando um usuário cria um arquivo ou diretório no Linux, o grupo do arquivo será o grupo principal do usuário.
+By default, when a user creates a file or directory in Linux, the group of the file will be the user's primary group.
 
-Isso pode gerar problemas em times de desenvolvimento. Por exemplo:
+This can cause problems in development teams. For example:
 
-- Suponha que temos dois desenvolvedores: `maria` e `jose`.
-- Cada um cria arquivos em uma pasta compartilhada.
-- Resultado sem SGID:
+- Suppose we have two developers: `mary` and `joseph`.
+- Each one creates files in a shared folder.
+- Result without SGID:
 
 ```bash
 $ ls -lha /srv/dev
--rw-rw-r-- 1 jose  jose   0 Feb 10 21:35 a
--rw-rw-r-- 1 maria maria  0 Feb 10 21:35 b
+-rw-rw-r-- 1 joseph  joseph   0 Feb 10 21:35 a
+-rw-rw-r-- 1 mary    mary     0 Feb 10 21:35 b
 ```
 
-O arquivo criado pelo José pertence ao grupo `jose`, e o da Maria ao grupo `maria`. José não pode modificar os arquivos de Maria, e vice-versa, mesmo que estejam na mesma pasta de trabalho.
+The file created by Joseph belongs to the `joseph` group, and Mary's file belongs to the `mary` group. Joseph cannot modify Mary's files, and vice versa, even if they are in the same work folder.
 
-## O que é SGID
+## What is SGID?
 
-O **SGID (Set Group ID)** é uma permissão especial que pode ser aplicada a diretórios.
+The **SGID (Set Group ID)** is a special permission that can be applied to directories.
 
-Quando um diretório tem SGID, **todos os arquivos e subdiretórios criados dentro dele herdam o grupo do diretório pai**, não o grupo do usuário que criou.
+When a directory has SGID, **all files and subdirectories created within it inherit the group of the parent directory**, not the group of the user who created them.
 
-No `ls -l`, a permissão aparece como `s` no lugar do `x` para o grupo:
+In `ls -l`, the permission appears as `s` instead of `x` for the group:
 
 ```bash
 drwxrws---  3 root dev  4.0K Feb 10 20:23 dev
 ```
 
-  - `x` — você pode entrar no diretório
-  - `s` — você pode entrar + arquivos herdam o grupo pai
+  - `x` — you can enter the directory
+  - `s` — you can enter + files inherit the parent group
 
-## Configuração
+## Settings
 
-### Criando o diretório e o grupo
+### Creating the directory and group
 
 ```bash
 $ mkdir -p /srv/dev
@@ -56,77 +56,77 @@ $ chgrp dev /srv/dev
 $ chmod 770 /srv/dev/
 ```
 
-### Criando usuários e adicionando ao grupo
+### Creating users and adding them to the group
 
 ```bash
-$ useradd jose -m -s /bin/bash
-$ useradd maria -m -s /bin/bash
-$ usermod -aG dev jose
-$ usermod -aG dev maria
+$ useradd joseph -m -s /bin/bash
+$ useradd mary -m -s /bin/bash
+$ usermod -aG dev joseph
+$ usermod -aG dev mary
 ```
 
-## Sem SGID
+## Without SGID
 
-Se ambos criam arquivos na pasta `/srv/dev`:
+If both create files in the `/srv/dev` folder:
 
 ```bash
 $ ls -lha /srv/dev
--rw-rw-r-- 1 jose  jose   0 Feb 10 21:35 a
--rw-rw-r-- 1 maria maria  0 Feb 10 21:35 b
+-rw-rw-r-- 1 joseph  joseph   0 Feb 10 21:35 a
+-rw-rw-r-- 1 mary    mary     0 Feb 10 21:35 b
 ```
 
-Cada arquivo ainda pertence ao grupo do usuário, não ao grupo `dev`. Isso não é ideal para colaboração.
+Each file still belongs to the user group, not the `dev` group. This is not ideal for collaboration.
 
-## Aplicando SGID
+## Applying SGID
 
-Primeiro, ajustamos todos os arquivos para o grupo correto:
+First, we set all files to the correct group:
 
 ```bash
 $ chgrp -R dev /srv/dev
 ```
 
-Agora todos os arquivos pertencem ao grupo `dev`:
+Now all files belong to the `dev` group:
 
 ```bash
 $ ls -lha /srv/dev
--rw-rw-r-- 1 jose  dev  0 Feb 10 21:35 a
--rw-rw-r-- 1 maria dev  0 Feb 10 21:35 b
+-rw-rw-r-- 1  joseph  dev  0 Feb 10 21:35 a
+-rw-rw-r-- 1  mary    dev  0 Feb 10 21:35 b
 ```
 
-Por fim, aplicamos SGID na pasta:
+Finally, we apply SGID to the folder:
 
 ```bash
 $ chmod 2770 /srv/dev/
 ```
 
-> O `2` no início ativa o SGID. A pasta agora tem permissões `rwxrws---`.
+> The `2` at the beginning activates SGID. The folder now has `rwxrws---` permissions.
 
-## Resultado
+## Result
 
-Se José cria um novo arquivo:
+If Joseph creates a new file:
 
 ```bash
-$ su jose
+$ su joseph
 $ touch /srv/dev/c
 $ ls -lha /srv/dev
--rw-rw-r-- 1 jose dev 0 Feb 10 21:35 c
+-rw-rw-r-- 1 joseph dev 0 Feb 10 21:35 c
 ```
 
-E Maria cria outro arquivo:
+And Maria creates another file:
 
 ```bash
-$ su maria
+$ su mary
 $ touch /srv/dev/d
 $ ls -lha /srv/dev
--rw-rw-r-- 1 maria dev 0 Feb 10 21:35 d
+-rw-rw-r-- 1 mary dev 0 Feb 10 21:35 d
 ```
 
-Todos os arquivos pertencem ao grupo `dev`, facilitando a colaboração.
+All files belong to the `dev` group, facilitating collaboration.
 
-## Conclusão
+## Conclusion
 
-O SGID é uma permissão poderosa para diretórios compartilhados:
+SGID is a powerful permission for shared directories:
 
-- **Arquivos criados herdam o grupo do diretório pai**
-- Facilita colaboração em times sem precisar mudar permissões manualmente
-- Sempre combine SGID com permissões de grupo apropriadas para manter a segurança
+- **Files created inherit the parent directory group**
+- Facilitates team collaboration without having to manually change permissions
+- Always combine SGID with appropriate group permissions to maintain security
