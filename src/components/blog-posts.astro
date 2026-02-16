@@ -22,9 +22,16 @@ const displayPosts = limit ? posts.slice(0, limit) : posts
     displayPosts.map((post) => (
       <div>
         <div class="border-[#2a2a2a] border-t" />
-        <a href={`/blog/${post.data.slug}`} class="flex w-full justify-between py-2">
-          <p>{post.data.title}</p>
-          <p class="mt-0 text-muted-foreground text-xs">{post.data.date}</p>
+        <a
+          href={`/blog/${post.data.slug}`}
+          class="flex w-full justify-between py-2"
+        >
+          <div class="flex flex-1 min-w-0">
+            <p class="truncate min-w-0">{post.data.title}</p>
+          </div>
+          <p class="mt-0 text-muted-foreground text-xs flex-shrink-0">
+            {post.data.date}
+          </p>
         </a>
       </div>
     ))

@@ -1,0 +1,121 @@
+---
+title: "Mastering LSOF: Explore Files, Processes, and Connections"
+slug: "lsof-command"
+description: "How we can use the lsof command"
+date: "02/14/2026"
+category: "Linux"
+tags: ["files", "monitoring", "network", "processes"]
+draft: false
+---
+
+O comando lsof significa “List open files”, como o nome ja diz, ele eh utilizado para verificar os arquivos abertos em Unix e Unix-like, como Linux e macOS. Como sabemos, no Unix, tudo é tratado como um arquivo. Para comecarmos a ver os principais usos do lsof primeiro precisamos entender algumas colunas, boa parte delas eh auto explicativo entao eu vou explicar somente as colunas FD e TYPE.
+
+```bash
+$: sudo lsof -u caixeta | head
+COMMAND      PID    USER  FD      TYPE             DEVICE  SIZE/OFF       NODE NAME
+systemd      998 caixeta cwd       DIR              259,2      4096          2 /
+systemd      998 caixeta rtd       DIR              259,2      4096          2 /
+systemd      998 caixeta txt       REG              259,2    137400     157885 /usr/lib/systemd/systemd
+systemd      998 caixeta mem       REG              259,2    935880     146984 /usr/lib/libzstd.so.1.5.7
+systemd      998 caixeta mem       REG              259,2   5708896     139078 /usr/lib/libcrypto.so.3
+systemd      998 caixeta mem       REG              259,2    182288     148830 /usr/lib/libseccomp.so.2.6.0
+systemd      998 caixeta mem       REG              259,2    424056     160227 /usr/lib/libbpf.so.1.6.2
+systemd      998 caixeta mem       REG              259,2   2010168     134512 /usr/lib/libc.so.6
+systemd      998 caixeta mem       REG              259,2   5398376     157416 /usr/lib/systemd/libsystemd-shar
+```
+
+FD - significa file description e pode conter os valores
+	cwd - current working directory
+    rtd - root directory
+    txt- program text (code and data)
+    mem - memory mapped file
+    
+TYPE - Tipo do arquivos e indentificacao
+1. **DIR** – Directory
+2. **REG** – Regular file
+3. **CHR** – Character special file.
+4. **FIFO** – First In First Out
+
+Abaixo eu vou deixar os comandos mais usados do `lsof`
+
+Para filtrar por nome de processos nos podemos usar a flag `-c`
+```bash
+$: lsof -c service_name
+```
+
+Para verificar os arquivos abertos de um determinado usuario nos podemos usar a flag `-u`
+```bash
+$: lsof -u root
+```
+
+Caso queiramos buscar por um processo em expecifico porem utilziando o PID, nos podemos usar a flag `-p`
+```bash
+$: lsof -p 116858
+```
+
+Também é possível excluir um usuário, um processo pelo nome ou um processo específico pelo PID utilizando o símbolo ^ com os comandos acima. O ^ funciona como operador de negação, ou seja, retorna todos os resultados exceto o valor informado.
+
+Abaixo seguem alguns exemplos:
+```bash
+# Retorna todos os processos cujo nome seja diferente do informado
+$: lsof -c ^service_name
+
+# Retorna todos os usuários, exceto o usuário especificado
+$: lsof -u ^root
+
+# Retorna todos os processos, exceto o PID informado
+$: lsof -p ^116858
+```
+
+Para listar todas as conexões de rede abertas, incluindo portas em modo de escuta (LISTEN) e conexões já estabelecidas (ESTABLISHED):
+```bash
+$: lsof -i
+```
+
+Caso queira filtrar todas as conexoes TPC por estado, como ESTABLISHED ou LISTEN, podemos usar a opcao -s
+```bash
+$: lsof -i -sTCP:LISTEN
+$: lsof -i -sTCP:ESTABLISHED
+```
+
+Caso queiramos filtrar os arquivos de network por IPV4 e IPV6 podemos passar 4 para IPV4 e 6 para IPV6
+```bash
+$: lsof -i 4
+$: lsof -i 6
+```
+
+Ainda utilizando o comando de cima nos podemos fazer mais alguns tipos de filtrar, como filtrar pelo protocolo e portas
+```bash
+$: lsof -i TCP:22
+# get all TCP protocols in the range of port 1-1024
+$: lsof -i TCP:1-1024
+```
+
+Também temos as flags `-n` e `-P`, que podem ser usadas combinadas com a flag `-i`. Por padrão, o `lsof` converte números de IP para nomes de host (DNS reverse lookup), e utilizando a flag `-n` estamos dizendo para o `lsof` não converter os IPs para nomes.
+
+O `lsof` também converte o número da porta em nomes de serviços, que geralmente ficam localizados no arquivo `/etc/services`. Utilizando o `-P`, em vez de aparecer `:ssh`, vai aparecer `:22`.
+
+Dando uma olhada no arquivo `/etc/services`, conseguimos ver que existem muitos serviços definidos. Podemos filtrar pelo `ssh` para verificar como funciona:
+
+```bash
+$: cat /etc/services | grep "\b22\b"
+ssh                22/tcp
+ssh                22/udp
+ssh                22/sctp
+```
+
+Veja que o ssh tem como valor a porta 22, por isso quando você buscar usando a flag `-i` pode aparecer `:ssh` em vez da porta. Usando a flag `-P`, você verá qual é realmente o número da porta.
+
+Utilizando as flags -n e -P vai deixar o lsof mais rapido ja que ele nao vai precisar buscar o dns nem o nome do servico
+
+## Conclusion
+
+LSOF eh um commando para listar arquivos abertos no sistema e como sabemos que no Linux tudo eh tratado como um arquivo isso torna o LSOF um comando indispensavel para administradores de sistemas e professionais de seguranca que precisam entender  oq esta acontecendo em nivel de processo e rede.
+
+Com ele, é possível:
+
+- Listar conexões por protocolos específicos (TCP/UDP) ou por portas
+- Identificar qual processo está utilizando determinada porta
+- Filtrar conexões por estado (LISTEN, ESTABLISHED, etc.)
+- Visualizar todos os arquivos abertos por um usuário específico
+- Auxiliar na investigação e no troubleshooting de problemas de rede e sistema
