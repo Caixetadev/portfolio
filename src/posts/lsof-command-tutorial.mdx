@@ -5,14 +5,14 @@ description: "How we can use the lsof command"
 date: "02/14/2026"
 category: "Linux"
 tags: ["files", "monitoring", "network", "processes"]
-draft: true
+draft: false
 ---
 
-O comando `lsof`, que quer dizer List Open Files, serve para mostrar quais arquivos estão abertos em sistemas Unix, como o Linux e macOS.
+The command `lsof`, which stands for List Open Files, is used to show which files are open on Unix systems, such as Linux and macOS.
 
-Nos sistemas Unix, quase tudo é considerado um arquivo, até dispositivos, conexões de rede e processos. Por isso, o `lsof` é uma ferramenta muito útil para analisar e resolver problemas em processos.
+In Unix systems, almost everything is considered a file, even devices, network connections, and processes. Therefore, `lsof` is a very useful tool for analyzing and troubleshooting processes.
 
-Antes de a gente ver os principais usos, vale a pena entender algumas colunas que o comando mostra. A maioria já diz por si só, então vamos prestar atenção só nas colunas **FD** e **TYPE**.
+Before we look at the main uses, it is worth understanding some of the columns that the command displays. Most are self-explanatory, so let's just focus on the **FD** and **TYPE** columns.
 
 ```bash
 $: sudo lsof -u caixeta | head
@@ -28,84 +28,84 @@ systemd      998 caixeta mem       REG              259,2   2010168     134512 /
 systemd      998 caixeta mem       REG              259,2   5398376     157416 /usr/lib/systemd/libsystemd-shar
 ```
 
-**FD** - significa file description e pode conter os valores:
+**FD** - means file description and can contain the following values:
 - **cwd** - current working directory
 - **rtd** - root directory
 - **txt** - program text (code and data)
 - **mem** - memory mapped file
 
-**TYPE** - Tipo do arquivo e identificacao:
+**TYPE** - File type and identification:
 - **DIR** – Directory
 - **REG** – Regular file
 - **CHR** – Character special file
 - **FIFO** – First In First Out
 
-## Filtrando por processo, usuario e PID
+## Filtering by process, user, and PID
 
-Para filtrar por nome de processos nos podemos usar a flag `-c`
+To filter by process name, we can use the `-c` flag.
 ```bash
 $: lsof -c service_name
 ```
 
-Para verificar os arquivos abertos de um determinado usuario nos podemos usar a flag `-u`
+To check the open files of a specific user, we can use the `-u` flag.
 ```bash
 $: lsof -u root
 ```
 
-Caso queiramos buscar por um processo em expecifico porem utilziando o PID, nos podemos usar a flag `-p`
+If we want to search for a specific process using the PID, we can use the `-p` flag.
 ```bash
 $: lsof -p 116858
 ```
 
-Também é possível excluir um usuário, um processo pelo nome ou um processo específico pelo PID utilizando o símbolo `^` com os comandos acima. O `^` funciona como operador de negação, ou seja, retorna todos os resultados exceto o valor informado.
+It is also possible to exclude a user, a process by name, or a specific process by PID using the `^` symbol with the above commands. The `^` acts as a negation operator, i.e., it returns all results except the specified value.
 
-Abaixo seguem alguns exemplos:
+Below are some examples:
 ```bash
-# Retorna todos os processos cujo nome seja diferente do informado
+# Returns all processes except the specified process
 $: lsof -c ^service_name
 
-# Retorna todos os usuários, exceto o usuário especificado
+# Returns all users except the specified user
 $: lsof -u ^root
 
-# Retorna todos os processos, exceto o PID informado
+# Returns all processes except the specified PID
 $: lsof -p ^116858
 ```
 
-## Filtrando conexoes de rede
+## Filtering network connections
 
-Para listar todas as conexões de rede abertas, incluindo portas em modo de escuta (LISTEN) e conexões já estabelecidas (ESTABLISHED):
+To list all open network connections, including ports in listen mode (LISTEN) and connections already established (ESTABLISHED):
 ```bash
 $: lsof -i
 ```
 
-Caso queira filtrar todas as conexoes TCP por estado, como ESTABLISHED ou LISTEN, podemos usar a opcao `-s`
+If you want to filter all TCP connections by state, such as ESTABLISHED or LISTEN, you can use the `-s` option.
 ```bash
 $: lsof -i -sTCP:LISTEN
 $: lsof -i -sTCP:ESTABLISHED
 ```
 
-Caso queiramos filtrar os arquivos de network por IPV4 e IPV6 podemos passar `4` para IPV4 e `6` para IPV6
+If we want to filter network files by IPV4 and IPV6, we can pass `4` for IPV4 and `6` for IPV6.
 ```bash
 $: lsof -i 4
 $: lsof -i 6
 ```
 
-## Filtrando por protocolo e portas
+## Filtering by protocol and ports
 
-Ainda utilizando o comando de cima nos podemos fazer mais alguns tipos de filtrar, como filtrar pelo protocolo e portas
+Still using the command above, we can perform a few more types of filtering, such as filtering by protocol and ports.
 ```bash
 $: lsof -i TCP:22
 # get all TCP protocols in the range of port 1-1024
 $: lsof -i TCP:1-1024
 ```
 
-## Flags -n e -P
+## Flags -n and -P
 
-Também temos as flags `-n` e `-P`, que podem ser usadas combinadas com a flag `-i`. Por padrão, o `lsof` converte números de IP para nomes de host (DNS reverse lookup), e utilizando a flag `-n` estamos dizendo para o `lsof` não converter os IPs para nomes.
+We also have the `-n` and `-P` flags, which can be used in combination with the `-i` flag. By default, `lsof` converts IP numbers to host names (reverse DNS lookup), and by using the `-n` flag, we are telling `lsof` not to convert IPs to names.
 
-O `lsof` também converte o número da porta em nomes de serviços, que geralmente ficam localizados no arquivo `/etc/services`. Utilizando o `-P`, em vez de aparecer `:ssh`, vai aparecer `:22`.
+`lsof` also converts port numbers to service names, which are usually located in the `/etc/services` file. Using `-P`, instead of `:ssh`, `:22` will appear.
 
-Dando uma olhada no arquivo `/etc/services`, conseguimos ver que existem muitos serviços definidos. Podemos filtrar pelo `ssh` para verificar como funciona:
+Taking a look at the `/etc/services` file, we can see that there are many services defined. We can filter by `ssh` to check how it works:
 
 ```bash
 $: cat /etc/services | grep "\b22\b"
@@ -114,18 +114,18 @@ ssh                22/udp
 ssh                22/sctp
 ```
 
-Veja que o ssh tem como valor a porta 22, por isso quando você buscar usando a flag `-i` pode aparecer `:ssh` em vez da porta. Usando a flag `-P`, você verá qual é realmente o número da porta.
+Note that ssh has port 22 as its value, so when you search using the `-i` flag, `:ssh` may appear instead of the port. Using the `-P` flag, you will see what the port number actually is.
 
-Utilizando as flags `-n` e `-P` vai deixar o `lsof` mais rapido ja que ele nao vai precisar buscar o dns nem o nome do servico.
+Using the `-n` and `-P` flags will make `lsof` faster since it will not need to search for the DNS or service name.
 
 ## Conclusion
 
-O `lsof` eh um commando para listar arquivos abertos no sistema e como sabemos que no Linux tudo eh tratado como um arquivo isso torna o `lsof` um comando indispensavel para administradores de sistemas e professionais de seguranca que precisam entender oq esta acontecendo em nivel de processo e rede.
+`lsof` is a command for listing open files on the system, and since we know that in Linux everything is treated as a file, this makes `lsof` an indispensable command for system administrators and security professionals who need to understand what is happening at the process and network level.
 
-Com ele, é possível:
+With it, you can:
 
-- Listar conexões por protocolos específicos (TCP/UDP) ou por portas
-- Identificar qual processo está utilizando determinada porta
-- Filtrar conexões por estado (LISTEN, ESTABLISHED, etc.)
-- Visualizar todos os arquivos abertos por um usuário específico
-- Auxiliar na investigação e no troubleshooting de problemas de rede e sistema
+- List connections by specific protocols (TCP/UDP) or by ports
+- Identify which process is using a particular port
+- Filter connections by status (LISTEN, ESTABLISHED, etc.)
+- View all files opened by a specific user
+- Assist in investigating and troubleshooting network and system problems
