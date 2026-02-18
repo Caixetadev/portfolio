@@ -24,10 +24,10 @@ const displayPosts = limit ? posts.slice(0, limit) : posts
         <div class="border-[#2a2a2a] border-t" />
         <a
           href={`/blog/${post.data.slug}`}
-          class="flex w-full justify-between py-2"
+          class="flex w-full justify-between py-2 gap-4"
         >
-          <div class="flex flex-1 min-w-0">
-            <p class="truncate min-w-0">{post.data.title}</p>
+          <div class="flex flex-col flex-1 min-w-0">
+            <p class="truncate">{post.data.title}</p>
           </div>
           <p class="mt-0 text-muted-foreground text-xs flex-shrink-0">
             {post.data.date}
