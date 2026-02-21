@@ -36,3 +36,14 @@ jobs:
             ghcr.io/caixetadev/portfolio:${{ steps.vars.outputs.SHORT_SHA }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Trigger deploy
+        run: |
+          VERSION=${{ steps.vars.outputs.SHORT_SHA }}
+          BODY="{\"version\":\"$VERSION\"}"
+          SIGNATURE=$(echo -n $BODY | openssl dgst -sha256 -hmac "${{ secrets.DEPLOY_SECRET }}" | sed 's/^.* //')
+
+          curl -X POST https://deploy.caixeta.dev \
+            -H "Content-Type: application/json" \
+            -H "X-Signature: $SIGNATURE" \
+            -d "$BODY"
