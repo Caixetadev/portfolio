@@ -3,6 +3,9 @@ import { ClientRouter } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 import '../styles/global.css'
 
+import geist400 from '@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2'
+import geist500 from '@fontsource/geist-sans/files/geist-sans-latin-500-normal.woff2'
+
 const { title, description, image } = Astro.props
 
 const siteURL = 'https://caixeta.dev'
@@ -76,6 +79,9 @@ const pageTitle = isHome
         ],
       }}
     />
+
+    <link rel="preload" href={geist400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geist500} as="font" type="font/woff2" crossorigin />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
