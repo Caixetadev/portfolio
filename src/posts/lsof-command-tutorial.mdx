@@ -71,6 +71,34 @@ $: lsof -u ^root
 $: lsof -p ^116858
 ```
 
+## Filtering deleted files that are still open
+
+When we delete a file in Linux, it is not immediately removed from the disk. What is removed is the entry in the directory (the pointer that references the file). The inode will continue to exist as long as some process is still using that file.
+
+Therefore, you may delete a large file, check the disk space, and notice that the storage is still occupied. This is because the file is still open by some process, and the space will only be freed when it is closed.
+
+We can identify which processes are keeping deleted files open with the command:
+
+```bash
+$: lsof -a +L1
+```
+
+## Identifying processes using files inside a directory
+
+To see which processes have files open inside a directory, use:
+
+```bash
+$: lsof +D /directory
+```
+
+The +D option makes lsof recursively list all open files within the specified directory and its subdirectories.
+
+This is useful when:
+
+- You cannot unmount a volume
+- A directory cannot be removed
+- You need to know which process is using files in that path
+
 ## Filtering network connections
 
 To list all open network connections, including ports in listen mode (LISTEN) and connections already established (ESTABLISHED):
