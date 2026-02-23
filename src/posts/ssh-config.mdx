@@ -1,0 +1,85 @@
+---
+title: "Using the SSH Config File"
+slug: "ssh-config"
+description: "Learn how to use the SSH Config file to simplify and automate SSH connections to multiple servers"
+date: "02/19/2026"
+category: "SSH"
+tags: ["ssh", "config"]
+draft: false
+---
+
+The `~/.ssh/config` file allows us to automate the way we connect to remote servers. Let's assume you need to access your VPS to deploy an application. The user is `deploy` and SSH is listening on port 2222 instead of the default port 22. Without the configuration file, you would have to type the following command:
+
+
+```bash
+$: ssh -p 2222 -i ~/.ssh/id_ed25519 deploy@[IP]
+```
+
+If you have multiple users or even multiple VPSs, this can start to get complicated, as you will have to enter the command multiple times.
+
+## Creating the configuration file
+
+First, let's start by creating a configuration file. If you already have one, you can skip this part.
+
+```bash
+$: touch ~/.ssh/config
+```
+
+## Basic configuration
+
+Let's start with the basics. Our first configuration will be for the `deploy` user we mentioned at the beginning.
+
+```bash
+Host deploy
+  Hostname [IP]
+  Port 2222
+  User deploy
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+```
+
+## Understanding the options
+
+Now let's understand what each of these options are.
+
+**Host** - Here you can add any name you want, but it is recommended to have a good naming convention because this will be the name you will use to connect to the server.
+```bash
+Host deploy
+```
+
+We can also add global settings for the host.
+```bash
+Host *
+  AddKeysToAgent yes
+  ServerAliveInterval 60
+```
+
+**Hostname** - In this field, you can enter the server's IP or DNS.
+```bash
+Hostname [IP]
+```
+
+**Port** - Here you must enter the port that the server will connect to.
+```bash
+Port 2222
+```
+
+**User** - In this field, enter the username that will connect.
+```bash
+User deploy
+```
+
+**IdentitiesOnly e IdentityFile** - Here we are saying that SSH will only use the key we are passing and will not attempt to use any other.
+```bash
+IdentitiesOnly yes
+IdentityFile ~/.ssh/id_ed25519
+```
+
+## Result
+
+With this configuration, we don't need to type the command I wrote above. Instead, we can use it this way:
+
+```bash
+$: ssh deploy
+```
+
