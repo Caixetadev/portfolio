@@ -6,13 +6,13 @@ runs:
   steps:
     - uses: actions/checkout@v6
 
+    - run: corepack enable
+      shell: bash
+
     - uses: actions/setup-node@v4
       with:
         node-version: 22
         cache: pnpm
-
-    - run: corepack enable
-      shell: bash
 
     - run: pnpm install --frozen-lockfile
       shell: bash
