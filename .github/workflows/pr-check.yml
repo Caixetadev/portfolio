@@ -1,0 +1,13 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: pr-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml

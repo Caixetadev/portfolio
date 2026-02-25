@@ -1,12 +1,22 @@
-name: Build and Push
+name: Deploy
 
 on:
   push:
     branches: [main]
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-andpush:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
+  build-and-push:
+    needs: checks
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.vars.outputs.SHORT_SHA }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -37,9 +47,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
       - name: Trigger deploy
         run: |
-          VERSION=${{ steps.vars.outputs.SHORT_SHA }}
+          VERSION=${{ needs.build-and-push.outputs.version }}
           BODY="{\"version\":\"$VERSION\"}"
           SIGNATURE=$(echo -n $BODY | openssl dgst -sha256 -hmac "${{ secrets.DEPLOY_SECRET }}" | sed 's/^.* //')
 
