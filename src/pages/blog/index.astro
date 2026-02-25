@@ -38,36 +38,29 @@ const grouped = sortedPosts.reduce(
       Object.entries(grouped)
         .sort(([, a], [, b]) => b.length - a.length)
         .map(([category, posts]) => (
-        <section class="mt-6">
-          <h2 class="pb-4 text-muted-foreground capitalize">{category}</h2>
-          <div class="flex flex-col">
-            {posts.map((post) => (
-              <div>
-                <div class="border-t border-[#2a2a2a]" />
-                <a
-                  href={`/blog/${post.data.slug}`}
-                  class="flex w-full justify-between items-start py-2 gap-4"
-                >
-                  <div class="flex flex-col flex-1 min-w-0">
-                    <p class="truncate">{post.data.title}</p>
-                    <!-- <div class="flex flex-wrap gap-2 mt-1"> -->
-                    <!--   {post.data.tags?.map((tag) => ( -->
-                    <!--     <span class="text-xs text-muted-foreground border border-[#2a2a2a] rounded px-1.5 py-0.5"> -->
-                    <!--       {tag} -->
-                    <!--     </span> -->
-                    <!--   ))} -->
-                    <!-- </div> -->
-                  </div>
+          <section class="mt-6">
+            <h2 class="pb-4 text-muted-foreground capitalize">{category}</h2>
+            <div class="flex flex-col">
+              {posts.map((post) => (
+                <div>
+                  <div class="border-t border-[#2a2a2a]" />
+                  <a
+                    href={`/blog/${post.data.slug}`}
+                    class="flex w-full justify-between items-start py-2 gap-4"
+                  >
+                    <div class="flex flex-col flex-1 min-w-0">
+                      <p class="truncate">{post.data.title}</p>
+                    </div>
 
-                  <p class="text-xs text-muted-foreground flex-shrink-0">
-                    {post.data.date}
-                  </p>
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))
+                    <p class="text-xs text-muted-foreground flex-shrink-0">
+                      {post.data.date}
+                    </p>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))
     }
   </div>
 </Layout>

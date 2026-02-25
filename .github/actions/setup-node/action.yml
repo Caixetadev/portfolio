@@ -1,0 +1,18 @@
+name: Setup Node
+description: Checkout, setup Node with pnpm and install dependencies
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+
+    - run: corepack enable
+      shell: bash
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+
+    - run: pnpm install --frozen-lockfile
+      shell: bash

@@ -1,10 +1,10 @@
 ---
-title: "Understanding the LSOF Command on Linux"
-slug: "lsof-command-tutorial"
-description: "Learn how to use the lsof command to list open files, debug processes, and troubleshoot network connections on Linux and macOS"
-date: "02/14/2026"
-category: "Linux"
-tags: ["files", "monitoring", "network", "processes"]
+title: 'Understanding the LSOF Command on Linux'
+slug: 'lsof-command-tutorial'
+description: 'Learn how to use the lsof command to list open files, debug processes, and troubleshoot network connections on Linux and macOS'
+date: '02/14/2026'
+category: 'Linux'
+tags: ['files', 'monitoring', 'network', 'processes']
 draft: false
 ---
 
@@ -29,12 +29,14 @@ systemd      998 caixeta mem       REG              259,2   5398376     157416 /
 ```
 
 **FD** - means file description and can contain the following values:
+
 - **cwd** - current working directory
 - **rtd** - root directory
 - **txt** - program text (code and data)
 - **mem** - memory mapped file
 
 **TYPE** - File type and identification:
+
 - **DIR** – Directory
 - **REG** – Regular file
 - **CHR** – Character special file
@@ -43,16 +45,19 @@ systemd      998 caixeta mem       REG              259,2   5398376     157416 /
 ## Filtering by process, user, and PID
 
 To filter by process name, we can use the `-c` flag.
+
 ```bash
 $: lsof -c service_name
 ```
 
 To check the open files of a specific user, we can use the `-u` flag.
+
 ```bash
 $: lsof -u root
 ```
 
 If we want to search for a specific process using the PID, we can use the `-p` flag.
+
 ```bash
 $: lsof -p 116858
 ```
@@ -60,6 +65,7 @@ $: lsof -p 116858
 It is also possible to exclude a user, a process by name, or a specific process by PID using the `^` symbol with the above commands. The `^` acts as a negation operator, i.e., it returns all results except the specified value.
 
 Below are some examples:
+
 ```bash
 # Returns all processes except the specified process
 $: lsof -c ^service_name
@@ -102,17 +108,20 @@ This is useful when:
 ## Filtering network connections
 
 To list all open network connections, including ports in listen mode (LISTEN) and connections already established (ESTABLISHED):
+
 ```bash
 $: lsof -i
 ```
 
 If you want to filter all TCP connections by state, such as ESTABLISHED or LISTEN, you can use the `-s` option.
+
 ```bash
 $: lsof -i -sTCP:LISTEN
 $: lsof -i -sTCP:ESTABLISHED
 ```
 
 If we want to filter network files by IPV4 and IPV6, we can pass `4` for IPV4 and `6` for IPV6.
+
 ```bash
 $: lsof -i 4
 $: lsof -i 6
@@ -121,6 +130,7 @@ $: lsof -i 6
 ## Filtering by protocol and ports
 
 Still using the command above, we can perform a few more types of filtering, such as filtering by protocol and ports.
+
 ```bash
 $: lsof -i TCP:22
 # get all TCP protocols in the range of port 1-1024
