@@ -41,7 +41,11 @@ const projectSchema = {
   image={!!project.image ? project.image : '/og.jpg'}
 >
   <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(projectSchema)}
+    />
   </Fragment>
 
   <div>
@@ -73,7 +77,11 @@ const projectSchema = {
     {
       !!project.githubLink && (
         <div class="mt-2 text-xs text-muted-foreground">
-          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             View Code
           </a>
         </div>
@@ -85,7 +93,11 @@ const projectSchema = {
       <div class="flex flex-wrap gap-2 mt-2 text-muted-foreground">
         {
           project.technologies.map((technologie) => (
-            <a href={technologie.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={technologie.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {technologie.language}
             </a>
           ))
