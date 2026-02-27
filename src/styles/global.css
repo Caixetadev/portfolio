@@ -303,6 +303,13 @@ pre code {
   margin-bottom: 2rem;
 }
 
+.prose svg[id^='mermaid'] {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .prose img {
   border-radius: 8px;
   margin-top: 1rem;

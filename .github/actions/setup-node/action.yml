@@ -16,3 +16,6 @@ runs:
 
     - run: pnpm install --frozen-lockfile
       shell: bash
+
+    - run: pnpm exec playwright install --with-deps chromium
+      shell: bash
