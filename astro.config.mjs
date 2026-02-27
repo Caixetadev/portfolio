@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import mdx from '@astrojs/mdx'
+import rehypeMermaid from 'rehype-mermaid'
 
 import react from '@astrojs/react'
 
@@ -16,6 +17,43 @@ export default defineConfig({
   prefetch: true,
   trailingSlash: 'never',
   markdown: {
+    rehypePlugins: [
+      [
+        rehypeMermaid,
+        {
+          strategy: 'inline-svg',
+          mermaidConfig: {
+            theme: 'base',
+            themeVariables: {
+              background: '#141515',
+              primaryColor: '#1a2a2a',
+              primaryTextColor: '#eee',
+              primaryBorderColor: '#2a2a2a',
+              secondaryColor: '#1a1f2e',
+              secondaryTextColor: '#b0b0b0',
+              secondaryBorderColor: '#2a2a2a',
+              tertiaryColor: '#1a2520',
+              tertiaryTextColor: '#b0b0b0',
+              tertiaryBorderColor: '#2a2a2a',
+              lineColor: '#505050',
+              textColor: '#8f9391',
+              mainBkg: '#141515',
+              nodeBorder: '#2a2a2a',
+              clusterBkg: '#0e0f0f',
+              clusterBorder: '#2a2a2a',
+              titleColor: '#eee',
+              edgeLabelBackground: '#141515',
+              nodeTextColor: '#eee',
+              fontFamily: 'arial, sans-serif',
+            },
+          },
+        },
+      ],
+    ],
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
     shikiConfig: {
       theme: {
         name: 'portfolio',
