@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "npx playwright install chromium && astro build",
     "preview": "astro preview --host",
     "astro": "astro"
   },
