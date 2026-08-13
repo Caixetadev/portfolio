@@ -1,0 +1,238 @@
+---
+
+title: 'Data Structure Alignment'
+slug: 'data-structure-alignment'
+description: 'Understand how struct alignment and padding work in Go and why field order can affect memory usage and performance.'
+date: '08/04/2026'
+category: 'Low Level'
+tags: ['go', 'performance', 'memory', 'optimization', 'low-level']
+draft: false
+------------
+
+I was scrolling through YouTube Shorts when I came across a video of a C++ programmer talking about **Data Structure Alignment**. I had never really stopped to learn about it, so I opened Neovim and decided to see if the same thing happened in Go.
+
+And it did.
+
+But what exactly is **Data Structure Alignment**?
+
+## What Is Data Structure Alignment?
+
+Data Structure Alignment is the way data is arranged in memory so that it can be accessed efficiently by the CPU.
+
+Each type has an alignment requirement. An `int64`, for example, will typically need to start at an address that is a multiple of 8 bytes. An `int32` needs to be aligned to an address that is a multiple of 4 bytes.
+
+To meet these requirements, the compiler may add a few extra bytes between the fields of a struct. These bytes are called **padding**.
+
+> CPUs read and write memory most efficiently when a data item's memory address is a multiple of its size.
+
+Source: https://en.wikipedia.org/wiki/Data_structure_alignment
+
+## An Unaligned Struct
+
+Let's start with a very simple struct:
+
+```go
+type UnalignedStruct struct {
+	b int64
+}
+
+func main() {
+	fmt.Println(unsafe.Sizeof(UnalignedStruct{})) // 8 bytes
+}
+```
+
+In this case, the struct takes exactly **8 bytes**, which is the size of an `int64`.
+
+Now let's add a `bool`.
+
+```go
+type UnalignedStruct struct {
+	b int64
+	a bool
+}
+
+func main() {
+	fmt.Println(unsafe.Sizeof(UnalignedStruct{})) // 16 bytes
+}
+```
+
+The struct now takes **16 bytes**.
+
+But if the `int64` takes 8 bytes and the `bool` takes only 1 byte, shouldn't the total be 9?
+
+## What Is Padding?
+
+The answer is **padding**.
+
+Padding consists of bytes added by the compiler so that the fields in a struct meet the alignment requirements of the architecture.
+
+It might look like wasted space, but those bytes are there for a reason. Processors can work more efficiently when certain values are stored at properly aligned addresses.
+
+In our example, we can visualize the memory layout like this:
+
+```text
+| int64 (8) | bool (1) | padding (7) |
+```
+
+Total:
+
+```text
+8 + 1 + 7 = 16 bytes
+```
+
+Those 7 bytes don't store any application data. They are simply there to maintain the alignment of the struct.
+
+Now let's add an `int32`.
+
+```go
+type UnalignedStruct struct {
+	c int32
+	b int64
+	a bool
+}
+
+func main() {
+	fmt.Println(unsafe.Sizeof(UnalignedStruct{})) // 24 bytes
+}
+```
+
+The `int32` takes 4 bytes, so it would be reasonable to expect the struct to take 20 bytes.
+
+But it actually takes **24 bytes**.
+
+This happens because the `int64` needs to start at an address aligned to 8 bytes. Since the `int32` takes 4 bytes, another 4 bytes of padding are needed before the `int64`.
+
+The layout looks roughly like this:
+
+```text
+| int32 (4) | padding (4) | int64 (8) | bool (1) | padding (7) |
+```
+
+Total:
+
+```text
+4 + 4 + 8 + 1 + 7 = 24 bytes
+```
+
+## Aligning the Struct
+
+Now that it's clearer how padding is introduced, we can try rearranging the fields.
+
+A common approach is to place the larger fields first.
+
+```go
+type AlignedStruct struct {
+	b int64
+	c int32
+	a bool
+}
+
+func main() {
+	fmt.Println(unsafe.Sizeof(AlignedStruct{})) // 16 bytes
+}
+```
+
+Now we have:
+
+```text
+| int64 (8) | int32 (4) | bool (1) | padding (3) |
+```
+
+Total:
+
+```text
+8 + 4 + 1 + 3 = 16 bytes
+```
+
+Just by changing the order of the fields, we reduced the struct from **24 bytes to 16 bytes**.
+
+That's a reduction of approximately **33% in the size of the struct**.
+
+## Does It Really Make a Difference?
+
+So far, we're only talking about a few bytes. But does this actually matter in a real application?
+
+Let's create a benchmark using two structs with the same fields, but in a different order.
+
+```go
+type Bad struct {
+	A int32
+	B int64
+	C bool
+}
+
+type Good struct {
+	B int64
+	A int32
+	C bool
+}
+
+var sink any
+
+func BenchmarkBad(b *testing.B) {
+	for b.Loop() {
+		sink = make([]Bad, 1_000_000)
+	}
+}
+
+func BenchmarkGood(b *testing.B) {
+	for b.Loop() {
+		sink = make([]Good, 1_000_000)
+	}
+}
+```
+
+Then run:
+
+```bash
+go test -bench=. -benchmem
+```
+
+In my case, the result was:
+
+```text
+BenchmarkBad-8      4296    278330 ns/op    24002602 B/op    2 allocs/op
+BenchmarkGood-8     5299    194714 ns/op    16007198 B/op    2 allocs/op
+```
+
+But what does each number mean?
+
+* `BenchmarkBad-8` is the benchmark name. The `-8` represents the number of CPUs used by the test.
+* `4296` is the number of times the benchmark executed the operation during the measurement.
+* `278330 ns/op` is the average time each operation took in nanoseconds.
+* `24002602 B/op` is the number of bytes allocated per operation.
+* `2 allocs/op` is the number of memory allocations made per operation.
+
+The `4296` value isn't manually defined. Go automatically decides how many times the benchmark needs to run to get a reliable measurement.
+
+Looking at the two results, the `Bad` struct takes approximately **24 MB** when we create 1 million elements:
+
+```text
+24 bytes × 1,000,000 = 24 MB
+```
+
+The `Good` struct takes approximately **16 MB**:
+
+```text
+16 bytes × 1,000,000 = 16 MB
+```
+
+So just by changing the order of the fields, we can save around **8 MB**.
+
+In this particular benchmark, the smaller version was also approximately **30% faster**.
+
+This doesn't mean that rearranging the fields of any struct will make the program 30% faster. The result depends on several factors, such as the data access pattern, the architecture, and the rest of the application.
+
+Still, when we're dealing with structures that are created thousands or millions of times, the difference can become quite significant.
+
+Think about things like caches, in-memory data structures, or systems that work with large amounts of data. Saving a few bytes per element can add up to a considerable amount of memory in the end.
+
+## Conclusion
+
+Data Structure Alignment is one of those low-level details that often goes unnoticed, but it can make a real difference when memory usage and performance start to matter.
+
+That doesn't mean we should go around rearranging every struct in a project. In many cases, keeping the code simple and easy to understand is more important than saving a few bytes.
+
+But understanding what happens under the hood can be really useful when investigating memory usage or optimizing a specific part of an application.
+
+As a general rule, when it makes sense, placing larger fields before smaller ones can help reduce padding and, consequently, the size of the struct.
