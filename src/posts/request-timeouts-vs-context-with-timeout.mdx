@@ -1,0 +1,160 @@
+---
+title: 'HTTP Server Timeouts vs Context Timeout in Go'
+slug: 'http-server-timeouts-vs-context-timeout-in-go'
+description: 'Understanding the differences between HTTP server timeouts and context-based timeouts in Go.'
+date: '08/19/2026'
+category: 'go'
+tags: ['go', 'http', 'timeouts', 'context']
+draft: false
+------------
+
+This week I was taking a look at the customization options for `http.Server` and came across two properties that caught my attention: `ReadTimeout` and `WriteTimeout`.
+
+I looked into them and found that they set timeouts for reading and writing over the connection. Right away, I thought of `context.WithTimeout` and wondered what the difference would be between the `http.Server` timeouts and those of the context. Well, that’s what we’ll explore today.
+
+## WriteTimeout
+
+Let’s start with `WriteTimeout`. With `WriteTimeout`, we’ll set a write deadline for the connection. Let’s look at an example:
+
+```go
+func main() {
+  mux := http.NewServeMux()
+
+  s := &http.Server{
+		Addr:         ":8080",
+		Handler:      mux,
+		WriteTimeout: 10 * time.Second,
+	}
+
+  mux.HandleFunc("GET /foo", func(w http.ResponseWriter, r *http.Request) {
+    time.Sleep(11 * time.Second)
+		w.Write([]byte("bar"))
+	})
+
+	log.Fatal(s.ListenAndServe())
+}
+```
+
+As we can see in the code above, we’ve set a 10-second deadline for performing write operations on this connection. In our handler, we’ve added an `sleep` of 11 seconds. This means we’ll exceed the limit we set. As a result, the server will close the connection. We can test this with the following command:
+
+```bash
+$: curl http://localhost:8080/foo
+curl: (52) Empty reply from server
+```
+
+After waiting 10 seconds, the server closes the connection, as we expected.
+
+## ReadTimeout
+
+With `ReadTimeout`, we limit the amount of time we’ll spend reading the entire request. Let’s assume the client is sending data very slowly. We don’t want to wait indefinitely, especially since we’re keeping a connection open, which means we’re consuming resources. Let’s look at the example below:
+
+```go
+func main() {
+	mux := http.NewServeMux()
+
+	s := &http.Server{
+		Addr:        ":8080",
+		Handler:     mux,
+		ReadTimeout: 10 * time.Second,
+	}
+
+	mux.HandleFunc("POST /foo", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("ENTERED HANDLER")
+
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			log.Printf("error reading body: %v", err)
+			return
+		}
+
+		log.Printf("received %d bytes", len(body))
+		w.Write([]byte("Hello"))
+	})
+
+	log.Fatal(s.ListenAndServe())
+}
+```
+
+In the code above, we added a 10-second time limit for reading the entire request. Let's test this in practice. Let's send a 10MB file and limit the upload speed to 100B/s:
+
+```bash
+$: dd if=/dev/zero bs=1M count=10 2>/dev/null | \
+curl -v \
+  -X POST http://localhost:8080/foo \
+  -H 'Content-Type: application/octet-stream' \
+  --data-binary @- \
+  --limit-rate 100B
+
+* Host localhost:8080 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:8080...
+* Established connection to localhost (::1 port 8080) from ::1 port 60384
+* using HTTP/1.x
+> POST /foo HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/8.21.0
+> Accept: */*
+> Content-Type: application/octet-stream
+> Content-Length: 10485760
+> Expect: 100-continue
+>
+< HTTP/1.1 100 Continue
+<
+* abort upload after having sent 1000 bytes
+* Empty reply from server
+* shutting down connection #0
+curl: (52) Empty reply from server
+```
+
+Note that the connection was terminated after approximately 1,000 bytes. This makes sense, since we were sending at 100 B/s and the timeout occurs if it takes longer than 10 seconds.
+
+## Context With Timeout vs Timeouts
+
+As we saw above, `ReadTimeout` and `WriteTimeout` operate at the connection level. They set deadlines for reading and writing, but they do not interrupt the execution of our handler.
+
+This is where `context.WithTimeout` can be useful. We can create a context with a timeout and pass it to operations that support `context.Context`:
+
+```go
+mux.HandleFunc("GET /foo", func(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	defer cancel()
+
+	result, err := expensiveOperation(ctx)
+	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			http.Error(w, "timeout", http.StatusGatewayTimeout)
+			return
+		}
+
+		http.Error(w, "internal server error", http.StatusInternalServerError)
+		return
+	}
+
+	w.Write([]byte(result))
+})
+```
+
+Our operation can check the context and respond to the cancellation:
+
+```go
+func expensiveOperation(ctx context.Context) (string, error) {
+	select {
+	case <-time.After(10 * time.Second):
+		return "result", nil
+
+	case <-ctx.Done():
+		return "", ctx.Err()
+	}
+}
+```
+
+In this example, `expensiveOperation` could take 10 seconds, but the context has a 5-second timeout. When this time is reached, `ctx.Done()` will be called and the operation may be interrupted.
+
+It is important to remember that `context.WithTimeout` does not automatically terminate the goroutine. It merely signals cancellation, and the operation must respect this context.
+
+## Summary
+
+* `ReadTimeout` → deadline for reading from the connection.
+* `WriteTimeout` → deadline for writing to the connection.
+* `context.WithTimeout` → deadline for application operations, such as database queries or HTTP calls.
